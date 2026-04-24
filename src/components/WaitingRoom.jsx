@@ -14,7 +14,7 @@ export default function WaitingRoom({ userId, onMatchFound }) {
         .select('*')
         .or(`player1_id.eq.${userId},player2_id.eq.${userId}`)
         .in('status', ['active', 'voting'])
-        .single();
+        .maybeSingle();
       
       if (data) onMatchFound(data);
     };
@@ -48,7 +48,7 @@ export default function WaitingRoom({ userId, onMatchFound }) {
       .eq('status', 'waiting')
       .neq('player1_id', userId)
       .limit(1)
-      .single();
+      .maybeSingle();
 
     if (waitingMatch) {
       joinMatch(waitingMatch.id);
@@ -71,6 +71,39 @@ export default function WaitingRoom({ userId, onMatchFound }) {
     if (data) onMatchFound(data);
   };
 
+  const startBotMatch = async () => {
+    console.log("🚀 [MATCHMAKING] Initialisation d'un duel contre le Bot...");
+    setIsQueueing(true);
+    
+    const botId = "00000000-0000-0000-0000-000000000000";
+    console.log("📡 [SUPABASE] Création de la ligne de match avec Bot ID:", botId);
+
+    const { data, error } = await supabase
+      .from('matches')
+      .insert([
+        { 
+          player1_id: userId, 
+          player2_id: botId, 
+          status: 'active', 
+          timer_start: new Date().toISOString() 
+        }
+      ])
+      .select()
+      .maybeSingle();
+    
+    if (error) {
+      console.error("❌ [SUPABASE] Erreur lors de la création du match:", error);
+      setIsQueueing(false);
+      return;
+    }
+
+    if (data) {
+      console.log("✅ [MATCHMAKING] Match créé avec succès ! ID:", data.id);
+      console.log("➡️ [NAVIGATION] Passage à l'écran de Duel...");
+      onMatchFound(data);
+    }
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] p-6 text-white text-center">
       <div className="bg-slate-800/50 backdrop-blur-xl p-8 rounded-3xl border border-slate-700 shadow-2xl max-w-md w-full">
@@ -86,15 +119,23 @@ export default function WaitingRoom({ userId, onMatchFound }) {
         {isQueueing ? (
           <div className="flex flex-col items-center gap-4">
             <Loader2 className="w-10 h-10 text-indigo-400 animate-spin" />
-            <p className="font-medium animate-pulse">Recherche d'un adversaire...</p>
+            <p className="font-medium animate-pulse">Initialisation du duel...</p>
           </div>
         ) : (
-          <button
-            onClick={startQueue}
-            className="w-full py-4 px-8 bg-indigo-600 hover:bg-indigo-500 transition-all rounded-2xl font-bold text-lg shadow-lg shadow-indigo-500/20 active:scale-95"
-          >
-            Lancer un Duel
-          </button>
+          <div className="flex flex-col gap-3">
+            <button
+              onClick={startQueue}
+              className="w-full py-4 px-8 bg-indigo-600 hover:bg-indigo-500 transition-all rounded-2xl font-bold text-lg shadow-lg shadow-indigo-500/20 active:scale-95"
+            >
+              Lancer un Duel Humain
+            </button>
+            <button
+              onClick={startBotMatch}
+              className="w-full py-4 px-8 bg-slate-700 hover:bg-slate-600 transition-all rounded-2xl font-bold text-lg border border-slate-600 active:scale-95"
+            >
+              Défier le Bot (Ollama)
+            </button>
+          </div>
         )}
       </div>
     </div>

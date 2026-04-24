@@ -1,0 +1,10 @@
+Session du 2026-04-24 - Phase 3 Bot ou pas Bot
+- Tentative d'intégration Ollama.
+- Problème identifié : Erreur 401/406/409 sur Supabase.
+- Solution 401/406 : Utiliser la clé "Legacy Anon" et non la nouvelle "Publishable key" de Supabase (qui commence par sb_publishable).
+- Solution 406 (PGRST116) : Remplacer .single() par .maybeSingle() dans les requêtes qui peuvent retourner 0 résultats.
+- Problème 409 (Conflict) : Violation de clé étrangère (FK) car les IDs d'invités n'existent pas dans auth.users.
+- Action : Suppression des contraintes FK sur matches et messages pour le MVP.
+- Résultat : Erreur 409 persistante malgré DROP CONSTRAINT, nécessite investigation plus poussée (contraintes invisibles ou cache PostgREST).
+- UI : Passage de "Mobile Only" à "PC/Navigateur" ok via ajout de .app-container.
+- Mode Invité : Ajout d'un bouton pour simuler un userId sans passer par GitHub Auth.

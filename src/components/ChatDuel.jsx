@@ -12,12 +12,16 @@ export default function ChatDuel({ match, userId, onTimeUp }) {
   useEffect(() => {
     // Fetch initial messages
     const fetchMessages = async () => {
+      console.log("📥 [CHAT] Récupération de l'historique des messages...");
       const { data } = await supabase
         .from('messages')
         .select('*')
         .eq('match_id', match.id)
         .order('created_at', { ascending: true });
-      if (data) setMessages(data);
+      if (data) {
+        console.log(`✅ [CHAT] ${data.length} messages récupérés.`);
+        setMessages(data);
+      }
     };
     fetchMessages();
 
@@ -25,12 +29,16 @@ export default function ChatDuel({ match, userId, onTimeUp }) {
     const channel = supabase
       .channel(`match:${match.id}`)
       .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages', filter: `match_id=eq.${match.id}` }, (payload) => {
+        console.log("📩 [REALTIME] Nouveau message reçu:", payload.new.text);
         setMessages(prev => [...prev, payload.new]);
       })
       .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'matches', filter: `id=eq.${match.id}` }, (payload) => {
+        console.log("🔄 [REALTIME] Mise à jour du match:", payload.new.status);
         if (payload.new.status === 'voting') onTimeUp();
       })
-      .subscribe();
+      .subscribe((status) => {
+        console.log("📡 [REALTIME] Statut de connexion au canal:", status);
+      });
 
     // Timer logic
     const timer = setInterval(() => {
@@ -66,9 +74,14 @@ export default function ChatDuel({ match, userId, onTimeUp }) {
     const text = inputText;
     setInputText('');
 
-    await supabase.from('messages').insert([
+    console.log("📤 [CHAT] Envoi du message:", text);
+    const { error } = await supabase.from('messages').insert([
       { match_id: match.id, user_id: userId, text }
     ]);
+
+    if (error) {
+      console.error("❌ [CHAT] Erreur lors de l'envoi:", error);
+    }
   };
 
   const formatTime = (seconds) => {

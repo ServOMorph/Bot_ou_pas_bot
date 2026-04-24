@@ -19,24 +19,44 @@ export default function App() {
     });
   }, []);
 
+  const loginAsGuest = () => {
+    const guestSession = {
+      user: {
+        id: crypto.randomUUID(),
+        email: 'guest@example.com',
+        user_metadata: { full_name: 'Invité' }
+      }
+    };
+    setSession(guestSession);
+  };
+
   if (!session) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen p-4">
-        <div className="bg-slate-800 p-8 rounded-3xl border border-slate-700 text-center max-w-sm">
-          <h1 className="text-3xl font-bold mb-6">Bot ou pas Bot ?</h1>
-          <button 
-            onClick={() => supabase.auth.signInWithOAuth({ provider: 'github' })}
-            className="w-full py-3 bg-white text-black font-bold rounded-xl hover:bg-slate-200 transition-colors"
-          >
-            Se connecter avec GitHub
-          </button>
-          <p className="text-slate-500 mt-4 text-sm">Mode Anonyme bientôt disponible</p>
+        <div className="bg-slate-800 p-8 rounded-3xl border border-slate-700 text-center max-w-sm w-full">
+          <h1 className="text-3xl font-bold mb-6 text-white">Bot ou pas Bot ?</h1>
+          <div className="flex flex-col gap-3">
+            <button 
+              onClick={() => supabase.auth.signInWithOAuth({ provider: 'github' })}
+              className="w-full py-3 bg-white text-black font-bold rounded-xl hover:bg-slate-200 transition-colors"
+            >
+              Se connecter avec GitHub
+            </button>
+            <button 
+              onClick={loginAsGuest}
+              className="w-full py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-500 transition-colors"
+            >
+              Mode Invité (Test Rapide)
+            </button>
+          </div>
+          <p className="text-slate-500 mt-4 text-sm italic">Pas de configuration requise</p>
         </div>
       </div>
     );
   }
 
   const handleMatchFound = (match) => {
+    console.log("🎮 [APP] Match détecté ! Passage en vue ChatDuel. MatchID:", match.id);
     setCurrentMatch(match);
     setView('chat');
   };
@@ -51,7 +71,7 @@ export default function App() {
   };
 
   return (
-    <main className="min-h-screen">
+    <main className="app-container">
       {view === 'waiting' && (
         <WaitingRoom 
           userId={session.user.id} 

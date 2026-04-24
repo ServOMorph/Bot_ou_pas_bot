@@ -2,8 +2,9 @@
 
 Arène de Turing moderne : duels anonymes chat IA-humain (18-35 ans).
 
-## 🚀 État du Projet : MVP Phase 2
-Le cœur du système de duel est opérationnel avec React et Supabase Realtime.
+## 🚀 État du Projet : MVP Phase 3 (En cours)
+Le système de duel est opérationnel. Le pont Ollama pour l'IA est en cours d'intégration.
+L'application est désormais optimisée pour PC et Mobile.
 
 ## 🛠 Stack Technique
 - **Frontend** : React (Vite) + Vanilla CSS (Dark Mode Premium).

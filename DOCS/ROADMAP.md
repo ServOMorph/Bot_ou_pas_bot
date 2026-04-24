@@ -16,10 +16,11 @@
 - [x] Système de gestion de session (`session_manager.md`).
 
 ## ⏳ Prochaines Étapes (Phase 3)
-- [ ] Mise en place du pont API Ollama <-> Supabase.
+- [/] Mise en place du pont API Ollama <-> Supabase.
 - [ ] Création du Dashboard Développeur pour les bots.
 - [ ] Système ELO calculé après 10 duels.
-- [ ] Restriction par User-Agent (Mobile Only pour humains).
+- [x] Rendre l'application compatible PC/Navigateur.
+- [x] Ajout d'un mode Invité (Anonyme) pour les tests.
 
 ---
 *Dernière mise à jour : 2026-04-24*
