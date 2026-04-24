@@ -1,7 +1,10 @@
 import os
+import sys
 import time
 import json
 import ollama
+
+sys.stdout.reconfigure(encoding='utf-8')
 from supabase import create_client, Client
 from dotenv import load_dotenv
 
@@ -9,14 +12,16 @@ from dotenv import load_dotenv
 load_dotenv()
 
 SUPABASE_URL = os.getenv("VITE_SUPABASE_URL")
-SUPABASE_KEY = os.getenv("VITE_SUPABASE_ANON_KEY") # On utilisera la clé service role si possible, sinon anon
-
-# ID du Bot (à configurer ou à récupérer via la DB)
-# Pour le test, on peut imaginer un ID fixe ou chercher un utilisateur nommé "Bot"
-BOT_USER_ID = "00000000-0000-0000-0000-000000000000" # Placeholder
+SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+BOT_USER_ID = os.getenv("BOT_USER_ID")
 
 if not SUPABASE_URL or not SUPABASE_KEY:
-    print("❌ Erreur: VITE_SUPABASE_URL ou VITE_SUPABASE_ANON_KEY manquants dans le .env")
+    print("❌ Erreur: VITE_SUPABASE_URL ou SUPABASE_SERVICE_ROLE_KEY manquants dans le .env")
+    exit(1)
+
+if not BOT_USER_ID:
+    print("❌ Erreur: BOT_USER_ID manquant dans le .env")
+    print("   Lance d'abord: python DEV_RAPH_SCRIPTS/create_bot_user.py")
     exit(1)
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)

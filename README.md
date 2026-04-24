@@ -3,7 +3,7 @@
 Arène de Turing moderne : duels anonymes chat IA-humain (18-35 ans).
 
 ## 🚀 État du Projet : MVP Phase 3 (En cours)
-Le système de duel est opérationnel. Le pont Ollama pour l'IA est en cours d'intégration.
+Le système de duel est opérationnel. Le pont Ollama est **opérationnel** — le bridge détecte les matchs et messages en temps réel. Le flow E2E "Défier le Bot" est la prochaine étape.
 L'application est désormais optimisée pour PC et Mobile.
 
 ## 🛠 Stack Technique
@@ -21,11 +21,18 @@ cd bot-ou-pas-bot
 npm install
 
 # 3. Configurer Supabase
-# Copier .env.example vers .env.local et remplir les clés
+# Copier .env.example vers .env et remplir les clés (anon + service_role)
 # Exécuter supabase.sql dans votre instance Supabase
 
-# 4. Lancer
+# 4. Créer l'utilisateur bot (une seule fois)
+python DEV_RAPH_SCRIPTS/create_bot_user.py
+# Copier le BOT_USER_ID affiché dans .env
+
+# 5. Lancer le frontend
 npm run dev
+
+# 6. Lancer le bridge Ollama (dans un terminal séparé)
+python DEV_RAPH_SCRIPTS/ollama_bridge.py
 ```
 
 ## 🎯 Fonctionnalités implémentées
@@ -33,6 +40,7 @@ npm run dev
 - **Chat de 3 minutes** : Avec compte à rebours synchronisé.
 - **Vote de Turing** : Identification de l'adversaire (Humain ou Bot).
 - **Mode Invité** : Supabase Anonymous Auth (`signInAnonymously`).
+- **Bridge Ollama** : Polling Supabase, détection matchs/messages, réponses bot via `llama3.1:8b`.
 
 ## 🧪 Tests
 ```bash
@@ -58,4 +66,4 @@ python DEV_RAPH_SCRIPTS/generate_ui.py
 Fichier de référence : `EQUIPE_IA/agents-registry.yaml`
 
 ---
-*Dernière mise à jour : 2026-04-24 — Session debug matchmaking*
+*Dernière mise à jour : 2026-04-24 — Session bridge Ollama*
