@@ -1,0 +1,5 @@
+# Scribe - Documentation FR
+tool: claude-haiku-4-5
+temperature: 0.2
+role: development
+description: "Documentation FR rapide & légère - READMEs + wikis"

@@ -1,0 +1,5 @@
+# Dezy - UI/UX Design
+tool: claude-design
+temperature: 0.7
+role: design
+description: "UI/UX Design dédié - Figma + composants visuels"

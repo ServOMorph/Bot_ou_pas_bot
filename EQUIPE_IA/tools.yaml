@@ -1,0 +1,138 @@
+# Tools Master Configuration - EQUIPE_IA
+# Hiérarchie centralisée des outils et fallbacks
+
+tools:
+  # Tier 1: Orchestration & Reasoning
+  claude-opus-4-7:
+    provider: anthropic
+    model_family: claude
+    tier: orchestration
+    fallback: claude-sonnet-4-6
+    use_cases:
+      - orchestration-globale
+      - complex-reasoning
+      - agent-chef
+
+  # Tier 2: Development (Unified)
+  claude-sonnet-4-6:
+    provider: anthropic
+    model_family: claude
+    tier: development
+    fallback: gemini-3-flash
+    use_cases:
+      - architecture
+      - fullstack
+      - mobile
+      - growth-strategy
+
+  # Tier 3: Fast Testing & Eco
+  gemini-3-flash:
+    provider: google
+    model_family: gemini
+    tier: testing
+    fallback: gemma-4-local
+    use_cases:
+      - testing-rapides
+      - quality-assurance
+
+  # Tier 4: Local & Offline
+  gemma-4-local:
+    provider: ollama
+    model_family: gemma
+    tier: local
+    fallback: null
+    use_cases:
+      - offline-fallback
+      - eco-friendly
+
+  # Alternative: Design
+  claude-design:
+    provider: anthropic
+    model_family: claude
+    tier: design
+    fallback: gemini-web-chat
+    use_cases:
+      - ui-ux-design
+      - mobile-design
+
+  # Alternative: Web Search
+  perplexity-comet:
+    provider: perplexity
+    model_family: perplexity
+    tier: search
+    fallback: gemini-web-chat
+    use_cases:
+      - recherche-up-to-date
+      - infos-actuelles
+      - tous-agents-bonus
+
+  # Alternative: Web & Chat
+  chatgpt-codex:
+    provider: openai
+    model_family: gpt
+    tier: alternative
+    fallback: mistral-web
+    use_cases:
+      - architecture-alt
+      - fullstack-alt
+      - mobile-alt
+
+  # Alternative: Web Models
+  mistral-web:
+    provider: mistral
+    model_family: mistral
+    tier: alternative
+    fallback: null
+    use_cases:
+      - fullstack-alt
+      - scribe-docs
+      - business
+
+  # Alternative: Web Chat
+  gemini-web-chat:
+    provider: google
+    model_family: gemini
+    tier: alternative
+    fallback: null
+    use_cases:
+      - business
+      - design-alt
+      - recherche-alt
+
+  # Alternative: Cloud Chat
+  chatgpt-chat-cloud:
+    provider: openai
+    model_family: gpt
+    tier: alternative
+    fallback: null
+    use_cases:
+      - chef-alt
+      - scribe-alt
+      - business
+      - recherche-alt
+
+  # Small & Fast
+  claude-haiku-4-5:
+    provider: anthropic
+    model_family: claude
+    tier: lightweight
+    fallback: mistral-web
+    use_cases:
+      - docs-rapides
+      - lightweight-tasks
+
+# Température recommandée par rôle
+temperatures:
+  orchestration: 0.2  # Déterministe
+  development: 0.2    # Code précis
+  design: 0.7         # Créatif
+  search: 0.5         # Équilibré
+  business: 0.6       # Stratégique
+  testing: 0.1        # Reproductibilité
+
+# Configuration de fallback auto
+fallback_strategy:
+  enabled: true
+  max_retries: 3
+  timeout_seconds: 30
+  log_failures: true

@@ -1,0 +1,6 @@
+Session summary for learning manager:
+- Task: Create MVP for "Bot ou pas Bot ?"
+- Accomplishments: Phase 1 docs, Phase 2 React/Supabase code (9 files), Session management.
+- Technologies: React, Supabase Realtime, Vite.
+- Patterns: Used a dedicated SQL schema for matches and messages. Implemented a 3-minute timer with `date-fns`.
+- Errors fixed: Fixed path issue for file creation (absolute paths required).

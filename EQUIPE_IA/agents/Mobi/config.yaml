@@ -1,0 +1,5 @@
+# Mobi - Mobile React Native
+tool: claude-sonnet-4-6
+temperature: 0.2
+role: development
+description: "Développement Mobile React Native - iOS/Android"

@@ -1,0 +1,5 @@
+# Chef IA - Orchestration globale
+tool: claude-opus-4-7
+temperature: 0.2
+role: orchestration
+description: "Orchestration globale du projet - décisions stratégiques"

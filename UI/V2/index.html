@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bot ou pas Bot ? — Dashboard IA</title>
+<style>
+:root[data-theme="dark"] {
+  --bg:      #13100e;
+  --bg2:     #1e1a16;
+  --bg3:     #2a2420;
+  --border:  #3d3530;
+  --text:    #f0e6d8;
+  --text2:   #a0907c;
+  --text3:   #6a5c50;
+  --accent:  #ff8c42;
+  --accent2: #ffaa66;
+  --shadow:  0 4px 28px rgba(0,0,0,.5);
+}
+:root[data-theme="light"] {
+  --bg:      #fdf6ee;
+  --bg2:     #ffffff;
+  --bg3:     #f5ede2;
+  --border:  #e8d9c8;
+  --text:    #2a1f14;
+  --text2:   #7a6550;
+  --text3:   #b09878;
+  --accent:  #e8722a;
+  --accent2: #c85a10;
+  --shadow:  0 4px 24px rgba(200,90,16,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background .3s,color .3s;}
+
+/* NAV */
+nav{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:58px;position:sticky;top:0;z-index:100;box-shadow:var(--shadow);}
+.nav-brand{display:flex;align-items:center;gap:10px;}
+.nav-brand span{font-size:18px;font-weight:700;}
+.nav-brand small{font-size:11px;color:var(--text2);background:var(--bg3);padding:2px 8px;border-radius:20px;}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.pyramid-badge{font-size:12px;font-weight:600;background:linear-gradient(135deg,#ff8c4222,#ff8c4244);border:1px solid #ff8c4266;color:var(--accent2);padding:4px 12px;border-radius:20px;}
+.sync-btn{font-size:11px;font-weight:500;background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:5px 12px;border-radius:8px;cursor:pointer;transition:all .2s;}
+.sync-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+.theme-toggle{background:var(--bg3);border:1px solid var(--border);color:var(--text);cursor:pointer;width:38px;height:38px;border-radius:10px;font-size:17px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.theme-toggle:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+
+/* TABS */
+.tabs{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 28px;display:flex;gap:4px;}
+.tab{padding:14px 20px;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;}
+.tab:hover{color:var(--text);}
+.tab.active{color:var(--accent2);border-bottom-color:var(--accent);}
+
+/* MAIN */
+main{padding:28px;max-width:1400px;margin:0 auto;}
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+
+/* STATS */
+.stats-band{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;margin-bottom:24px;}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:4px;}
+.stat-num{font-size:26px;font-weight:700;color:var(--accent2);}
+.stat-label{font-size:12px;color:var(--text2);}
+
+/* SECTION TITLE */
+.section-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--text3);margin-bottom:14px;margin-top:24px;display:flex;align-items:center;gap:8px;}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* TOOLBAR */
+.toolbar{display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
+.btn-sm{font-size:12px;font-weight:500;padding:6px 14px;border-radius:8px;border:1px solid var(--border);background:var(--bg2);color:var(--text2);cursor:pointer;transition:all .2s;}
+.btn-sm:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+
+/* AGENT CARD */
+.agents-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:18px;}
+.agent-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .2s,box-shadow .2s;}
+.agent-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
+
+.agent-header{padding:16px 18px 12px;display:flex;align-items:flex-start;gap:12px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s;}
+.agent-header:hover{background:var(--bg3);}
+.agent-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.agent-meta{flex:1;min-width:0;}
+.agent-name{font-size:15px;font-weight:700;margin-bottom:2px;}
+.agent-desc{font-size:12px;color:var(--text2);line-height:1.4;}
+.card-chevron{font-size:13px;color:var(--text3);transition:transform .25s;flex-shrink:0;margin-top:4px;}
+.agent-card.collapsed .card-chevron{transform:rotate(-90deg);}
+
+.agent-card-body{overflow:hidden;max-height:2000px;opacity:1;transition:max-height .35s ease,opacity .2s ease;}
+.agent-card.collapsed .agent-card-body{max-height:0;opacity:0;pointer-events:none;}
+
+.agent-badges{display:flex;flex-wrap:wrap;gap:5px;padding:10px 18px;border-bottom:1px solid var(--border);}
+.badge{font-size:11px;font-weight:500;padding:3px 9px;border-radius:20px;}
+
+.agent-tool{padding:12px 18px;border-bottom:1px solid var(--border);}
+.tool-label{font-size:10px;color:var(--text3);font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:5px;}
+.tool-primary{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:5px 12px;border-radius:8px;margin-bottom:6px;}
+.tool-dot{width:7px;height:7px;border-radius:50%;}
+.fallbacks{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;}
+.fallback-chip{font-size:11px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:2px 8px;border-radius:6px;}
+.temp-bar{display:flex;align-items:center;gap:8px;margin-top:8px;}
+.temp-track{flex:1;height:4px;border-radius:2px;background:var(--bg3);overflow:hidden;}
+.temp-fill{height:100%;border-radius:2px;}
+.temp-val{font-size:11px;color:var(--text2);font-weight:600;width:28px;text-align:right;}
+
+.agent-subs{padding:12px 18px;}
+.subs-header{display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;margin-bottom:6px;}
+.subs-header:hover{opacity:.8;}
+.subs-chevron{font-size:11px;color:var(--text3);transition:transform .2s;}
+.subs-list{overflow:hidden;max-height:300px;opacity:1;transition:max-height .3s ease,opacity .2s ease;}
+.sub-item{display:flex;align-items:center;justify-content:space-between;font-size:12px;padding:5px 10px;border-radius:8px;background:var(--bg3);gap:8px;margin-bottom:4px;}
+.sub-name{color:var(--text);font-weight:500;}
+.sub-tool{color:var(--text3);font-size:11px;}
+
+/* ROLE COLORS */
+.role-orchestration{background:#7c3aed22;border:1px solid #7c3aed44;color:#c4b5fd;}
+.role-development{background:#d9770622;border:1px solid #d9770644;color:#fdba74;}
+.role-testing{background:#05966922;border:1px solid #05966944;color:#6ee7b7;}
+.role-design{background:#db277722;border:1px solid #db277744;color:#f9a8d4;}
+.role-business{background:#ca8a0422;border:1px solid #ca8a0444;color:#fde68a;}
+
+/* ICON BG */
+.icon-orchestration{background:#7c3aed22;}
+.icon-development{background:#d9770622;}
+.icon-testing{background:#05966922;}
+.icon-design{background:#db277722;}
+.icon-business{background:#ca8a0422;}
+
+/* TOOL COLORS */
+.tool-anthropic{background:#ff8c4222;border:1px solid #ff8c4244;color:#ffaa66;}
+.tool-openai{background:#10b98122;border:1px solid #10b98144;color:#6ee7b7;}
+.tool-google{background:#3b82f622;border:1px solid #3b82f644;color:#93c5fd;}
+.tool-mistral{background:#f5960022;border:1px solid #f5960044;color:#fcd34d;}
+.tool-ollama{background:#dc262622;border:1px solid #dc262644;color:#fca5a5;}
+.tool-perplexity{background:#0891b222;border:1px solid #0891b244;color:#67e8f9;}
+.tool-unknown{background:var(--bg3);border:1px solid var(--border);color:var(--text2);}
+
+/* MODELS GRID */
+.models-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin-bottom:24px;}
+.model-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;}
+.model-name{font-size:14px;font-weight:700;}
+.model-use{font-size:12px;color:var(--text2);}
+.model-provider{font-size:11px;color:var(--text3);}
+
+/* FLOW */
+.flow-diagram{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.flow-node{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-weight:600;color:var(--text);font-size:13px;}
+.flow-arrow{color:var(--text3);font-size:16px;}
+
+/* PYRAMID */
+.pyramid-visual{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:28px;text-align:center;}
+.pyr-levels{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.pyr-level-wrap{width:100%;}
+.pyr-level-header{display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;padding:6px 12px;border-radius:8px;transition:background .15s;user-select:none;}
+.pyr-level-header:hover{background:var(--bg3);}
+.pyr-level-label{font-size:11px;color:var(--text3);font-weight:600;min-width:120px;text-align:right;}
+.pyr-level-count{font-size:11px;color:var(--text3);min-width:32px;}
+.pyr-level-body{overflow:hidden;max-height:200px;opacity:1;transition:max-height .3s ease,opacity .2s ease;display:flex;justify-content:center;flex-wrap:wrap;gap:6px;padding:6px 0;}
+.pyr-chip{height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;padding:0 14px;cursor:default;}
+.pyr-arrow{color:var(--text3);font-size:20px;margin:2px 0;}
+
+/* LOADING */
+#loading{display:flex;align-items:center;justify-content:center;height:200px;font-size:14px;color:var(--text2);}
+.dot-pulse::after{content:' ...';animation:dots 1.2s steps(4,end) infinite;}
+@keyframes dots{0%,100%{content:'';}33%{content:' .';}66%{content:' ..';}99%{content:' ...'}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <span>🤖 Bot ou pas Bot ?</span>
+    <small id="nav-version">Dashboard IA</small>
+  </div>
+  <div class="nav-right">
+    <div class="pyramid-badge" id="nav-pyramid">Pyramide 100 Agents</div>
+    <button class="sync-btn" id="syncBtn">↻ Rafraîchir</button>
+    <button class="theme-toggle" id="themeBtn">🌙</button>
+  </div>
+</nav>
+
+<div class="tabs">
+  <div class="tab active" data-tab="equipe">👥 Équipe d'Agents</div>
+  <div class="tab" data-tab="modeles">🛠️ Modèles IA</div>
+  <div class="tab" data-tab="pyramid">🏔️ Pyramide</div>
+</div>
+
+<main>
+  <div id="loading"><span class="dot-pulse">Chargement du registry</span></div>
+
+  <div id="app" style="display:none;">
+
+    <!-- ── ÉQUIPE ── -->
+    <div class="tab-content active" id="tab-equipe">
+      <div class="stats-band" id="stats-band"></div>
+
+      <div class="toolbar">
+        <button class="btn-sm" id="btnExpandAll">▾ Tout déplier</button>
+        <button class="btn-sm" id="btnCollapseAll">▸ Tout replier</button>
+        <button class="btn-sm" id="btnToggleSubs">⚙ Sous-agents</button>
+      </div>
+
+      <div class="section-title" id="section-niv1-title">Niveau 1 — Orchestration</div>
+      <div class="agents-grid" id="grid-niv1" style="margin-bottom:24px;"></div>
+
+      <div class="section-title">Niveau 2 — Agents Principaux</div>
+      <div class="agents-grid" id="grid-niv2"></div>
+    </div>
+
+    <!-- ── MODÈLES ── -->
+    <div class="tab-content" id="tab-modeles">
+      <div class="stats-band" id="models-stats"></div>
+      <div id="models-content"></div>
+    </div>
+
+    <!-- ── PYRAMIDE ── -->
+    <div class="tab-content" id="tab-pyramid">
+      <div class="section-title">Flux de dispatch</div>
+      <div class="flow-diagram" id="flow-diagram"></div>
+
+      <div class="section-title">Visualisation</div>
+      <div class="pyramid-visual">
+        <div class="pyr-levels" id="pyr-levels"></div>
+        <div id="pyr-footer" style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:12px;color:var(--text3);"></div>
+      </div>
+
+      <div class="section-title" style="margin-top:24px;">Chaînes de fallback</div>
+      <div id="fallback-chains"></div>
+    </div>
+
+  </div><!-- /app -->
+</main>
+
+<script>
+/* ─────────────────────────────────────────────
+   CONFIGURATION
+───────────────────────────────────────────── */
+const REGISTRY_URL = "registry.json";
+
+/* ─────────────────────────────────────────────
+   HELPERS
+───────────────────────────────────────────── */
+const ICONS = {
+  ChefIA:"👑", Archi:"🏗️", Fullo:"💻", Mobi:"📱",
+  Quali:"🧪", Dezy:"🎨", Scribe:"📝", Grow:"🚀", Bizo:"💰"
+};
+
+const ROLE_CLASS = {
+  "orchestration":"role-orchestration","orchestration-pyramidale":"role-orchestration",
+  "development":"role-development","testing":"role-testing",
+  "design":"role-design","business":"role-business"
+};
+const ICON_CLASS = {
+  "orchestration":"icon-orchestration","orchestration-pyramidale":"icon-orchestration",
+  "development":"icon-development","testing":"icon-testing",
+  "design":"icon-design","business":"icon-business"
+};
+const TEMP_COLOR = {
+  "orchestration":"#c4b5fd","development":"#fdba74","testing":"#6ee7b7",
+  "design":"#f9a8d4","business":"#fde68a","orchestration-pyramidale":"#c4b5fd"
+};
+
+function toolClass(tool="") {
+  if (tool.startsWith("claude")) return "tool-anthropic";
+  if (tool.startsWith("chatgpt") || tool.startsWith("gpt")) return "tool-openai";
+  if (tool.startsWith("gemini") || tool.startsWith("gemma")) return tool.startsWith("gemma") ? "tool-ollama" : "tool-google";
+  if (tool.startsWith("mistral")) return "tool-mistral";
+  if (tool.startsWith("perplexity")) return "tool-perplexity";
+  return "tool-unknown";
+}
+
+function providerOf(tool="") {
+  if (tool.startsWith("claude")) return "Anthropic";
+  if (tool.startsWith("chatgpt") || tool.startsWith("gpt")) return "OpenAI";
+  if (tool.startsWith("gemini")) return "Google";
+  if (tool.startsWith("gemma")) return "Ollama";
+  if (tool.startsWith("mistral")) return "Mistral";
+  if (tool.startsWith("perplexity")) return "Perplexity";
+  return "—";
+}
+
+/* ─────────────────────────────────────────────
+   RENDER AGENT CARD
+───────────────────────────────────────────── */
+function renderCard(agent) {
+  const icon     = ICONS[agent.name] || "🤖";
+  const roleClass = ROLE_CLASS[agent.role] || "";
+  const iconClass = ICON_CLASS[agent.role] || "";
+  const tClass   = toolClass(agent.tool_primary);
+  const tColor   = TEMP_COLOR[agent.role] || "var(--accent2)";
+  const tempPct  = Math.round((agent.temperature || 0) * 100);
+
+  const subsHtml = agent.subs.length ? `
+    <div class="agent-subs">
+      <div class="subs-header">
+        <span class="tool-label">SOUS-AGENTS (${agent.subs.length})</span>
+        <span class="subs-chevron">▾</span>
+      </div>
+      <div class="subs-list">
+        ${agent.subs.map(s => `
+          <div class="sub-item">
+            <span class="sub-name">${s.id}</span>
+            <span class="sub-tool">${s.tool || "—"}</span>
+          </div>`).join("")}
+      </div>
+    </div>` : "";
+
+  const fallbacksHtml = (agent.fallbacks || [])
+    .map(f => `<span class="fallback-chip">${f}</span>`).join("");
+
+  return `
+    <div class="agent-card" data-name="${agent.name}">
+      <div class="agent-header">
+        <div class="agent-icon ${iconClass}">${icon}</div>
+        <div class="agent-meta">
+          <div class="agent-name">${agent.display_name || agent.name}</div>
+          <div class="agent-desc">${agent.description || ""}</div>
+        </div>
+        <span class="card-chevron">▾</span>
+      </div>
+      <div class="agent-card-body">
+        <div class="agent-badges">
+          <span class="badge ${roleClass}">${agent.role || ""}</span>
+          <span class="badge" style="background:var(--bg3);border:1px solid var(--border);color:var(--text2);">Niv${agent.level}</span>
+        </div>
+        <div class="agent-tool">
+          <div class="tool-label">OUTIL PRINCIPAL</div>
+          <div class="tool-primary ${tClass}">
+            <span class="tool-dot" style="background:${tColor}"></span>
+            ${agent.tool_primary}
+          </div>
+          ${fallbacksHtml ? `<div class="tool-label" style="margin-top:8px;">FALLBACKS</div><div class="fallbacks">${fallbacksHtml}</div>` : ""}
+          <div class="temp-bar">
+            <div class="tool-label" style="margin:0;width:90px;">TEMPÉRATURE</div>
+            <div class="temp-track"><div class="temp-fill" style="width:${tempPct}%;background:${tColor}"></div></div>
+            <span class="temp-val">${agent.temperature}</span>
+          </div>
+        </div>
+        ${subsHtml}
+      </div>
+    </div>`;
+}
+
+/* ─────────────────────────────────────────────
+   RENDER MODELS
+───────────────────────────────────────────── */
+function renderModels(models) {
+  const byProvider = {};
+  models.forEach(m => {
+    const p = providerOf(m);
+    if (!byProvider[p]) byProvider[p] = [];
+    byProvider[p].push(m);
+  });
+
+  const providerMeta = {
+    Anthropic:{color:"#ffaa66",use:{
+      "claude-opus-4-7":"Orchestration (ChefIA)",
+      "claude-sonnet-4-6":"Dev principal (Archi/Fullo/Mobi/Grow)",
+      "claude-haiku-4-5":"Docs rapides (Scribe)",
+      "claude-design":"UI/UX design (Dezy)",
+      "claude-code":"Code spécialisé (fallback)"
+    }},
+    OpenAI:{color:"#6ee7b7",use:{
+      "chatgpt-chat-cloud":"Business général (Bizo)",
+      "chatgpt-codex":"Dev code alternatif"
+    }},
+    Google:{color:"#93c5fd",use:{
+      "gemini-3-flash-antigravity":"QA rapide (Quali)",
+      "gemini-web-chat":"Général web, fallback design"
+    }},
+    Ollama:{color:"#fca5a5",use:{"gemma-4-local":"Offline fallback éco"}},
+    Mistral:{color:"#fcd34d",use:{"mistral-web":"FR alternatif (Scribe fallback)"}},
+    Perplexity:{color:"#67e8f9",use:{"perplexity-comet":"Recherche up-to-date (bonus)"}}
+  };
+
+  let html = "";
+  for (const [prov, list] of Object.entries(byProvider)) {
+    const meta = providerMeta[prov] || {color:"var(--accent2)",use:{}};
+    html += `<div class="section-title">${prov}</div><div class="models-grid">`;
+    list.forEach(m => {
+      const tc = toolClass(m);
+      html += `
+        <div class="model-card" style="border-color:${meta.color}33;">
+          <div class="model-name ${tc}" style="color:${meta.color};">${m}</div>
+          <div class="model-use">${meta.use[m] || "—"}</div>
+          <div class="model-provider">${prov}</div>
+        </div>`;
+    });
+    html += `</div>`;
+  }
+  return html;
+}
+
+/* ─────────────────────────────────────────────
+   RENDER PYRAMID
+───────────────────────────────────────────── */
+function renderPyramid(data) {
+  const agents = data.agents;
+  const niv1 = agents.filter(a => a.level === 1);
+  const niv2 = agents.filter(a => a.level === 2);
+
+  // Flow
+  const flow = data.pyramid?.dispatch_flow || "ChefIA → Principal → Sub → Sous-Sous";
+  const steps = flow.split("→").map(s => s.trim());
+  document.getElementById("flow-diagram").innerHTML =
+    steps.map(s => `<div class="flow-node">${s}</div>`).join(`<span class="flow-arrow">→</span>`) +
+    `<span style="color:var(--text3);font-size:11px;margin-left:8px;">= ${data.pyramid?.structure || ""}</span>`;
+
+  // Pyramid levels
+  const pyr = [
+    { label:"NIV 1", count:"×1",   chips: niv1.map(a => ({label: `${ICONS[a.name]||"🤖"} ${a.name}`, cls:"background:#7c3aed33;border:1px solid #7c3aed55;color:#c4b5fd;"})) },
+    { label:"NIV 2 — Principaux", count:"×9", chips: niv2.map(a => ({label: `${ICONS[a.name]||"🤖"} ${a.name}`, cls:"background:var(--bg3);border:1px solid var(--border);color:var(--text2);"})) },
+    { label:"NIV 3 — Subs",       count:"×45", chips: niv2.slice(0,4).flatMap(a => a.subs.slice(0,1).map(s => ({label:s.id, cls:"background:var(--bg3);border:1px solid var(--border);color:var(--text3);font-size:11px;"}))) , extra:"…et 41 autres" },
+    { label:"NIV 4 — Sous-Sous",  count:"×45", chips:[{label:"Archi-Backend-OllamaImport",cls:"background:var(--bg3);border:1px solid var(--border);color:var(--text3);font-size:11px;"},{label:"Fullo-React-DuelsChat",cls:"background:var(--bg3);border:1px solid var(--border);color:var(--text3);font-size:11px;"}], extra:"…43 générés via script" }
+  ];
+
+  let pyrHtml = "";
+  pyr.forEach((lvl, i) => {
+    pyrHtml += `
+      <div class="pyr-level-wrap">
+        <div class="pyr-level-header">
+          <span class="pyr-level-label">${lvl.label}</span>
+          <span style="font-size:12px;color:var(--text3);margin:0 6px;">▾</span>
+          <span class="pyr-level-count">${lvl.count}</span>
+        </div>
+        <div class="pyr-level-body">
+          ${lvl.chips.map(c => `<div class="pyr-chip" style="${c.cls}">${c.label}</div>`).join("")}
+          ${lvl.extra ? `<span style="color:var(--text3);font-size:12px;line-height:34px;">${lvl.extra}</span>` : ""}
+        </div>
+      </div>`;
+    if (i < pyr.length - 1) pyrHtml += `<div class="pyr-arrow">↓</div>`;
+  });
+  document.getElementById("pyr-levels").innerHTML = pyrHtml;
+
+  // Footer
+  document.getElementById("pyr-footer").innerHTML =
+    `Script générateur : <code style="color:var(--accent2);background:var(--bg3);padding:2px 8px;border-radius:4px;">generate_ui.py</code>
+    &nbsp;→&nbsp; lit <code style="color:var(--accent2);background:var(--bg3);padding:2px 8px;border-radius:4px;">agents-registry.yaml</code>`;
+
+  // Fallback chains
+  const chains = agents.map(a => {
+    const chain = [a.tool_primary, ...(a.fallbacks || [])];
+    const nodes = chain.map(t => `<div class="flow-node" style="font-size:12px;">${t}</div>`).join(`<span class="flow-arrow">→</span>`);
+    return `<div class="flow-diagram" style="justify-content:flex-start;">
+      <span style="color:var(--text3);font-size:12px;width:95px;flex-shrink:0;">${a.name}</span>
+      ${nodes}
+    </div>`;
+  });
+  document.getElementById("fallback-chains").innerHTML = chains.join("");
+}
+
+/* ─────────────────────────────────────────────
+   INIT INTERACTIVE BEHAVIOURS
+───────────────────────────────────────────── */
+function initInteractions() {
+  // Cards collapse
+  document.querySelectorAll(".agent-card").forEach(card => {
+    card.querySelector(".agent-header").addEventListener("click", () =>
+      card.classList.toggle("collapsed"));
+  });
+
+  // Subs collapse
+  document.querySelectorAll(".subs-header").forEach(hdr => {
+    const list = hdr.nextElementSibling;
+    const ch   = hdr.querySelector(".subs-chevron");
+    hdr.addEventListener("click", e => {
+      e.stopPropagation();
+      const open = list.style.maxHeight !== "0px";
+      list.style.maxHeight  = open ? "0px" : list.scrollHeight + "px";
+      list.style.opacity    = open ? "0"   : "1";
+      ch.style.transform    = open ? "rotate(-90deg)" : "rotate(0deg)";
+    });
+  });
+
+  // Pyramid levels
+  document.querySelectorAll(".pyr-level-header").forEach(hdr => {
+    const body = hdr.nextElementSibling;
+    const ch   = hdr.querySelector("span:nth-child(2)");
+    hdr.addEventListener("click", () => {
+      const open = body.style.maxHeight !== "0px";
+      body.style.maxHeight = open ? "0px"  : "300px";
+      body.style.opacity   = open ? "0"    : "1";
+      if (ch) ch.style.transform = open ? "rotate(-90deg)" : "rotate(0deg)";
+    });
+  });
+
+  // Toolbar
+  document.getElementById("btnExpandAll").addEventListener("click", () =>
+    document.querySelectorAll(".agent-card").forEach(c => c.classList.remove("collapsed")));
+
+  document.getElementById("btnCollapseAll").addEventListener("click", () =>
+    document.querySelectorAll(".agent-card").forEach(c => c.classList.add("collapsed")));
+
+  let subsOpen = true;
+  document.getElementById("btnToggleSubs").addEventListener("click", () => {
+    subsOpen = !subsOpen;
+    document.querySelectorAll(".subs-list").forEach(list => {
+      list.style.maxHeight = subsOpen ? list.scrollHeight + "px" : "0px";
+      list.style.opacity   = subsOpen ? "1" : "0";
+    });
+    document.querySelectorAll(".subs-chevron").forEach(ch =>
+      ch.style.transform = subsOpen ? "rotate(0deg)" : "rotate(-90deg)");
+  });
+}
+
+/* ─────────────────────────────────────────────
+   LOAD & RENDER
+───────────────────────────────────────────── */
+async function loadAndRender() {
+  document.getElementById("loading").style.display = "flex";
+  document.getElementById("app").style.display     = "none";
+
+  let data;
+  try {
+    const r = await fetch(REGISTRY_URL + "?t=" + Date.now());
+    data = await r.json();
+  } catch(e) {
+    document.getElementById("loading").innerHTML =
+      `<span style="color:#f87171;">Impossible de charger registry.json<br><small>Lancez : python generate_ui.py</small></span>`;
+    return;
+  }
+
+  const agents = data.agents || [];
+  const niv1   = agents.filter(a => a.level === 1);
+  const niv2   = agents.filter(a => a.level === 2);
+  const subs   = agents.reduce((acc, a) => acc + a.subs.length, 0);
+  const pyramid = data.pyramid || {};
+
+  // Nav
+  document.getElementById("nav-version").textContent = `v${data.meta?.version || "?"} · ${data.meta?.generated?.slice(0,10) || ""}`;
+  document.getElementById("nav-pyramid").textContent = `Pyramide ${pyramid.total || "?"} Agents`;
+
+  // Stats
+  document.getElementById("stats-band").innerHTML = [
+    { num: pyramid.total || "?",            label: "Agents total" },
+    { num: niv1.length,                     label: "Niv 1 (Chef)" },
+    { num: niv2.length,                     label: "Niv 2 (Principaux)" },
+    { num: subs,                            label: "Subs (Niv 3)" },
+    { num: pyramid.total ? pyramid.total - 1 - niv2.length - subs : 45, label: "Sous-Sous (Niv 4)" },
+    { num: (data.models_available || []).length, label: "Modèles IA" },
+  ].map(s => `<div class="stat-card"><div class="stat-num">${s.num}</div><div class="stat-label">${s.label}</div></div>`).join("");
+
+  // Agent grids
+  document.getElementById("grid-niv1").innerHTML = niv1.map(renderCard).join("");
+  document.getElementById("grid-niv2").innerHTML = niv2.map(renderCard).join("");
+
+  // Models
+  document.getElementById("models-stats").innerHTML = [
+    { num: (data.models_available||[]).length, label: "Modèles" },
+    { num: [...new Set((data.models_available||[]).map(providerOf))].length, label: "Providers" },
+    { num: (data.models_available||[]).filter(m=>m.includes("local")).length, label: "Local" },
+    { num: (data.models_available||[]).filter(m=>m.includes("perplexity")).length, label: "Search" },
+  ].map(s => `<div class="stat-card"><div class="stat-num">${s.num}</div><div class="stat-label">${s.label}</div></div>`).join("");
+  document.getElementById("models-content").innerHTML = renderModels(data.models_available || []);
+
+  // Pyramid
+  renderPyramid(data);
+
+  document.getElementById("loading").style.display = "none";
+  document.getElementById("app").style.display     = "block";
+
+  initInteractions();
+}
+
+/* ─────────────────────────────────────────────
+   BOOTSTRAP
+───────────────────────────────────────────── */
+// Theme
+document.getElementById("themeBtn").addEventListener("click", () => {
+  const dark = document.documentElement.getAttribute("data-theme") === "dark";
+  document.documentElement.setAttribute("data-theme", dark ? "light" : "dark");
+  document.getElementById("themeBtn").textContent = dark ? "☀️" : "🌙";
+});
+
+// Tabs
+document.querySelectorAll(".tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById("tab-" + tab.dataset.tab).classList.add("active");
+  });
+});
+
+// Sync button
+document.getElementById("syncBtn").addEventListener("click", loadAndRender);
+
+// Initial load
+loadAndRender();
+</script>
+</body>
+</html>

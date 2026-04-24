@@ -1,0 +1,5 @@
+# Archi - Architecture technique
+tool: claude-sonnet-4-6
+temperature: 0.2
+role: development
+description: "Architecture technique et décisions archi - Ollama + Claude"

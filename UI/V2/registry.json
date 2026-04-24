@@ -1,0 +1,326 @@
+{
+  "meta": {
+    "version": "2.1",
+    "project": "Bot ou pas Bot ? - Pyramide 100 Agents",
+    "generated": "2026-04-24T15:38:35",
+    "source": "agents-registry.yaml"
+  },
+  "pyramid": {
+    "total": 100,
+    "structure": "1 Niv1 + 9 Principaux + 45 Subs + 45 Sous-Sous",
+    "dispatch_flow": "ChefIA → Principal → Sub → Sous-Sous"
+  },
+  "models_available": [
+    "chatgpt-codex",
+    "chatgpt-chat-cloud",
+    "claude-sonnet-4-6",
+    "claude-haiku-4-5",
+    "claude-opus-4-7",
+    "claude-code",
+    "gemini-3-flash-antigravity",
+    "gemini-web-chat",
+    "mistral-web",
+    "gemma-4-local",
+    "claude-design",
+    "perplexity-comet"
+  ],
+  "agents": [
+    {
+      "name": "ChefIA",
+      "level": 1,
+      "display_name": "👑 ChefIA Niv1",
+      "description": "Orchestre pyramide 100 agents",
+      "role": "orchestration-pyramidale",
+      "tool_primary": "claude-opus-4-7",
+      "fallbacks": [
+        "claude-sonnet-4-6",
+        "chatgpt-chat-cloud"
+      ],
+      "temperature": 0.1,
+      "subs": []
+    },
+    {
+      "name": "Archi",
+      "level": 2,
+      "display_name": "🏗️ Archi Principal",
+      "description": "",
+      "role": "",
+      "tool_primary": "claude-sonnet-4-6",
+      "fallbacks": [
+        "chatgpt-codex",
+        "claude-code"
+      ],
+      "temperature": 0.2,
+      "subs": [
+        {
+          "id": "archi-backend",
+          "tool": "claude-sonnet-4-6"
+        },
+        {
+          "id": "archi-frontend",
+          "tool": "claude-sonnet-4-6"
+        },
+        {
+          "id": "archi-db",
+          "tool": "claude-sonnet-4-6"
+        },
+        {
+          "id": "archi-security",
+          "tool": "gemini-3-flash-antigravity"
+        },
+        {
+          "id": "archi-ollama",
+          "tool": "claude-sonnet-4-6"
+        }
+      ]
+    },
+    {
+      "name": "Fullo",
+      "level": 2,
+      "display_name": "💻 Fullo Principal",
+      "description": "",
+      "role": "",
+      "tool_primary": "claude-sonnet-4-6",
+      "fallbacks": [
+        "chatgpt-codex",
+        "claude-code"
+      ],
+      "temperature": 0.2,
+      "subs": [
+        {
+          "id": "fullo-react",
+          "tool": "claude-sonnet-4-6"
+        },
+        {
+          "id": "fullo-node",
+          "tool": "claude-sonnet-4-6"
+        },
+        {
+          "id": "fullo-tests",
+          "tool": "gemini-3-flash-antigravity"
+        },
+        {
+          "id": "fullo-deploy",
+          "tool": "claude-sonnet-4-6"
+        },
+        {
+          "id": "fullo-api",
+          "tool": "chatgpt-codex"
+        }
+      ]
+    },
+    {
+      "name": "Mobi",
+      "level": 2,
+      "display_name": "📱 Mobi Principal",
+      "description": "",
+      "role": "",
+      "tool_primary": "claude-sonnet-4-6",
+      "fallbacks": [
+        "claude-design",
+        "gemini-web-chat"
+      ],
+      "temperature": 0.3,
+      "subs": [
+        {
+          "id": "mobi-ios",
+          "tool": "claude-sonnet-4-6"
+        },
+        {
+          "id": "mobi-android",
+          "tool": "claude-sonnet-4-6"
+        },
+        {
+          "id": "mobi-pwa",
+          "tool": "claude-sonnet-4-6"
+        },
+        {
+          "id": "mobi-ui",
+          "tool": "claude-design"
+        },
+        {
+          "id": "mobi-sync",
+          "tool": "gemini-web-chat"
+        }
+      ]
+    },
+    {
+      "name": "Quali",
+      "level": 2,
+      "display_name": "🧪 Quali Principal",
+      "description": "",
+      "role": "",
+      "tool_primary": "gemini-3-flash-antigravity",
+      "fallbacks": [
+        "gemma-4-local",
+        "claude-haiku-4-5"
+      ],
+      "temperature": 0.1,
+      "subs": [
+        {
+          "id": "quali-unit",
+          "tool": "gemini-3-flash-antigravity"
+        },
+        {
+          "id": "quali-e2e",
+          "tool": "gemini-3-flash-antigravity"
+        },
+        {
+          "id": "quali-perf",
+          "tool": "gemma-4-local"
+        },
+        {
+          "id": "quali-load",
+          "tool": "gemini-3-flash-antigravity"
+        },
+        {
+          "id": "quali-security",
+          "tool": "claude-haiku-4-5"
+        }
+      ]
+    },
+    {
+      "name": "Dezy",
+      "level": 2,
+      "display_name": "🎨 Dezy Principal",
+      "description": "",
+      "role": "",
+      "tool_primary": "claude-design",
+      "fallbacks": [
+        "claude-sonnet-4-6",
+        "gemini-web-chat"
+      ],
+      "temperature": 0.7,
+      "subs": [
+        {
+          "id": "dezy-landing",
+          "tool": "claude-design"
+        },
+        {
+          "id": "dezy-duels",
+          "tool": "claude-design"
+        },
+        {
+          "id": "dezy-mobile",
+          "tool": "claude-design"
+        },
+        {
+          "id": "dezy-icons",
+          "tool": "claude-sonnet-4-6"
+        },
+        {
+          "id": "dezy-anim",
+          "tool": "gemini-web-chat"
+        }
+      ]
+    },
+    {
+      "name": "Scribe",
+      "level": 2,
+      "display_name": "📝 Scribe Principal",
+      "description": "",
+      "role": "",
+      "tool_primary": "claude-haiku-4-5",
+      "fallbacks": [
+        "mistral-web",
+        "chatgpt-chat-cloud"
+      ],
+      "temperature": 0.2,
+      "subs": [
+        {
+          "id": "scribe-docs",
+          "tool": "claude-haiku-4-5"
+        },
+        {
+          "id": "scribe-stories",
+          "tool": "claude-haiku-4-5"
+        },
+        {
+          "id": "scribe-tutos",
+          "tool": "mistral-web"
+        },
+        {
+          "id": "scribe-marketing",
+          "tool": "claude-haiku-4-5"
+        },
+        {
+          "id": "scribe-legal",
+          "tool": "chatgpt-chat-cloud"
+        }
+      ]
+    },
+    {
+      "name": "Grow",
+      "level": 2,
+      "display_name": "🚀 Grow Principal",
+      "description": "",
+      "role": "",
+      "tool_primary": "claude-sonnet-4-6",
+      "fallbacks": [
+        "perplexity-comet",
+        "chatgpt-chat-cloud"
+      ],
+      "temperature": 0.6,
+      "subs": [
+        {
+          "id": "grow-viral",
+          "tool": "claude-sonnet-4-6"
+        },
+        {
+          "id": "grow-discord",
+          "tool": "perplexity-comet"
+        },
+        {
+          "id": "grow-tiktok",
+          "tool": "claude-sonnet-4-6"
+        },
+        {
+          "id": "grow-seo",
+          "tool": "perplexity-comet"
+        },
+        {
+          "id": "grow-partners",
+          "tool": "chatgpt-chat-cloud"
+        }
+      ]
+    },
+    {
+      "name": "Bizo",
+      "level": 2,
+      "display_name": "💰 Bizo Principal",
+      "description": "",
+      "role": "",
+      "tool_primary": "chatgpt-chat-cloud",
+      "fallbacks": [
+        "claude-sonnet-4-6",
+        "perplexity-comet"
+      ],
+      "temperature": 0.6,
+      "subs": [
+        {
+          "id": "bizo-freemium",
+          "tool": "chatgpt-chat-cloud"
+        },
+        {
+          "id": "bizo-premium",
+          "tool": "chatgpt-chat-cloud"
+        },
+        {
+          "id": "bizo-metrics",
+          "tool": "perplexity-comet"
+        },
+        {
+          "id": "bizo-pricing",
+          "tool": "claude-sonnet-4-6"
+        },
+        {
+          "id": "bizo-sales",
+          "tool": "chatgpt-chat-cloud"
+        }
+      ]
+    }
+  ],
+  "workflows": {
+    "pyramid_example": "ChefIA → Archi → Archi-Backend → Backend-Ollama-Import"
+  }
+}

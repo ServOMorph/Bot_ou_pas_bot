@@ -1,0 +1,202 @@
+```yaml
+# EQUIPE_IA - Agents Registry PYRAMIDE 100 (Source de Vérité)
+#
+# Fichier maître pour PYRAMIDE 1+9+45+45=100 agents "Bot ou pas Bot ?"
+# Modèles IA : EXACTEMENT vos outils (ChatGPT Codex/Chat cloud, Claude Sonnet/Haiku/Opus/Code/Design, Gemini 3 Flash/Antigravity/web, Mistral web, Gemma 4 local, Perplexity Comet)
+# ⚠️ 2026-04-24 - PYRAMIDE + MODÈLES PRÉCIS
+
+version: "2.1"
+project: "Bot ou pas Bot ? - Pyramide 100 Agents"
+
+pyramid:
+  total: 100
+  structure: "1 Niv1 + 9 Principaux + 45 Subs + 45 Sous-Sous"
+  dispatch_flow: "ChefIA → Principal → Sub → Sous-Sous"
+
+# ============================================================================
+# MODÈLES IA DISPONIBLES (VOS OUTILS EXACTS)
+# ============================================================================
+
+models_available:
+  - "chatgpt-codex"          # Dev code
+  - "chatgpt-chat-cloud"     # Biz général
+  - "claude-sonnet-4-6"      # Dev principal (votre choix)
+  - "claude-haiku-4-5"       # Docs éco
+  - "claude-opus-4-7"        # Stratégique
+  - "claude-code"            # Code spécialisé
+  - "gemini-3-flash-antigravity"  # QA rapide
+  - "gemini-web-chat"        # Général
+  - "mistral-web"            # FR alternatif
+  - "gemma-4-local"          # Offline fallback
+  - "claude-design"          # Design
+  - "perplexity-comet"       # Recherche tous
+
+# ============================================================================
+# NIVEAU 1 : CHEFIA (1)
+# ============================================================================
+
+agents:
+  niv1:
+    ChefIA:
+      id: "chef-ia-n1"
+      display_name: "👑 ChefIA Niv1"
+      description: "Orchestre pyramide 100 agents"
+      role: "orchestration-pyramidale"
+      tool:
+        primary: "claude-opus-4-7"
+        fallbacks: ["claude-sonnet-4-6", "chatgpt-chat-cloud"]
+      temperature: 0.1
+      hierarchy: "Niv1 (dispatch Niv2)"
+
+# ============================================================================
+# NIVEAU 2 : PRINCIPAUX (9) + SUBS (x5=45)
+# ============================================================================
+
+  niv2_principaux:
+    Archi:
+      id: "archi-n2"
+      display_name: "🏗️ Archi Principal"
+      tool:
+        primary: "claude-sonnet-4-6"     # Dev
+        fallbacks: ["chatgpt-codex", "claude-code"]
+      temperature: 0.2
+      subs:  # 5 Subs
+        - id: "archi-backend" ; tool_primary: "claude-sonnet-4-6" ; fallback: "chatgpt-codex"
+        - id: "archi-frontend"; tool_primary: "claude-sonnet-4-6" ; fallback: "gemini-web-chat"
+        - id: "archi-db"      ; tool_primary: "claude-sonnet-4-6" ; fallback: "gemma-4-local"
+        - id: "archi-security"; tool_primary: "gemini-3-flash-antigravity" ; fallback: "claude-haiku-4-5"
+        - id: "archi-ollama"  ; tool_primary: "claude-sonnet-4-6" ; fallback: "chatgpt-codex"
+
+    Fullo:
+      id: "fullo-n2"
+      display_name: "💻 Fullo Principal"
+      tool:
+        primary: "claude-sonnet-4-6"     # Dev unifié
+        fallbacks: ["chatgpt-codex", "claude-code"]
+      temperature: 0.2
+      subs:
+        - id: "fullo-react"   ; tool_primary: "claude-sonnet-4-6"
+        - id: "fullo-node"    ; tool_primary: "claude-sonnet-4-6"
+        - id: "fullo-tests"   ; tool_primary: "gemini-3-flash-antigravity"
+        - id: "fullo-deploy"  ; tool_primary: "claude-sonnet-4-6"
+        - id: "fullo-api"     ; tool_primary: "chatgpt-codex"
+
+    Mobi:
+      id: "mobi-n2"
+      display_name: "📱 Mobi Principal"
+      tool:
+        primary: "claude-sonnet-4-6"
+        fallbacks: ["claude-design", "gemini-web-chat"]
+      temperature: 0.3
+      subs:
+        - id: "mobi-ios"      ; tool_primary: "claude-sonnet-4-6"
+        - id: "mobi-android"  ; tool_primary: "claude-sonnet-4-6"
+        - id: "mobi-pwa"      ; tool_primary: "claude-sonnet-4-6"
+        - id: "mobi-ui"       ; tool_primary: "claude-design"
+        - id: "mobi-sync"     ; tool_primary: "gemini-web-chat"
+
+    Quali:
+      id: "quali-n2"
+      display_name: "🧪 Quali Principal"
+      tool:
+        primary: "gemini-3-flash-antigravity"
+        fallbacks: ["gemma-4-local", "claude-haiku-4-5"]
+      temperature: 0.1
+      subs:
+        - id: "quali-unit"    ; tool_primary: "gemini-3-flash-antigravity"
+        - id: "quali-e2e"     ; tool_primary: "gemini-3-flash-antigravity"
+        - id: "quali-perf"    ; tool_primary: "gemma-4-local"
+        - id: "quali-load"    ; tool_primary: "gemini-3-flash-antigravity"
+        - id: "quali-security"; tool_primary: "claude-haiku-4-5"
+
+    Dezy:
+      id: "dezy-n2"
+      display_name: "🎨 Dezy Principal"
+      tool:
+        primary: "claude-design"
+        fallbacks: ["claude-sonnet-4-6", "gemini-web-chat"]
+      temperature: 0.7
+      subs:
+        - id: "dezy-landing"  ; tool_primary: "claude-design"
+        - id: "dezy-duels"    ; tool_primary: "claude-design"
+        - id: "dezy-mobile"   ; tool_primary: "claude-design"
+        - id: "dezy-icons"    ; tool_primary: "claude-sonnet-4-6"
+        - id: "dezy-anim"     ; tool_primary: "gemini-web-chat"
+
+    Scribe:
+      id: "scribe-n2"
+      display_name: "📝 Scribe Principal"
+      tool:
+        primary: "claude-haiku-4-5"
+        fallbacks: ["mistral-web", "chatgpt-chat-cloud"]
+      temperature: 0.2
+      subs:
+        - id: "scribe-docs"   ; tool_primary: "claude-haiku-4-5"
+        - id: "scribe-stories"; tool_primary: "claude-haiku-4-5"
+        - id: "scribe-tutos"  ; tool_primary: "mistral-web"
+        - id: "scribe-marketing"; tool_primary: "claude-haiku-4-5"
+        - id: "scribe-legal"  ; tool_primary: "chatgpt-chat-cloud"
+
+    Grow:
+      id: "grow-n2"
+      display_name: "🚀 Grow Principal"
+      tool:
+        primary: "claude-sonnet-4-6"
+        fallbacks: ["perplexity-comet", "chatgpt-chat-cloud"]
+      temperature: 0.6
+      subs:
+        - id: "grow-viral"    ; tool_primary: "claude-sonnet-4-6"
+        - id: "grow-discord"  ; tool_primary: "perplexity-comet"
+        - id: "grow-tiktok"   ; tool_primary: "claude-sonnet-4-6"
+        - id: "grow-seo"      ; tool_primary: "perplexity-comet"
+        - id: "grow-partners" ; tool_primary: "chatgpt-chat-cloud"
+
+    Bizo:
+      id: "bizo-n2"
+      display_name: "💰 Bizo Principal"
+      tool:
+        primary: "chatgpt-chat-cloud"
+        fallbacks: ["claude-sonnet-4-6", "perplexity-comet"]
+      temperature: 0.6
+      subs:
+        - id: "bizo-freemium" ; tool_primary: "chatgpt-chat-cloud"
+        - id: "bizo-premium"  ; tool_primary: "chatgpt-chat-cloud"
+        - id: "bizo-metrics"  ; tool_primary: "perplexity-comet"
+        - id: "bizo-pricing"  ; tool_primary: "claude-sonnet-4-6"
+        - id: "bizo-sales"    ; tool_primary: "chatgpt-chat-cloud"
+
+# ============================================================================
+# NIVEAU 3 : SOUS-SOUS (45) - GÉNÉRÉS VIA SCRIPT
+# Exemples (complets via generate_pyramid.py)
+# ============================================================================
+
+  niv3_sous_sous_examples:
+    Archi-Backend-OllamaImport:
+      path: "agents/Archi/Archi-Backend/Backend-Ollama-Import"
+      tool_primary: "claude-sonnet-4-6"
+      fallback: "chatgpt-codex"
+    Fullo-React-DuelsChat:
+      path: "agents/Fullo/Fullo-React/React-Duels-Chat"
+      tool_primary: "claude-sonnet-4-6"
+    # ... Auto-gén 43 autres
+
+# ============================================================================
+# WORKFLOWS + SHARED + GÉNÉRATEUR (inchangés mais pyramid-ready)
+# ============================================================================
+
+workflows:
+  pyramid_example: "ChefIA → Archi → Archi-Backend → Backend-Ollama-Import"
+
+generator:
+  script: "generate_pyramid_100.py"
+  total: 100
+  models_from: "models_available"
+
+# defaults/metadata/folders_structure identiques à v1.0...
+```
+
+## Mise à jour
+- **Vos modèles exacts** : `claude-sonnet-4-6` dev partout, `gemini-3-flash-antigravity` QA, etc.. [synthesia](https://www.synthesia.io/fr/post/outils-ia)
+- **Pyramide 100** : Subs avec `tool_primary` précis.
+- **Script-ready** : `agents-registry.yaml` → Génère 100 configs. [ppl-ai-file-upload.s3.amazonaws](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/collection_9bf161bc-e5a4-469f-9dd6-a4f969f006d3/8ebd1eb5-c317-4204-98e1-4c21432bb856/spec_produit.md)
+Sauvegardez → Claude Code/script lit `models_available` pour auto-assign. Parfait ! [perplexity](https://www.perplexity.ai/search/8f5b62af-0220-4130-bad4-ba0e753c9a4b)

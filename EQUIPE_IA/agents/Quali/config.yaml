@@ -1,0 +1,5 @@
+# Quali - Quality Assurance & Tests
+tool: gemini-3-flash
+temperature: 0.1
+role: testing
+description: "Tests rapides & éco - Quality Assurance (Antigravity)"

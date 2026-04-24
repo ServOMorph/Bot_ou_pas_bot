@@ -1,0 +1,3 @@
+# Workflow phase1_docs.yaml
+phases:
+  - agent: ChefIA

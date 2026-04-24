@@ -1,0 +1,5 @@
+# Fullo - Fullstack React/Supabase
+tool: claude-sonnet-4-6
+temperature: 0.2
+role: development
+description: "Fullstack React/Supabase - backend + frontend intégré"

@@ -1,0 +1,449 @@
+# EQUIPE_IA - Agents Registry (Source de Vérité)
+#
+# Fichier de référence unique pour tous les agents
+# Utilisé par: scripts de création, orchestration, navigation, configuration
+# ⚠️  À jour au 2026-04-24
+
+version: "1.0"
+project: "Bot ou pas Bot"
+
+# ============================================================================
+# AGENTS - Définitions complètes
+# ============================================================================
+
+agents:
+  ChefIA:
+    id: "chef-ia"
+    display_name: "ChefIA"
+    description: "Orchestration globale du projet - Décisions stratégiques"
+    role: "orchestration"
+
+    tool:
+      primary: "claude-opus-4-7"
+      fallbacks: ["claude-sonnet-4-6", "gemini-3-flash", "gemma-4-local"]
+
+    temperature: 0.2
+
+    paths:
+      root: "agents/ChefIA"
+      config: "agents/ChefIA/config.yaml"
+      prompt: "agents/ChefIA/prompt.md"
+      context: "agents/ChefIA/context"
+      examples: "agents/ChefIA/examples"
+      knowledge: "agents/ChefIA/knowledge"
+      memory: "agents/ChefIA/memory"
+      outputs: "outputs/ChefIA"
+
+    responsibilities:
+      - "Orchestration globale"
+      - "Décisions stratégiques"
+      - "Coordination inter-agents"
+      - "Validation des phases"
+
+    use_cases:
+      - "Planification projet"
+      - "Escalades complexes"
+      - "Décisions finales"
+
+  Archi:
+    id: "archi"
+    display_name: "Archi"
+    description: "Architecture technique et décisions archi"
+    role: "development"
+
+    tool:
+      primary: "claude-sonnet-4-6"
+      fallbacks: ["gemini-3-flash", "gemma-4-local"]
+
+    temperature: 0.2
+
+    paths:
+      root: "agents/Archi"
+      config: "agents/Archi/config.yaml"
+      prompt: "agents/Archi/prompt.md"
+      context: "agents/Archi/context"
+      examples: "agents/Archi/examples"
+      knowledge: "agents/Archi/knowledge"
+      memory: "agents/Archi/memory"
+      outputs: "outputs/Archi"
+
+    responsibilities:
+      - "Architecture technique"
+      - "Décisions archi Ollama"
+      - "Stack technique"
+      - "Patterns & conventions"
+
+    use_cases:
+      - "Design système"
+      - "Code review archi"
+      - "Tech debt"
+
+  Fullo:
+    id: "fullo"
+    display_name: "Fullo"
+    description: "Fullstack React/Supabase"
+    role: "development"
+
+    tool:
+      primary: "claude-sonnet-4-6"
+      fallbacks: ["gemini-3-flash", "gemma-4-local"]
+
+    temperature: 0.2
+
+    paths:
+      root: "agents/Fullo"
+      config: "agents/Fullo/config.yaml"
+      prompt: "agents/Fullo/prompt.md"
+      context: "agents/Fullo/context"
+      examples: "agents/Fullo/examples"
+      knowledge: "agents/Fullo/knowledge"
+      memory: "agents/Fullo/memory"
+      outputs: "outputs/Fullo"
+
+    responsibilities:
+      - "Frontend React"
+      - "Backend Supabase"
+      - "Intégration complète"
+      - "API design"
+
+    use_cases:
+      - "Développement features"
+      - "Debugging fullstack"
+      - "Migrations BD"
+
+  Mobi:
+    id: "mobi"
+    display_name: "Mobi"
+    description: "Mobile React Native"
+    role: "development"
+
+    tool:
+      primary: "claude-sonnet-4-6"
+      fallbacks: ["gemini-3-flash", "gemma-4-local"]
+
+    temperature: 0.2
+
+    paths:
+      root: "agents/Mobi"
+      config: "agents/Mobi/config.yaml"
+      prompt: "agents/Mobi/prompt.md"
+      context: "agents/Mobi/context"
+      examples: "agents/Mobi/examples"
+      knowledge: "agents/Mobi/knowledge"
+      memory: "agents/Mobi/memory"
+      outputs: "outputs/Mobi"
+
+    responsibilities:
+      - "React Native iOS/Android"
+      - "UX mobile"
+      - "Performance mobile"
+      - "Offline sync"
+
+    use_cases:
+      - "Développement mobile"
+      - "Cross-platform"
+      - "Native modules"
+
+  Quali:
+    id: "quali"
+    display_name: "Quali"
+    description: "Quality Assurance & Tests (Antigravity)"
+    role: "testing"
+
+    tool:
+      primary: "gemini-3-flash"
+      fallbacks: ["gemma-4-local"]
+
+    temperature: 0.1
+
+    paths:
+      root: "agents/Quali"
+      config: "agents/Quali/config.yaml"
+      prompt: "agents/Quali/prompt.md"
+      context: "agents/Quali/context"
+      examples: "agents/Quali/examples"
+      knowledge: "agents/Quali/knowledge"
+      memory: "agents/Quali/memory"
+      outputs: "outputs/Quali"
+
+    responsibilities:
+      - "Tests rapides"
+      - "Quality assurance"
+      - "Antifragi tests"
+      - "Reproductibilité"
+
+    use_cases:
+      - "Test generation"
+      - "Edge cases"
+      - "Regression testing"
+
+  Dezy:
+    id: "dezy"
+    display_name: "Dezy"
+    description: "UI/UX Design"
+    role: "design"
+
+    tool:
+      primary: "claude-design"
+      fallbacks: ["gemini-web-chat"]
+
+    temperature: 0.7
+
+    paths:
+      root: "agents/Dezy"
+      config: "agents/Dezy/config.yaml"
+      prompt: "agents/Dezy/prompt.md"
+      context: "agents/Dezy/context"
+      examples: "agents/Dezy/examples"
+      knowledge: "agents/Dezy/knowledge"
+      memory: "agents/Dezy/memory"
+      outputs: "outputs/Dezy"
+
+    responsibilities:
+      - "UI/UX design"
+      - "Figma components"
+      - "Design system"
+      - "Accessibility"
+
+    use_cases:
+      - "Design mockups"
+      - "Prototypes"
+      - "Design review"
+
+  Scribe:
+    id: "scribe"
+    display_name: "Scribe"
+    description: "Documentation FR"
+    role: "development"
+
+    tool:
+      primary: "claude-haiku-4-5"
+      fallbacks: ["mistral-web"]
+
+    temperature: 0.2
+
+    paths:
+      root: "agents/Scribe"
+      config: "agents/Scribe/config.yaml"
+      prompt: "agents/Scribe/prompt.md"
+      context: "agents/Scribe/context"
+      examples: "agents/Scribe/examples"
+      knowledge: "agents/Scribe/knowledge"
+      memory: "agents/Scribe/memory"
+      outputs: "outputs/Scribe"
+
+    responsibilities:
+      - "Documentation FR"
+      - "READMEs"
+      - "Wikis"
+      - "API docs"
+
+    use_cases:
+      - "Docs generation"
+      - "Tutorials"
+      - "Knowledge base"
+
+  Grow:
+    id: "grow"
+    display_name: "Grow"
+    description: "Growth Strategy & Marketing"
+    role: "development"
+
+    tool:
+      primary: "claude-sonnet-4-6"
+      fallbacks: ["gemini-3-flash", "gemma-4-local"]
+
+    temperature: 0.6
+
+    paths:
+      root: "agents/Grow"
+      config: "agents/Grow/config.yaml"
+      prompt: "agents/Grow/prompt.md"
+      context: "agents/Grow/context"
+      examples: "agents/Grow/examples"
+      knowledge: "agents/Grow/knowledge"
+      memory: "agents/Grow/memory"
+      outputs: "outputs/Grow"
+
+    responsibilities:
+      - "Stratégies virales FR"
+      - "Growth hacking"
+      - "Marketing IA"
+      - "Community"
+
+    use_cases:
+      - "Campaign planning"
+      - "Content strategy"
+      - "Viral mechanics"
+
+  Bizo:
+    id: "bizo"
+    display_name: "Bizo"
+    description: "Business Models & Freemium"
+    role: "business"
+
+    tool:
+      primary: "chatgpt-chat-cloud"
+      fallbacks: ["claude-sonnet-4-6"]
+
+    temperature: 0.6
+
+    paths:
+      root: "agents/Bizo"
+      config: "agents/Bizo/config.yaml"
+      prompt: "agents/Bizo/prompt.md"
+      context: "agents/Bizo/context"
+      examples: "agents/Bizo/examples"
+      knowledge: "agents/Bizo/knowledge"
+      memory: "agents/Bizo/memory"
+      outputs: "outputs/Bizo"
+
+    responsibilities:
+      - "Business models"
+      - "Freemium strategy"
+      - "Pricing"
+      - "Revenue optimization"
+
+    use_cases:
+      - "Business planning"
+      - "Pricing strategy"
+      - "Investor deck"
+
+# ============================================================================
+# WORKFLOWS - Phases du projet
+# ============================================================================
+
+workflows:
+  phase_1:
+    name: "Phase 1: Documentation"
+    filename: "workflows/phase1_docs.yaml"
+    lead_agent: "ChefIA"
+    support_agents: ["Scribe", "Archi"]
+    description: "Spec produit, archi, roadmap"
+    duration_weeks: 2
+
+  phase_2:
+    name: "Phase 2: Development"
+    filename: "workflows/phase2_dev.yaml"
+    lead_agent: "ChefIA"
+    support_agents: ["Archi", "Fullo", "Mobi", "Quali"]
+    description: "Dev fullstack + mobile + tests"
+    duration_weeks: 4
+
+  phase_3:
+    name: "Phase 3: GTM"
+    filename: "workflows/phase3_gtm.yaml"
+    lead_agent: "ChefIA"
+    support_agents: ["Grow", "Bizo", "Dezy"]
+    description: "Go-to-market strategy"
+    duration_weeks: 2
+
+  phase_4:
+    name: "Phase 4: Scale"
+    filename: "workflows/phase4_scale.yaml"
+    lead_agent: "ChefIA"
+    support_agents: ["Archi", "Fullo", "Mobi", "Bizo"]
+    description: "Scaling & optimisation"
+    duration_weeks: 4
+
+# ============================================================================
+# SHARED RESOURCES
+# ============================================================================
+
+shared:
+  context:
+    - path: "shared/context/projet.md"
+      description: "Brief projet Bot ou pas Bot"
+      updated: "2026-04-24"
+
+    - path: "shared/context/glossaire.md"
+      description: "Glossaire projet"
+      updated: "2026-04-24"
+
+    - path: "shared/context/stack.md"
+      description: "Stack technique"
+      updated: "2026-04-24"
+
+  tools:
+    - path: "shared/tools/api-reference.md"
+      description: "API reference"
+
+    - path: "shared/tools/components.md"
+      description: "Composants réutilisables"
+
+  templates:
+    - path: "shared/templates/prompt-template.md"
+      description: "Template pour prompts"
+
+    - path: "shared/templates/documentation-template.md"
+      description: "Template pour documentation"
+
+# ============================================================================
+# FOLDERS STRUCTURE REFERENCE
+# ============================================================================
+
+folders_structure:
+  EQUIPE_IA:
+    - "agents-registry.yaml          # ← CE FICHIER"
+    - "tools.yaml                    # Hiérarchie centralisée outils"
+    - "config.yaml                   # Config maître (empty ou optionnel)"
+    - "README.md                     # Documentation"
+    - "agents/[AgentName]/"
+    - "  ├── config.yaml"
+    - "  ├── prompt.md"
+    - "  ├── context/                # Documentation du rôle"
+    - "  ├── examples/               # Exemples & patterns"
+    - "  ├── knowledge/              # Knowledge base agent"
+    - "  └── memory/"
+    - "workflows/                    # Phases du projet"
+    - "  ├── phase1_docs.yaml"
+    - "  ├── phase2_dev.yaml"
+    - "  ├── phase3_gtm.yaml"
+    - "  └── phase4_scale.yaml"
+    - "shared/"
+    - "  ├── context/                # Documentation partagée"
+    - "  ├── tools/                  # Outils partagés"
+    - "  └── templates/              # Templates"
+    - "outputs/                      # Outputs par agent"
+    - "  ├── ChefIA/"
+    - "  ├── Scribe/"
+    - "  └── ..."
+
+# ============================================================================
+# CONFIGURATION DEFAULTS
+# ============================================================================
+
+defaults:
+  temperature:
+    orchestration: 0.2
+    development: 0.2
+    testing: 0.1
+    design: 0.7
+    business: 0.6
+
+  fallback_strategy:
+    enabled: true
+    max_retries: 3
+    timeout_seconds: 30
+    log_failures: true
+
+  output_formats:
+    - "markdown"
+    - "yaml"
+    - "json"
+
+# ============================================================================
+# METADATA
+# ============================================================================
+
+metadata:
+  version: "1.0"
+  created: "2026-04-24"
+  updated: "2026-04-24"
+  maintainer: "ServOMorph Team"
+  source_of_truth: true
+  used_by:
+    - "create_equipe_ia.py (script génération)"
+    - "Orchestration system"
+    - "Navigation & discovery"
+    - "Configuration management"
