@@ -25,30 +25,37 @@ export default function WaitingRoom({ userId, onMatchFound }) {
     const channel = supabase
       .channel('matchmaking')
       .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'matches' }, (payload) => {
+        console.log('[MATCHMAKING] realtime INSERT received:', payload.new.id, 'player1:', payload.new.player1_id);
         if (payload.new.status === 'waiting' && payload.new.player1_id !== userId) {
           joinMatch(payload.new.id);
         }
       })
       .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'matches' }, (payload) => {
+        console.log('[MATCHMAKING] realtime UPDATE received:', payload.new.id, 'status:', payload.new.status);
         if (payload.new.status === 'active' && (payload.new.player1_id === userId || payload.new.player2_id === userId)) {
           onMatchFound(payload.new);
         }
       })
-      .subscribe();
+      .subscribe((status) => {
+        console.log('[MATCHMAKING] subscription status:', status);
+      });
 
     return () => { supabase.removeChannel(channel); };
   }, [userId]);
 
   const startQueue = async () => {
     setIsQueueing(true);
-    // Try to find a waiting match first
-    const { data: waitingMatch } = await supabase
+    console.log('[MATCHMAKING] startQueue: searching for waiting match, my userId:', userId);
+    const { data: waitingMatch, error: selectError } = await supabase
       .from('matches')
       .select('*')
       .eq('status', 'waiting')
       .neq('player1_id', userId)
       .limit(1)
       .maybeSingle();
+
+    if (selectError) console.error('[MATCHMAKING] SELECT error:', selectError.code, selectError.message);
+    console.log('[MATCHMAKING] SELECT result:', waitingMatch ? `found match ${waitingMatch.id}` : 'no waiting match found');
 
     if (waitingMatch) {
       joinMatch(waitingMatch.id);
