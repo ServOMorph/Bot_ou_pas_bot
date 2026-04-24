@@ -63,7 +63,9 @@ python DEV_RAPH_SCRIPTS/generate_ui.py
 # Puis ouvrir UI/V2/index.html dans un navigateur
 ```
 
-Fichier de référence : `EQUIPE_IA/agents-registry.yaml`
+**Fichiers de référence :**
+- `EQUIPE_IA/agents-registry.yaml` — Source de vérité des agents
+- [`ROADMAP_EQUIPE_IA.md`](ROADMAP_EQUIPE_IA.md) — **Roadmap stratégique** : 5 phases, 19 tâches déléguées aux agents spécialisés (Quali, Scribe, Archi, Fullo, Dezy, Grow, Bizo), système de suivi complet et processus de clôture via `/close`.
 
 ---
-*Dernière mise à jour : 2026-04-24 — Session bridge Ollama*
+*Dernière mise à jour : 2026-04-24 — Session création ROADMAP Équipe IA*

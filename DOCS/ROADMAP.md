@@ -44,12 +44,17 @@
 - [x] Dashboard UI `UI/V2/index.html` — dynamique, dark/light, collapsible
 - [x] `DEV_RAPH_SCRIPTS/generate_ui.py` — génère `registry.json` depuis YAML
 - [x] `UI/V2/registry.json` — généré avec succès (9 agents, 12 modèles)
+- [x] **`ROADMAP_EQUIPE_IA.md`** — Roadmap stratégique 5 phases (P0-P4), 19 tâches déléguées aux agents spécialisés, système de suivi (2026-04-24).
 
-### ⏳ En suspens (prochaine session)
-- [ ] `.claude/commands/activation_equipe_IA.md` — workflow slash command
-- [ ] `generate_pyramid_100.py` — générateur des 45+45 sous-agents
-- [ ] Mise à jour `create_equipe_ia.py` pour lire `agents-registry.yaml`
-- [ ] Tester l'UI en ouvrant `UI/V2/index.html` dans le navigateur
+### ⏳ En suspens (prochaine session — Phase 0 à démarrer)
+- [ ] **P0T1** — Setup tests & fixtures (Quali)
+- [ ] **P0T2** — Templates documentation (Scribe)
+- [ ] **P0T3** — CI/CD pipeline (Fullo)
+- [ ] `.claude/commands/activation_equipe_IA.md` — workflow slash command (Phase 2)
+- [ ] `generate_pyramid_100.py` — générateur des 45+45 sous-agents (Phase 1)
+- [ ] Mise à jour `create_equipe_ia.py` pour lire `agents-registry.yaml` (Phase 1)
+
+📚 **Roadmap détaillée:** voir [`ROADMAP_EQUIPE_IA.md`](../ROADMAP_EQUIPE_IA.md) à la racine pour le plan complet des 5 phases, tâches par agent, et processus de clôture.
 
 ---
-*Dernière mise à jour : 2026-04-24 (session bridge Ollama — bot user créé, bridge opérationnel)*
+*Dernière mise à jour : 2026-04-24 (session création ROADMAP Équipe IA — 5 phases, 19 tâches, orchestration par ChefIA)*
