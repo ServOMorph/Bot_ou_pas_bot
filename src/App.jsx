@@ -19,15 +19,9 @@ export default function App() {
     });
   }, []);
 
-  const loginAsGuest = () => {
-    const guestSession = {
-      user: {
-        id: crypto.randomUUID(),
-        email: 'guest@example.com',
-        user_metadata: { full_name: 'Invité' }
-      }
-    };
-    setSession(guestSession);
+  const loginAsGuest = async () => {
+    const { error } = await supabase.auth.signInAnonymously();
+    if (error) console.error("❌ [AUTH] Invité:", error);
   };
 
   if (!session) {

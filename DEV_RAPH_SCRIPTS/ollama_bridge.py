@@ -30,7 +30,7 @@ def get_bot_response(history):
         role = "assistant" if msg['user_id'] == BOT_USER_ID else "user"
         messages.append({"role": role, "content": msg['text']})
     
-    response = ollama.chat(model='llama3', messages=messages) # Modèle par défaut
+    response = ollama.chat(model='llama3.1:8b', messages=messages)
     return response['message']['content']
 
 def handle_new_match(payload):

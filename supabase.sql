@@ -33,7 +33,16 @@ ALTER TABLE public.messages ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "Matches are visible to everyone" ON public.matches FOR SELECT USING (true);
 CREATE POLICY "Users can create matches" ON public.matches FOR INSERT WITH CHECK (auth.uid() = player1_id);
-CREATE POLICY "Users can update their matches" ON public.matches FOR UPDATE USING (auth.uid() = player1_id OR auth.uid() = player2_id);
+-- FIXED 2026-04-24: Allow User B (joiner) to claim a waiting slot where player2_id is still NULL
+CREATE POLICY "Users can update their matches" ON public.matches
+  FOR UPDATE USING (
+    auth.uid() = player1_id
+    OR auth.uid() = player2_id
+    OR (status = 'waiting' AND player2_id IS NULL AND auth.uid() != player1_id)
+  );
+-- Allow player1 to cancel their own unjoined waiting match
+CREATE POLICY "Users can delete their own waiting matches" ON public.matches
+  FOR DELETE USING (auth.uid() = player1_id AND status = 'waiting' AND player2_id IS NULL);
 
 CREATE POLICY "Messages are visible to match participants" ON public.messages FOR SELECT USING (true);
 CREATE POLICY "Users can send messages" ON public.messages FOR INSERT WITH CHECK (auth.uid() = user_id);
