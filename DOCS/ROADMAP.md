@@ -14,16 +14,13 @@
 - [x] Composant `ChatDuel` (Chat 3min + Timer).
 - [x] Composant `VoteScreen` (Verdict de Turing).
 - [x] Système de gestion de session (`session_manager.md`).
-- [x] Outil **AutoAntigravity** (Clicker + Capture dynamique) dans `AUTO_CLICK/` (2026-04-25).
+- [x] Outil **AutoAntigravity** : Clicker, Capture DPI-aware, Statistiques et Overlay dynamique (2026-04-25).
 
 ## ⏳ Prochaines Étapes (Phase 3)
-- [x] Mise en place du pont API Ollama <-> Supabase — bridge opérationnel (2026-04-24).
-- [x] Création utilisateur bot dans `auth.users` via service role — UUID stable (2026-04-24).
-- [x] Fix `BOT_USER_ID` placeholder → lu depuis `.env` (2026-04-24).
-- [x] Fix encodage UTF-8 Windows dans `ollama_bridge.py` (2026-04-24).
 - [ ] Tester flow E2E "Défier le Bot" depuis le frontend (player2_id = BOT_USER_ID).
 - [ ] Création du Dashboard Développeur pour les bots.
 - [ ] Système ELO calculé après 10 duels.
+- [ ] Fenêtre d'analyse graphique des clics pour AutoAntigravity.
 - [x] Rendre l'application compatible PC/Navigateur.
 - [x] Ajout d'un mode Invité (Anonyme) pour les tests.
 - [x] Fix matchmaking 409 Conflict — migration vers Supabase Anonymous Auth (2026-04-24).
@@ -35,6 +32,7 @@
 ## 🐞 Points d'attention
 - Flow "Défier le Bot" non encore testé E2E depuis le frontend.
 - Modèle Ollama utilisé : `llama3.1:8b`.
+- L'overlay AutoAntigravity utilise désormais Rouge=Actif / Vert=Inactif selon préférence utilisateur.
 
 ## 🤖 Équipe IA — Configuration (Session 2026-04-24)
 
@@ -58,4 +56,4 @@
 📚 **Roadmap détaillée:** voir [`ROADMAP_EQUIPE_IA.md`](../ROADMAP_EQUIPE_IA.md) à la racine pour le plan complet des 5 phases, tâches par agent, et processus de clôture.
 
 ---
-*Dernière mise à jour : 2026-04-24 (session création ROADMAP Équipe IA — 5 phases, 19 tâches, orchestration par ChefIA)*
+*Dernière mise à jour : 2026-04-25 (Optimisation AutoAntigravity : DPI, Stats, UI)*

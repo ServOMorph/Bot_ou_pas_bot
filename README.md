@@ -44,7 +44,7 @@ python DEV_RAPH_SCRIPTS/ollama_bridge.py
 - **Mode Invité** : Supabase Anonymous Auth (`signInAnonymously`).
 - **Bridge Ollama** : Polling Supabase, détection matchs/messages, réponses bot via `llama3.1:8b`.
 - **Mode Duel** : Matchmaking opérationnel, bouton Annuler ajouté.
-- **Auto-Clicker** : Outil `AUTO_CLICK/` pour tests et captures de zone (2026-04-25).
+- **Auto-Clicker** : Outil `AUTO_CLICK/` pour tests et captures de zone (DPI-aware, stats persistantes, overlay dynamique avec compteur de clics).
 
 ## 🧪 Tests
 ```bash
