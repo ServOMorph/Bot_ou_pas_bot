@@ -2,7 +2,7 @@ import sys
 import customtkinter as ctk
 
 # Constantes pour l'overlay
-OVERLAY_WIDTH = 180
+OVERLAY_WIDTH = 90
 OVERLAY_HEIGHT = 40
 OVERLAY_MARGIN = 20
 OVERLAY_ALPHA = 0.8
@@ -42,7 +42,7 @@ class AutoAntigravityOverlay(ctk.CTkToplevel):
 
         self.label = ctk.CTkLabel(
             self.main_frame,
-            text="AntiGravity OFF",
+            text="AG OFF",
             font=ctk.CTkFont(family="Segoe UI", size=13, weight="bold"),
             text_color=TEXT_COLOR
         )
@@ -66,10 +66,10 @@ class AutoAntigravityOverlay(ctk.CTkToplevel):
     def update_ui(self):
         if self.active:
             self.main_frame.configure(fg_color=COLOR_ACTIVE)
-            self.label.configure(text="AutoAntigravity ON")
+            self.label.configure(text="AG ON")
         else:
             self.main_frame.configure(fg_color=COLOR_INACTIVE)
-            self.label.configure(text="AntiGravity OFF")
+            self.label.configure(text="AG OFF")
 
     def _keep_on_top(self):
         self.attributes("-topmost", True)

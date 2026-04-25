@@ -43,7 +43,7 @@ class AutoAntigravityApp:
         """Lance l'outil de capture de zone."""
         print("Lancement de la capture de zone...")
         # On peut lancer ça dans un thread séparé ou via after()
-        self.root.after(100, lambda: start_capture(ROOT_DIR))
+        self.root.after(100, lambda: start_capture(ASSETS_DIR))
 
     def run(self):
         self.root.mainloop()

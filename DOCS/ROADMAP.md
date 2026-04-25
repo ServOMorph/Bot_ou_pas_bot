@@ -14,6 +14,7 @@
 - [x] Composant `ChatDuel` (Chat 3min + Timer).
 - [x] Composant `VoteScreen` (Verdict de Turing).
 - [x] Système de gestion de session (`session_manager.md`).
+- [x] Outil **AutoAntigravity** (Clicker + Capture dynamique) dans `AUTO_CLICK/` (2026-04-25).
 
 ## ⏳ Prochaines Étapes (Phase 3)
 - [x] Mise en place du pont API Ollama <-> Supabase — bridge opérationnel (2026-04-24).

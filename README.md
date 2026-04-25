@@ -3,6 +3,8 @@
 Arène de Turing moderne : duels anonymes chat IA-humain (18-35 ans).
 
 ## 🚀 État du Projet : MVP Phase 3 (En cours)
+- [x] Système de gestion de session (`session_manager.md`).
+- [x] Outil d'automatisation **AutoAntigravity** (Clicker + Capture de zone) (2026-04-25).
 Le système de duel est opérationnel. Le pont Ollama est **opérationnel** — le bridge détecte les matchs et messages en temps réel. Le flow E2E "Défier le Bot" est la prochaine étape.
 L'application est désormais optimisée pour PC et Mobile.
 
@@ -41,6 +43,8 @@ python DEV_RAPH_SCRIPTS/ollama_bridge.py
 - **Vote de Turing** : Identification de l'adversaire (Humain ou Bot).
 - **Mode Invité** : Supabase Anonymous Auth (`signInAnonymously`).
 - **Bridge Ollama** : Polling Supabase, détection matchs/messages, réponses bot via `llama3.1:8b`.
+- **Mode Duel** : Matchmaking opérationnel, bouton Annuler ajouté.
+- **Auto-Clicker** : Outil `AUTO_CLICK/` pour tests et captures de zone (2026-04-25).
 
 ## 🧪 Tests
 ```bash

@@ -24,7 +24,11 @@ class ZoneSelector:
         self.canvas.bind("<ButtonPress-1>", self.on_button_press)
         self.canvas.bind("<B1-Motion>", self.on_move_press)
         self.canvas.bind("<ButtonRelease-1>", self.on_button_release)
-        self.root.bind("<Escape>", lambda e: self.root.destroy())
+        self.root.bind("<Escape>", self.on_escape)
+
+    def on_escape(self, event=None):
+        print("Capture annulée (Echap)")
+        self.root.destroy()
 
     def on_button_press(self, event):
         self.start_x = event.x
@@ -53,13 +57,14 @@ class ZoneSelector:
             os.makedirs(self.save_path)
             
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = f"capture_{timestamp}.png"
+        filename = f"target_{timestamp}.png"
         filepath = os.path.join(self.save_path, filename)
         
         # Utilisation de ImageGrab pour la capture
+        # Sur Windows, ImageGrab.grab(bbox=...) fonctionne bien
         img = ImageGrab.grab(bbox=(x1, y1, x2, y2))
         img.save(filepath)
-        print(f"Capture sauvegardée : {filepath}")
+        print(f"Cible sauvegardée dans assets : {filepath}")
 
 def start_capture(save_path):
     selector = ZoneSelector(save_path)
