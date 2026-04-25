@@ -44,16 +44,13 @@
 - [x] `DEV_RAPH_SCRIPTS/generate_ui.py` — génère `registry.json` depuis YAML
 - [x] `UI/V2/registry.json` — généré avec succès (9 agents, 12 modèles)
 - [x] **`ROADMAP_EQUIPE_IA.md`** — Roadmap stratégique 5 phases (P0-P4), 19 tâches déléguées aux agents spécialisés, système de suivi (2026-04-24).
+- [x] **Phase 0 Complétée** : Tests & Fixtures (Quali), Templates (Scribe), CI/CD Pipeline (Fullo) (2026-04-25).
+- [x] **Phase 1 Complétée** : Pyramide de 100 agents générée, configurée et testée (Archi, Fullo, Quali, Scribe) (2026-04-25).
 
-### ⏳ En suspens (prochaine session — Phase 0 à démarrer)
-- [ ] **P0T1** — Setup tests & fixtures (Quali)
-- [ ] **P0T2** — Templates documentation (Scribe)
-- [ ] **P0T3** — CI/CD pipeline (Fullo)
-- [ ] `.claude/commands/activation_equipe_IA.md` — workflow slash command (Phase 2)
-- [ ] `generate_pyramid_100.py` — générateur des 45+45 sous-agents (Phase 1)
-- [ ] Mise à jour `create_equipe_ia.py` pour lire `agents-registry.yaml` (Phase 1)
+- [ ] **Phase 2 (MVP Duel)** : Lancement du design UI mobile et flow d'invitation.
+- [ ] `.claude/commands/activation_equipe_IA.md` — workflow slash command (Phase 2).
 
 📚 **Roadmap détaillée:** voir [`ROADMAP_EQUIPE_IA.md`](../ROADMAP_EQUIPE_IA.md) à la racine pour le plan complet des 5 phases, tâches par agent, et processus de clôture.
 
 ---
-*Dernière mise à jour : 2026-04-25 (Optimisation AutoAntigravity : DPI, Stats, UI)*
+*Dernière mise à jour : 2026-04-25 (Pyramide 100 Agents opérationnelle, CI/CD OK)*

@@ -1,0 +1,6 @@
+[LEARNINGS]
+- Migration ESLint v9 (Flat Config) : nécessite eslint.config.js et une gestion explicite des plugins React.
+- Tests Vitest : environnement jsdom stable pour React.
+- Encodage Windows : les emojis dans les scripts Python causent des UnicodeEncodeError en console PowerShell (cp1252). Préférer le texte brut.
+- Scalabilité IA : le registre YAML + script de génération permet de déployer 100+ agents avec une hiérarchie stricte en secondes.
+- Orchestration : la validation métadonnées (parent-child dans config.yaml) est cruciale avant le déploiement d'une pyramide complexe.

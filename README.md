@@ -45,9 +45,17 @@ python DEV_RAPH_SCRIPTS/ollama_bridge.py
 - **Bridge Ollama** : Polling Supabase, détection matchs/messages, réponses bot via `llama3.1:8b`.
 - **Mode Duel** : Matchmaking opérationnel, bouton Annuler ajouté.
 - **Auto-Clicker** : Outil `AUTO_CLICK/` pour tests et captures de zone (DPI-aware, stats persistantes, overlay dynamique avec compteur de clics).
+- **Équipe IA 100** : Pyramide de 100 agents opérationnelle, hiérarchie validée par tests d'orchestration.
+- **CI/CD** : Pipeline GitHub Actions (Lint, Test, Build) configuré.
 
 ## 🧪 Tests
 ```bash
+# Tests unitaires et d'intégration (Vitest)
+npm run test:run
+
+# Vérification du Lint (ESLint v9)
+npm run lint
+
 # Test d'intégration matchmaking (Node 20+)
 node --env-file=.env DEV_RAPH_SCRIPTS/test_matchmaking.js
 ```
@@ -72,4 +80,4 @@ python DEV_RAPH_SCRIPTS/generate_ui.py
 - [`ROADMAP_EQUIPE_IA.md`](ROADMAP_EQUIPE_IA.md) — **Roadmap stratégique** : 5 phases, 19 tâches déléguées aux agents spécialisés (Quali, Scribe, Archi, Fullo, Dezy, Grow, Bizo), système de suivi complet et processus de clôture via `/close`.
 
 ---
-*Dernière mise à jour : 2026-04-24 — Session création ROADMAP Équipe IA*
+*Dernière mise à jour : 2026-04-25 — Pyramide 100 Agents & CI/CD*
