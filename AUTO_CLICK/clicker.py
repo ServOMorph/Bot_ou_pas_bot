@@ -4,9 +4,10 @@ import threading
 import pyautogui
 import tkinter as tk
 from PIL import Image, ImageTk
+import stats
 
 # Configuration
-CONFIDENCE = 0.8
+CONFIDENCE = 0.7
 ASSETS_DIR = "assets"
 
 class VisualFeedback(tk.Toplevel):
@@ -56,13 +57,15 @@ class ClickerService:
             except Exception:
                 images = []
             
+            # Scan en cours (log supprimé pour plus de clarté)
+            
             for img_name in images:
                 if not self.active: break
                 
                 img_path = os.path.join(self.assets_path, img_name)
                 try:
                     # Recherche de l'image sur l'écran
-                    location = pyautogui.locateCenterOnScreen(img_path, confidence=CONFIDENCE)
+                    location = pyautogui.locateCenterOnScreen(img_path, confidence=CONFIDENCE, grayscale=True)
                     if location:
                         x, y = location
                         
@@ -74,7 +77,7 @@ class ClickerService:
                         
                         # Clic
                         pyautogui.click(x, y)
-                        print(f"Clicked on {img_name} at ({x}, {y})")
+                        stats.increment()
                         time.sleep(1.0) # Pause après clic
                 except Exception as e:
                     # print(f"Error searching for {img_name}: {e}")

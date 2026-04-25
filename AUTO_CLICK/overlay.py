@@ -2,12 +2,12 @@ import sys
 import customtkinter as ctk
 
 # Constantes pour l'overlay
-OVERLAY_WIDTH = 90
+OVERLAY_WIDTH = 120
 OVERLAY_HEIGHT = 40
 OVERLAY_MARGIN = 20
 OVERLAY_ALPHA = 0.8
-COLOR_ACTIVE = "#2ecc71"    # Vert
-COLOR_INACTIVE = "#e74c3c"  # Rouge
+COLOR_ACTIVE = "#e74c3c"    # Rouge (pour l'utilisateur c'est Actif ?)
+COLOR_INACTIVE = "#2ecc71"  # Vert (pour l'utilisateur c'est Inactif ?)
 TEXT_COLOR = "#ffffff"
 
 class AutoAntigravityOverlay(ctk.CTkToplevel):
@@ -46,14 +46,24 @@ class AutoAntigravityOverlay(ctk.CTkToplevel):
             font=ctk.CTkFont(family="Segoe UI", size=13, weight="bold"),
             text_color=TEXT_COLOR
         )
-        self.label.pack(expand=True)
+        self.label.pack(side="left", expand=True, padx=(10, 0))
+
+        self.count_label = ctk.CTkLabel(
+            self.main_frame,
+            text="0",
+            font=ctk.CTkFont(family="Segoe UI", size=13, weight="bold"),
+            text_color=TEXT_COLOR
+        )
+        self.count_label.pack(side="right", expand=True, padx=(0, 10))
 
         # Binding du clic pour le toggle
         self.label.bind("<Button-1>", self._handle_toggle)
+        self.count_label.bind("<Button-1>", self._handle_toggle)
         self.main_frame.bind("<Button-1>", self._handle_toggle)
         
         # Clic droit pour la capture
         self.label.bind("<Button-3>", lambda e: self.on_capture())
+        self.count_label.bind("<Button-3>", lambda e: self.on_capture())
         self.main_frame.bind("<Button-3>", lambda e: self.on_capture())
 
         self._keep_on_top()
@@ -70,6 +80,9 @@ class AutoAntigravityOverlay(ctk.CTkToplevel):
         else:
             self.main_frame.configure(fg_color=COLOR_INACTIVE)
             self.label.configure(text="AG OFF")
+
+    def update_count(self, count: int):
+        self.count_label.configure(text=str(count))
 
     def _keep_on_top(self):
         self.attributes("-topmost", True)

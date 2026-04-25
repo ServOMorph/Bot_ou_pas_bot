@@ -3,6 +3,13 @@ from PIL import ImageGrab
 import os
 from datetime import datetime
 
+# DPI Awareness pour Windows
+try:
+    from ctypes import windll
+    windll.shcore.SetProcessDpiAwareness(1)
+except Exception:
+    pass
+
 class ZoneSelector:
     """Outil de sélection de zone pour capture d'écran."""
     
@@ -27,7 +34,6 @@ class ZoneSelector:
         self.root.bind("<Escape>", self.on_escape)
 
     def on_escape(self, event=None):
-        print("Capture annulée (Echap)")
         self.root.destroy()
 
     def on_button_press(self, event):
@@ -64,7 +70,6 @@ class ZoneSelector:
         # Sur Windows, ImageGrab.grab(bbox=...) fonctionne bien
         img = ImageGrab.grab(bbox=(x1, y1, x2, y2))
         img.save(filepath)
-        print(f"Cible sauvegardée dans assets : {filepath}")
 
 def start_capture(save_path):
     selector = ZoneSelector(save_path)
