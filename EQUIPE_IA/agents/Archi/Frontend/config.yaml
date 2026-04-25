@@ -1,0 +1,8 @@
+display_name: Archi frontend
+id: archi-frontend
+level: 3
+parent: archi-n2
+role: Spécialiste Frontend
+tool:
+  fallback: gemini-web-chat
+  primary: claude-sonnet-4-6

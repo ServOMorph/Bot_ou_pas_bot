@@ -1,0 +1,8 @@
+display_name: Archi backend
+id: archi-backend
+level: 3
+parent: archi-n2
+role: Spécialiste Backend
+tool:
+  fallback: chatgpt-codex
+  primary: claude-sonnet-4-6

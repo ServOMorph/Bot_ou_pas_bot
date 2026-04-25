@@ -1,0 +1,8 @@
+display_name: Scribe tutos expert
+id: scribe-tutos-expert
+level: 4
+parent: scribe-tutos
+role: Expert ultra-spécialisé Tutos
+tool:
+  fallback: null
+  primary: mistral-web

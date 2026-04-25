@@ -1,0 +1,8 @@
+display_name: Ops backup expert
+id: ops-backup-expert
+level: 4
+parent: ops-backup
+role: Expert ultra-spécialisé Backup
+tool:
+  fallback: null
+  primary: gemma-4-local

@@ -1,0 +1,8 @@
+display_name: Quali security
+id: quali-security
+level: 3
+parent: quali-n2
+role: Spécialiste Security
+tool:
+  fallback: null
+  primary: claude-haiku-4-5

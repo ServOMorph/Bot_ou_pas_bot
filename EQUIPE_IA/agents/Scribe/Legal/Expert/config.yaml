@@ -1,0 +1,8 @@
+display_name: Scribe legal expert
+id: scribe-legal-expert
+level: 4
+parent: scribe-legal
+role: Expert ultra-spécialisé Legal
+tool:
+  fallback: null
+  primary: chatgpt-chat-cloud

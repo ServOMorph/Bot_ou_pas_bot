@@ -1,0 +1,8 @@
+display_name: Ops db admin expert
+id: ops-db-admin-expert
+level: 4
+parent: ops-db-admin
+role: Expert ultra-spécialisé Admin
+tool:
+  fallback: null
+  primary: claude-sonnet-4-6

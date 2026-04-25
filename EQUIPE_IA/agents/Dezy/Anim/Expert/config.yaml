@@ -1,0 +1,8 @@
+display_name: Dezy anim expert
+id: dezy-anim-expert
+level: 4
+parent: dezy-anim
+role: Expert ultra-spécialisé Anim
+tool:
+  fallback: null
+  primary: gemini-web-chat

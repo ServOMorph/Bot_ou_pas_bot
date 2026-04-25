@@ -1,0 +1,8 @@
+display_name: Archi db
+id: archi-db
+level: 3
+parent: archi-n2
+role: Spécialiste Db
+tool:
+  fallback: gemma-4-local
+  primary: claude-sonnet-4-6

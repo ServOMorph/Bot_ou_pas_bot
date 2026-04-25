@@ -1,0 +1,8 @@
+display_name: Bizo sales
+id: bizo-sales
+level: 3
+parent: bizo-n2
+role: Spécialiste Sales
+tool:
+  fallback: null
+  primary: chatgpt-chat-cloud

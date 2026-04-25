@@ -1,0 +1,8 @@
+display_name: Ops maintenance expert
+id: ops-maintenance-expert
+level: 4
+parent: ops-maintenance
+role: Expert ultra-spécialisé Maintenance
+tool:
+  fallback: null
+  primary: claude-sonnet-4-6

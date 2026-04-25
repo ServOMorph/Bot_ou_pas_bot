@@ -1,0 +1,8 @@
+display_name: Bizo premium
+id: bizo-premium
+level: 3
+parent: bizo-n2
+role: Spécialiste Premium
+tool:
+  fallback: null
+  primary: chatgpt-chat-cloud

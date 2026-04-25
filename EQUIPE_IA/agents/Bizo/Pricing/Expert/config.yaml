@@ -1,0 +1,8 @@
+display_name: Bizo pricing expert
+id: bizo-pricing-expert
+level: 4
+parent: bizo-pricing
+role: Expert ultra-spécialisé Pricing
+tool:
+  fallback: null
+  primary: claude-sonnet-4-6

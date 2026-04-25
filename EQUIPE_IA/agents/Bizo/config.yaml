@@ -1,5 +1,10 @@
-# Bizo - Business & Freemium
-tool: chatgpt-chat-cloud
+display_name: 💰 Bizo Principal
+id: bizo-n2
+level: 2
+role: Expert Bizo
 temperature: 0.6
-role: business
-description: "Business models + freemium strategy - ChatGPT cloud"
+tool:
+  fallbacks:
+  - claude-sonnet-4-6
+  - perplexity-comet
+  primary: chatgpt-chat-cloud

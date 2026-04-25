@@ -1,0 +1,8 @@
+display_name: Dezy duels expert
+id: dezy-duels-expert
+level: 4
+parent: dezy-duels
+role: Expert ultra-spécialisé Duels
+tool:
+  fallback: null
+  primary: claude-design

@@ -1,5 +1,10 @@
-# Mobi - Mobile React Native
-tool: claude-sonnet-4-6
-temperature: 0.2
-role: development
-description: "Développement Mobile React Native - iOS/Android"
+display_name: 📱 Mobi Principal
+id: mobi-n2
+level: 2
+role: Expert Mobi
+temperature: 0.3
+tool:
+  fallbacks:
+  - claude-design
+  - gemini-web-chat
+  primary: claude-sonnet-4-6

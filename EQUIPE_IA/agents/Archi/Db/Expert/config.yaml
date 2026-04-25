@@ -1,0 +1,8 @@
+display_name: Archi db expert
+id: archi-db-expert
+level: 4
+parent: archi-db
+role: Expert ultra-spécialisé Db
+tool:
+  fallback: gemma-4-local
+  primary: claude-sonnet-4-6

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { supabase } from './lib/supabaseClient';
 import WaitingRoom from './components/WaitingRoom';
 import ChatDuel from './components/ChatDuel';

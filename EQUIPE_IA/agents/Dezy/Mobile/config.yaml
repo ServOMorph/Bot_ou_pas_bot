@@ -1,0 +1,8 @@
+display_name: Dezy mobile
+id: dezy-mobile
+level: 3
+parent: dezy-n2
+role: Spécialiste Mobile
+tool:
+  fallback: null
+  primary: claude-design

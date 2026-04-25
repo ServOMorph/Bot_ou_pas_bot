@@ -1,0 +1,8 @@
+display_name: Dezy landing expert
+id: dezy-landing-expert
+level: 4
+parent: dezy-landing
+role: Expert ultra-spécialisé Landing
+tool:
+  fallback: null
+  primary: claude-design

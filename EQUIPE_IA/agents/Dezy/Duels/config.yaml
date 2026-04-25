@@ -1,0 +1,8 @@
+display_name: Dezy duels
+id: dezy-duels
+level: 3
+parent: dezy-n2
+role: Spécialiste Duels
+tool:
+  fallback: null
+  primary: claude-design

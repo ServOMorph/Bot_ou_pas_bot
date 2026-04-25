@@ -1,0 +1,8 @@
+display_name: Mobi ios expert
+id: mobi-ios-expert
+level: 4
+parent: mobi-ios
+role: Expert ultra-spécialisé Ios
+tool:
+  fallback: null
+  primary: claude-sonnet-4-6

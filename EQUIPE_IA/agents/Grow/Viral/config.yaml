@@ -1,0 +1,8 @@
+display_name: Grow viral
+id: grow-viral
+level: 3
+parent: grow-n2
+role: Spécialiste Viral
+tool:
+  fallback: null
+  primary: claude-sonnet-4-6

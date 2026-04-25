@@ -1,0 +1,8 @@
+display_name: Grow discord
+id: grow-discord
+level: 3
+parent: grow-n2
+role: Spécialiste Discord
+tool:
+  fallback: null
+  primary: perplexity-comet

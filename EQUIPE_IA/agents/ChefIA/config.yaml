@@ -1,5 +1,10 @@
-# Chef IA - Orchestration globale
-tool: claude-opus-4-7
-temperature: 0.2
-role: orchestration
-description: "Orchestration globale du projet - décisions stratégiques"
+display_name: 👑 ChefIA Niv1
+id: chef-ia-n1
+level: 1
+role: orchestration-pyramidale
+temperature: 0.1
+tool:
+  fallbacks:
+  - claude-sonnet-4-6
+  - chatgpt-chat-cloud
+  primary: claude-opus-4-7

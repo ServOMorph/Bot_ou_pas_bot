@@ -1,0 +1,8 @@
+display_name: Fullo deploy
+id: fullo-deploy
+level: 3
+parent: fullo-n2
+role: Spécialiste Deploy
+tool:
+  fallback: null
+  primary: claude-sonnet-4-6

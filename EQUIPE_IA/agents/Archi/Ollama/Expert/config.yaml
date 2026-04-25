@@ -1,0 +1,8 @@
+display_name: Archi ollama expert
+id: archi-ollama-expert
+level: 4
+parent: archi-ollama
+role: Expert ultra-spécialisé Ollama
+tool:
+  fallback: chatgpt-codex
+  primary: claude-sonnet-4-6

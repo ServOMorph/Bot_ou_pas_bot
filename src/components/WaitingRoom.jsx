@@ -4,7 +4,30 @@ import { Loader2, Users } from 'lucide-react';
 
 export default function WaitingRoom({ userId, onMatchFound }) {
   const [isQueueing, setIsQueueing] = useState(false);
-  const [waitingCount, setWaitingCount] = useState(0);
+
+  const joinMatch = React.useCallback(async (matchId) => {
+    console.log('[MATCHMAKING] joinMatch called for matchId:', matchId);
+    const { data, error } = await supabase
+      .from('matches')
+      .update({ player2_id: userId, status: 'active', timer_start: new Date().toISOString() })
+      .eq('id', matchId)
+      .eq('status', 'waiting')
+      .is('player2_id', null)
+      .select()
+      .maybeSingle();
+
+    if (error) {
+      console.error('[MATCHMAKING] joinMatch error:', error.code, error.message);
+      setIsQueueing(false);
+      return;
+    }
+    if (!data) {
+      console.warn('[MATCHMAKING] joinMatch: match already claimed or not found, id:', matchId);
+      return;
+    }
+    console.log('[MATCHMAKING] joinMatch success, match id:', data.id);
+    onMatchFound(data);
+  }, [userId, onMatchFound]);
 
   useEffect(() => {
     // Check for existing active match
@@ -41,7 +64,7 @@ export default function WaitingRoom({ userId, onMatchFound }) {
       });
 
     return () => { supabase.removeChannel(channel); };
-  }, [userId]);
+  }, [userId, onMatchFound, joinMatch]);
 
   const startQueue = async () => {
     setIsQueueing(true);
@@ -75,29 +98,7 @@ export default function WaitingRoom({ userId, onMatchFound }) {
     }
   };
 
-  const joinMatch = async (matchId) => {
-    console.log('[MATCHMAKING] joinMatch called for matchId:', matchId);
-    const { data, error } = await supabase
-      .from('matches')
-      .update({ player2_id: userId, status: 'active', timer_start: new Date().toISOString() })
-      .eq('id', matchId)
-      .eq('status', 'waiting')
-      .is('player2_id', null)
-      .select()
-      .maybeSingle();
 
-    if (error) {
-      console.error('[MATCHMAKING] joinMatch error:', error.code, error.message);
-      setIsQueueing(false);
-      return;
-    }
-    if (!data) {
-      console.warn('[MATCHMAKING] joinMatch: match already claimed or not found, id:', matchId);
-      return;
-    }
-    console.log('[MATCHMAKING] joinMatch success, match id:', data.id);
-    onMatchFound(data);
-  };
 
   const cancelQueue = async () => {
     console.log('[MATCHMAKING] User cancelled queue');

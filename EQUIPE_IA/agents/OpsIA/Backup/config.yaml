@@ -1,0 +1,8 @@
+display_name: Ops backup
+id: ops-backup
+level: 3
+parent: ops-n2
+role: Spécialiste Backup
+tool:
+  fallback: null
+  primary: gemma-4-local

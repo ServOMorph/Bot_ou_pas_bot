@@ -1,13 +1,18 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { supabase } from '../lib/supabaseClient';
-import { Send, Timer, ShieldAlert } from 'lucide-react';
-import { formatDistanceToNow, differenceInSeconds } from 'date-fns';
+import { Send, Timer } from 'lucide-react';
+import { differenceInSeconds } from 'date-fns';
 
 export default function ChatDuel({ match, userId, onTimeUp }) {
   const [messages, setMessages] = useState([]);
   const [inputText, setInputText] = useState('');
   const [timeLeft, setTimeLeft] = useState(180); // 3 minutes
   const scrollRef = useRef();
+
+  const endChat = useCallback(async () => {
+    await supabase.from('matches').update({ status: 'voting' }).eq('id', match.id);
+    onTimeUp();
+  }, [match.id, onTimeUp]);
 
   useEffect(() => {
     // Fetch initial messages
@@ -56,16 +61,11 @@ export default function ChatDuel({ match, userId, onTimeUp }) {
       supabase.removeChannel(channel);
       clearInterval(timer);
     };
-  }, [match.id]);
+  }, [match.id, match.timer_start, onTimeUp, endChat]);
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
-
-  const endChat = async () => {
-    await supabase.from('matches').update({ status: 'voting' }).eq('id', match.id);
-    onTimeUp();
-  };
 
   const sendMessage = async (e) => {
     e.preventDefault();

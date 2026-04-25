@@ -1,0 +1,8 @@
+display_name: Archi security
+id: archi-security
+level: 3
+parent: archi-n2
+role: Spécialiste Security
+tool:
+  fallback: claude-haiku-4-5
+  primary: gemini-3-flash-antigravity

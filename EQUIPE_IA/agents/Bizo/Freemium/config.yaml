@@ -1,0 +1,8 @@
+display_name: Bizo freemium
+id: bizo-freemium
+level: 3
+parent: bizo-n2
+role: Spécialiste Freemium
+tool:
+  fallback: null
+  primary: chatgpt-chat-cloud

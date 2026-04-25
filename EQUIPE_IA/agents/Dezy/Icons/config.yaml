@@ -1,0 +1,8 @@
+display_name: Dezy icons
+id: dezy-icons
+level: 3
+parent: dezy-n2
+role: Spécialiste Icons
+tool:
+  fallback: null
+  primary: claude-sonnet-4-6

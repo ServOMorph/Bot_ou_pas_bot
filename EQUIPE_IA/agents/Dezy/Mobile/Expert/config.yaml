@@ -1,0 +1,8 @@
+display_name: Dezy mobile expert
+id: dezy-mobile-expert
+level: 4
+parent: dezy-mobile
+role: Expert ultra-spécialisé Mobile
+tool:
+  fallback: null
+  primary: claude-design

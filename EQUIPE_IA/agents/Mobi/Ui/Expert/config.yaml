@@ -1,0 +1,8 @@
+display_name: Mobi ui expert
+id: mobi-ui-expert
+level: 4
+parent: mobi-ui
+role: Expert ultra-spécialisé Ui
+tool:
+  fallback: null
+  primary: claude-design

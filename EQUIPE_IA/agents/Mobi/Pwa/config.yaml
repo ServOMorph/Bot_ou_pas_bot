@@ -1,0 +1,8 @@
+display_name: Mobi pwa
+id: mobi-pwa
+level: 3
+parent: mobi-n2
+role: Spécialiste Pwa
+tool:
+  fallback: null
+  primary: claude-sonnet-4-6

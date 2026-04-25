@@ -1,0 +1,8 @@
+display_name: Fullo react expert
+id: fullo-react-expert
+level: 4
+parent: fullo-react
+role: Expert ultra-spécialisé React
+tool:
+  fallback: null
+  primary: claude-sonnet-4-6

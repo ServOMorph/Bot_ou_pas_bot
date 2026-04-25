@@ -1,0 +1,10 @@
+display_name: 🛠️ OpsIA Principal
+id: ops-n2
+level: 2
+role: Expert OpsIA
+temperature: 0.2
+tool:
+  fallbacks:
+  - gemini-3-flash-antigravity
+  - gemma-4-local
+  primary: claude-sonnet-4-6

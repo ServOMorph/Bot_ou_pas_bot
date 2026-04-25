@@ -1,0 +1,8 @@
+display_name: Fullo tests
+id: fullo-tests
+level: 3
+parent: fullo-n2
+role: Spécialiste Tests
+tool:
+  fallback: null
+  primary: gemini-3-flash-antigravity

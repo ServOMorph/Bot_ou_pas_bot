@@ -1,0 +1,8 @@
+display_name: Bizo sales expert
+id: bizo-sales-expert
+level: 4
+parent: bizo-sales
+role: Expert ultra-spécialisé Sales
+tool:
+  fallback: null
+  primary: chatgpt-chat-cloud

@@ -1,0 +1,8 @@
+display_name: Grow seo expert
+id: grow-seo-expert
+level: 4
+parent: grow-seo
+role: Expert ultra-spécialisé Seo
+tool:
+  fallback: null
+  primary: perplexity-comet

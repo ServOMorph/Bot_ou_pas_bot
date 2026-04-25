@@ -165,6 +165,21 @@ agents:
         - id: "bizo-pricing"  ; tool_primary: "claude-sonnet-4-6"
         - id: "bizo-sales"    ; tool_primary: "chatgpt-chat-cloud"
 
+    OpsIA:
+      id: "ops-n2"
+      display_name: "🛠️ OpsIA Principal"
+      description: "Maintenance, Monitoring et Support"
+      tool:
+        primary: "claude-sonnet-4-6"
+        fallbacks: ["gemini-3-flash-antigravity", "gemma-4-local"]
+      temperature: 0.2
+      subs:
+        - id: "ops-monitoring" ; tool_primary: "gemini-3-flash-antigravity"
+        - id: "ops-support"    ; tool_primary: "claude-haiku-4-5"
+        - id: "ops-maintenance"; tool_primary: "claude-sonnet-4-6"
+        - id: "ops-db-admin"   ; tool_primary: "claude-sonnet-4-6"
+        - id: "ops-backup"     ; tool_primary: "gemma-4-local"
+
 # ============================================================================
 # NIVEAU 3 : SOUS-SOUS (45) - GÉNÉRÉS VIA SCRIPT
 # Exemples (complets via generate_pyramid.py)

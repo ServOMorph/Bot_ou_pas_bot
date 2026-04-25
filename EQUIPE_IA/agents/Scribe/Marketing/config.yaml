@@ -1,0 +1,8 @@
+display_name: Scribe marketing
+id: scribe-marketing
+level: 3
+parent: scribe-n2
+role: Spécialiste Marketing
+tool:
+  fallback: null
+  primary: claude-haiku-4-5

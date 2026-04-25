@@ -1,0 +1,8 @@
+display_name: Dezy icons expert
+id: dezy-icons-expert
+level: 4
+parent: dezy-icons
+role: Expert ultra-spécialisé Icons
+tool:
+  fallback: null
+  primary: claude-sonnet-4-6

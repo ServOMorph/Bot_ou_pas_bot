@@ -1,0 +1,8 @@
+display_name: Mobi pwa expert
+id: mobi-pwa-expert
+level: 4
+parent: mobi-pwa
+role: Expert ultra-spécialisé Pwa
+tool:
+  fallback: null
+  primary: claude-sonnet-4-6

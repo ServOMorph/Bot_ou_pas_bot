@@ -1,0 +1,8 @@
+display_name: Quali perf
+id: quali-perf
+level: 3
+parent: quali-n2
+role: Spécialiste Perf
+tool:
+  fallback: null
+  primary: gemma-4-local

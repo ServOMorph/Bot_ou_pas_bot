@@ -1,0 +1,8 @@
+display_name: Quali load
+id: quali-load
+level: 3
+parent: quali-n2
+role: Spécialiste Load
+tool:
+  fallback: null
+  primary: gemini-3-flash-antigravity

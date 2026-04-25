@@ -1,0 +1,8 @@
+display_name: Ops maintenance
+id: ops-maintenance
+level: 3
+parent: ops-n2
+role: Spécialiste Maintenance
+tool:
+  fallback: null
+  primary: claude-sonnet-4-6

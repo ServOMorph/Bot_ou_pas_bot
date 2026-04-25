@@ -1,0 +1,8 @@
+display_name: Fullo api expert
+id: fullo-api-expert
+level: 4
+parent: fullo-api
+role: Expert ultra-spécialisé Api
+tool:
+  fallback: null
+  primary: chatgpt-codex

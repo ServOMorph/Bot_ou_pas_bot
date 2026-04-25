@@ -1,0 +1,8 @@
+display_name: Grow discord expert
+id: grow-discord-expert
+level: 4
+parent: grow-discord
+role: Expert ultra-spécialisé Discord
+tool:
+  fallback: null
+  primary: perplexity-comet

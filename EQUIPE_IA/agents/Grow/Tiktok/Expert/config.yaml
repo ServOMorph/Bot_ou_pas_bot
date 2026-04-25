@@ -1,0 +1,8 @@
+display_name: Grow tiktok expert
+id: grow-tiktok-expert
+level: 4
+parent: grow-tiktok
+role: Expert ultra-spécialisé Tiktok
+tool:
+  fallback: null
+  primary: claude-sonnet-4-6

@@ -1,0 +1,8 @@
+display_name: Scribe docs
+id: scribe-docs
+level: 3
+parent: scribe-n2
+role: Spécialiste Docs
+tool:
+  fallback: null
+  primary: claude-haiku-4-5

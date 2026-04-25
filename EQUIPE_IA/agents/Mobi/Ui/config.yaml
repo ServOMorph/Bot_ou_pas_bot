@@ -1,0 +1,8 @@
+display_name: Mobi ui
+id: mobi-ui
+level: 3
+parent: mobi-n2
+role: Spécialiste Ui
+tool:
+  fallback: null
+  primary: claude-design

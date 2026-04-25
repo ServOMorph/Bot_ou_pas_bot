@@ -1,0 +1,8 @@
+display_name: Quali unit expert
+id: quali-unit-expert
+level: 4
+parent: quali-unit
+role: Expert ultra-spécialisé Unit
+tool:
+  fallback: null
+  primary: gemini-3-flash-antigravity

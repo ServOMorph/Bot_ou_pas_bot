@@ -1,5 +1,10 @@
-# Dezy - UI/UX Design
-tool: claude-design
+display_name: 🎨 Dezy Principal
+id: dezy-n2
+level: 2
+role: Expert Dezy
 temperature: 0.7
-role: design
-description: "UI/UX Design dédié - Figma + composants visuels"
+tool:
+  fallbacks:
+  - claude-sonnet-4-6
+  - gemini-web-chat
+  primary: claude-design

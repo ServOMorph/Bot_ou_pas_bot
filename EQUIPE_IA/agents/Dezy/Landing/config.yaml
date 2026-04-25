@@ -1,0 +1,8 @@
+display_name: Dezy landing
+id: dezy-landing
+level: 3
+parent: dezy-n2
+role: Spécialiste Landing
+tool:
+  fallback: null
+  primary: claude-design

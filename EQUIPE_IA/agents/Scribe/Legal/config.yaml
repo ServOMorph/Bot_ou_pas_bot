@@ -1,0 +1,8 @@
+display_name: Scribe legal
+id: scribe-legal
+level: 3
+parent: scribe-n2
+role: Spécialiste Legal
+tool:
+  fallback: null
+  primary: chatgpt-chat-cloud

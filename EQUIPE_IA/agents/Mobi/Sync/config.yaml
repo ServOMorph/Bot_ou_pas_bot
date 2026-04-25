@@ -1,0 +1,8 @@
+display_name: Mobi sync
+id: mobi-sync
+level: 3
+parent: mobi-n2
+role: Spécialiste Sync
+tool:
+  fallback: null
+  primary: gemini-web-chat

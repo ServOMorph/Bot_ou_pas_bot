@@ -1,0 +1,8 @@
+display_name: Mobi android
+id: mobi-android
+level: 3
+parent: mobi-n2
+role: Spécialiste Android
+tool:
+  fallback: null
+  primary: claude-sonnet-4-6

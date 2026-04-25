@@ -1,0 +1,8 @@
+display_name: Ops support
+id: ops-support
+level: 3
+parent: ops-n2
+role: Spécialiste Support
+tool:
+  fallback: null
+  primary: claude-haiku-4-5

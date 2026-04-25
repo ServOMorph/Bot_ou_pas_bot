@@ -1,0 +1,8 @@
+display_name: Bizo metrics
+id: bizo-metrics
+level: 3
+parent: bizo-n2
+role: Spécialiste Metrics
+tool:
+  fallback: null
+  primary: perplexity-comet

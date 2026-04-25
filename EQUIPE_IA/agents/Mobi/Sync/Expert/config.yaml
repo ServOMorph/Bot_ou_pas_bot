@@ -1,0 +1,8 @@
+display_name: Mobi sync expert
+id: mobi-sync-expert
+level: 4
+parent: mobi-sync
+role: Expert ultra-spécialisé Sync
+tool:
+  fallback: null
+  primary: gemini-web-chat

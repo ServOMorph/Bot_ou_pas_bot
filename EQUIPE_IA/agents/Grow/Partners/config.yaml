@@ -1,0 +1,8 @@
+display_name: Grow partners
+id: grow-partners
+level: 3
+parent: grow-n2
+role: Spécialiste Partners
+tool:
+  fallback: null
+  primary: chatgpt-chat-cloud

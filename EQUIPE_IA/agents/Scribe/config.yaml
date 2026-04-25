@@ -1,5 +1,10 @@
-# Scribe - Documentation FR
-tool: claude-haiku-4-5
+display_name: 📝 Scribe Principal
+id: scribe-n2
+level: 2
+role: Expert Scribe
 temperature: 0.2
-role: development
-description: "Documentation FR rapide & légère - READMEs + wikis"
+tool:
+  fallbacks:
+  - mistral-web
+  - chatgpt-chat-cloud
+  primary: claude-haiku-4-5

@@ -1,0 +1,8 @@
+display_name: Grow seo
+id: grow-seo
+level: 3
+parent: grow-n2
+role: Spécialiste Seo
+tool:
+  fallback: null
+  primary: perplexity-comet

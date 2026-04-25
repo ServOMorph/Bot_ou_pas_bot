@@ -1,0 +1,8 @@
+display_name: Scribe tutos
+id: scribe-tutos
+level: 3
+parent: scribe-n2
+role: Spécialiste Tutos
+tool:
+  fallback: null
+  primary: mistral-web

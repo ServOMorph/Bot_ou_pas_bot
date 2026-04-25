@@ -1,0 +1,8 @@
+display_name: Bizo premium expert
+id: bizo-premium-expert
+level: 4
+parent: bizo-premium
+role: Expert ultra-spécialisé Premium
+tool:
+  fallback: null
+  primary: chatgpt-chat-cloud

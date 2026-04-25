@@ -1,0 +1,8 @@
+display_name: Fullo node
+id: fullo-node
+level: 3
+parent: fullo-n2
+role: Spécialiste Node
+tool:
+  fallback: null
+  primary: claude-sonnet-4-6

@@ -1,0 +1,8 @@
+display_name: Scribe stories expert
+id: scribe-stories-expert
+level: 4
+parent: scribe-stories
+role: Expert ultra-spécialisé Stories
+tool:
+  fallback: null
+  primary: claude-haiku-4-5

@@ -1,5 +1,10 @@
-# Archi - Architecture technique
-tool: claude-sonnet-4-6
+display_name: 🏗️ Archi Principal
+id: archi-n2
+level: 2
+role: Expert Archi
 temperature: 0.2
-role: development
-description: "Architecture technique et décisions archi - Ollama + Claude"
+tool:
+  fallbacks:
+  - chatgpt-codex
+  - claude-code
+  primary: claude-sonnet-4-6

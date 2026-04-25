@@ -1,0 +1,8 @@
+display_name: Scribe docs expert
+id: scribe-docs-expert
+level: 4
+parent: scribe-docs
+role: Expert ultra-spécialisé Docs
+tool:
+  fallback: null
+  primary: claude-haiku-4-5

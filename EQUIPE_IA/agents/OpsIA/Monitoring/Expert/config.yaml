@@ -1,0 +1,8 @@
+display_name: Ops monitoring expert
+id: ops-monitoring-expert
+level: 4
+parent: ops-monitoring
+role: Expert ultra-spécialisé Monitoring
+tool:
+  fallback: null
+  primary: gemini-3-flash-antigravity

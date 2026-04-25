@@ -1,5 +1,10 @@
-# Quali - Quality Assurance & Tests
-tool: gemini-3-flash
+display_name: 🧪 Quali Principal
+id: quali-n2
+level: 2
+role: Expert Quali
 temperature: 0.1
-role: testing
-description: "Tests rapides & éco - Quality Assurance (Antigravity)"
+tool:
+  fallbacks:
+  - gemma-4-local
+  - claude-haiku-4-5
+  primary: gemini-3-flash-antigravity

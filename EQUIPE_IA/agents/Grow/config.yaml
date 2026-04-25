@@ -1,5 +1,10 @@
-# Grow - Growth Strategy
-tool: claude-sonnet-4-6
+display_name: 🚀 Grow Principal
+id: grow-n2
+level: 2
+role: Expert Grow
 temperature: 0.6
-role: development
-description: "Stratégies virales FR - Marketing + croissance"
+tool:
+  fallbacks:
+  - perplexity-comet
+  - chatgpt-chat-cloud
+  primary: claude-sonnet-4-6

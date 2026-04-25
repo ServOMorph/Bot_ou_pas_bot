@@ -1,0 +1,8 @@
+display_name: Scribe marketing expert
+id: scribe-marketing-expert
+level: 4
+parent: scribe-marketing
+role: Expert ultra-spécialisé Marketing
+tool:
+  fallback: null
+  primary: claude-haiku-4-5

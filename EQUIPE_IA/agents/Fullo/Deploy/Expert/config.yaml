@@ -1,0 +1,8 @@
+display_name: Fullo deploy expert
+id: fullo-deploy-expert
+level: 4
+parent: fullo-deploy
+role: Expert ultra-spécialisé Deploy
+tool:
+  fallback: null
+  primary: claude-sonnet-4-6

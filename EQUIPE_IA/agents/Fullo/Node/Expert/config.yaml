@@ -1,0 +1,8 @@
+display_name: Fullo node expert
+id: fullo-node-expert
+level: 4
+parent: fullo-node
+role: Expert ultra-spécialisé Node
+tool:
+  fallback: null
+  primary: claude-sonnet-4-6

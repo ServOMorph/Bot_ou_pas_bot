@@ -1,0 +1,8 @@
+display_name: Fullo react
+id: fullo-react
+level: 3
+parent: fullo-n2
+role: Spécialiste React
+tool:
+  fallback: null
+  primary: claude-sonnet-4-6

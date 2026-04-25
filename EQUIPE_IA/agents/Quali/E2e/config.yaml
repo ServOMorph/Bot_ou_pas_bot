@@ -1,0 +1,8 @@
+display_name: Quali e2e
+id: quali-e2e
+level: 3
+parent: quali-n2
+role: Spécialiste E2e
+tool:
+  fallback: null
+  primary: gemini-3-flash-antigravity
