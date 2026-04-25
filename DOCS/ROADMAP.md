@@ -46,9 +46,10 @@
 - [x] **`ROADMAP_EQUIPE_IA.md`** — Roadmap stratégique 5 phases (P0-P4), 19 tâches déléguées aux agents spécialisés, système de suivi (2026-04-24).
 - [x] **Phase 0 Complétée** : Tests & Fixtures (Quali), Templates (Scribe), CI/CD Pipeline (Fullo) (2026-04-25).
 - [x] **Phase 1 Complétée** : Pyramide de 100 agents générée, configurée et testée (Archi, Fullo, Quali, Scribe) (2026-04-25).
+- [x] **Intégration Workflow** : Commandes `/start` et `/close` synchronisées avec la pyramide 100 IA (ChefIA) (2026-04-25).
 
-- [ ] **Phase 2 (MVP Duel)** : Lancement du design UI mobile et flow d'invitation.
-- [ ] `.claude/commands/activation_equipe_IA.md` — workflow slash command (Phase 2).
+- [/] **Phase 2 (MVP Duel)** : Lancement du design UI mobile et flow d'invitation.
+- [x] `.claude/commands/activation_equipe_IA.md` — workflow intégré à startV2.md (2026-04-25).
 
 📚 **Roadmap détaillée:** voir [`ROADMAP_EQUIPE_IA.md`](../ROADMAP_EQUIPE_IA.md) à la racine pour le plan complet des 5 phases, tâches par agent, et processus de clôture.
 

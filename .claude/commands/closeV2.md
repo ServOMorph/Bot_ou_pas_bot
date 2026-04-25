@@ -15,7 +15,19 @@ Parcourir toute la conversation pour identifier :
 - Les problèmes résolus
 - Les points en suspens
 
-### 2. Mise à jour de la ROADMAP
+### 2. Clôture de l'Équipe IA (100 Agents) 🤖
+
+En tant qu'orchestrateur (**ChefIA**), assurer la synchronisation de la pyramide :
+1. **Rapport de Session** : Générer un résumé détaillé des actions (Niv1, Niv2, Niv3) dans `EQUIPE_IA/outputs/ChefIA/session_[DATE]_[HEURE].md`.
+2. **Source de Vérité** : Mettre à jour `EQUIPE_IA/outputs/ChefIA/dernier_session.md` (copie du dernier rapport).
+3. **Dashboard & Registre** : 
+   - Mettre à jour `EQUIPE_IA/agents-registry.yaml` si la hiérarchie a évolué.
+   - Régénérer le fichier `registry.json` pour l'UI :
+     ```bash
+     python DEV_RAPH_SCRIPTS/generate_ui.py
+     ```
+
+### 3. Mise à jour de la ROADMAP
 
 Modifier `docs/ROADMAP.md` (s'il existe) pour :
 - Cocher les tâches terminées (ajouter le marqueur approprié)
@@ -23,7 +35,7 @@ Modifier `docs/ROADMAP.md` (s'il existe) pour :
 - Ajouter les nouvelles tâches identifiées
 - Noter la date de dernière mise à jour
 
-### 3. Mise à jour du README
+### 4. Mise à jour du README
 
 Modifier `README.md` (s'il existe) pour :
 - Refléter l'état actuel du projet
@@ -31,7 +43,7 @@ Modifier `README.md` (s'il existe) pour :
 - Mettre à jour les instructions d'installation si nécessaire
 - Créer le fichier s'il n'existe pas avec une structure de base
 
-### 4. Extraire et stocker les apprentissages 📚
+### 5. Extraire et stocker les apprentissages 📚
 
 **Systeme centralise** : `C:\Users\raph6\Documents\ServOMorph\Agents_IA_V2\.claude\learnings\`
 
@@ -49,7 +61,7 @@ python C:\Users\raph6\Documents\ServOMorph\Agents_IA_V2\.claude\learnings\learni
 
 Afficher le nombre d'apprentissages enregistres.
 
-### 5. Création du commit
+### 6. Création du commit
 
 Exécuter les commandes git :
 ```bash
@@ -76,7 +88,7 @@ Types de commit :
 - `test` : ajout de tests
 - `chore` : maintenance
 
-### 6. Rapport de clôture
+### 7. Rapport de clôture
 
 Présenter un résumé :
 

@@ -2,7 +2,7 @@
   "meta": {
     "version": "2.1",
     "project": "Bot ou pas Bot ? - Pyramide 100 Agents",
-    "generated": "2026-04-24T15:38:35",
+    "generated": "2026-04-25T14:25:27",
     "source": "agents-registry.yaml"
   },
   "pyramid": {
@@ -316,6 +316,41 @@
         {
           "id": "bizo-sales",
           "tool": "chatgpt-chat-cloud"
+        }
+      ]
+    },
+    {
+      "name": "OpsIA",
+      "level": 2,
+      "display_name": "🛠️ OpsIA Principal",
+      "description": "Maintenance, Monitoring et Support",
+      "role": "",
+      "tool_primary": "claude-sonnet-4-6",
+      "fallbacks": [
+        "gemini-3-flash-antigravity",
+        "gemma-4-local"
+      ],
+      "temperature": 0.2,
+      "subs": [
+        {
+          "id": "ops-monitoring",
+          "tool": "gemini-3-flash-antigravity"
+        },
+        {
+          "id": "ops-support",
+          "tool": "claude-haiku-4-5"
+        },
+        {
+          "id": "ops-maintenance",
+          "tool": "claude-sonnet-4-6"
+        },
+        {
+          "id": "ops-db-admin",
+          "tool": "claude-sonnet-4-6"
+        },
+        {
+          "id": "ops-backup",
+          "tool": "gemma-4-local"
         }
       ]
     }

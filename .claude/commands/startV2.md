@@ -10,12 +10,17 @@ Tu dois effectuer les actions suivantes dans l'ordre :
 - Lire `docs/ROADMAP.md` (s'il existe) pour comprendre les phases, tâches et statuts actuels
 - Lire `README.md` (s'il existe) pour comprendre le contexte global du projet
 
-### 2. Analyse de l'état actuel
+### 2. Initiation de la Communication Agentique (100 IA) 🤖
+- Lire `EQUIPE_IA/agents-registry.yaml` pour charger la hiérarchie des 100 agents.
+- Trouver et lire le dernier rapport de session dans `EQUIPE_IA/outputs/ChefIA/` (le plus récent).
+- **Action Critique** : À partir de maintenant, agir en tant qu'orchestrateur de la pyramide des 100 agents pour traiter les demandes.
+
+### 3. Analyse de l'état actuel
 - Identifier les tâches marquées "En cours" ou "À démarrer"
 - Repérer les prochaines actions immédiates listées
 - Noter les métriques de succès définies
 
-### 3. Charger les apprentissages pertinents 📚
+### 4. Charger les apprentissages pertinents 📚
 
 **Systeme centralise** : `C:\Users\raph6\Documents\ServOMorph\Agents_IA_V2\.claude\learnings\`
 
@@ -26,7 +31,7 @@ Tu dois effectuer les actions suivantes dans l'ordre :
    ```
 3. Afficher les apprentissages charges (si disponibles)
 
-### 4. Synthèse à présenter
+### 5. Synthèse à présenter
 
 Présente un rapport structuré contenant :
 
@@ -52,7 +57,7 @@ Présente un rapport structuré contenant :
 [Liste des actions réalisables immédiatement]
 ```
 
-### 5. Question de démarrage
+### 6. Question de démarrage
 
 Termine en demandant :
 > "Sur quelle tâche souhaites-tu travailler ?"
