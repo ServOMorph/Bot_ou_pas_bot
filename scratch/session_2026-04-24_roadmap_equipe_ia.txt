@@ -1,0 +1,38 @@
+SESSION CONVERSATION — 2026-04-24
+Projet: Bot ou pas Bot ?
+Objectif: Créer roadmap Équipe IA avec système de suivi et délégation aux agents spécialisés
+
+## Contexte session
+Utilisateur demande mode plan pour créer ROADMAP.md à la racine qui orchestre l'équipe IA (pyramide 100 agents).
+Base: EQUIPE_IA/agents/ChefIA existe déjà, tools.yaml et agents-registry.yaml configurés.
+
+## Décisions clés prises
+1. Fréquence mise à jour ROADMAP = Hebdomadaire + lors du /close
+2. Structure outputs = outputs/[PHASE]/[AGENT]/ (scalable par phase)
+3. Pas de slash command séparé — intégration via /close
+
+## Livrable créé
+- ROADMAP_EQUIPE_IA.md à la racine du projet
+- 5 phases (P0-P4)
+- 19 tâches déléguées aux 9 agents (Quali, Scribe, Archi, Fullo, Dezy, Grow, Bizo, ChefIA, Mobi)
+- Système de suivi (statut, %, définition done, validation)
+- Processus de clôture avec escalade à ChefIA
+- Timeline 3 mois (2026-04-24 → 2026-07-24)
+
+## Apprentissages à retenir
+- Pour un projet multi-agents, structurer outputs par PHASE d'abord puis AGENT facilite les audits chronologiques
+- Une roadmap scalable doit inclure: objectif, durée, responsables, livrables, définitions de fait testables
+- Le système /close intégré évite d'ajouter un slash command dédié — moins de surface d'API
+- La pyramide 100 agents nécessite `generate_pyramid_100.py` pour générer Niv3+Niv4 automatiquement
+- ChefIA (Opus) orchestre, les 8 autres agents exécutent leurs spécialités (Quali=tests, Scribe=docs, etc.)
+
+## Fichiers modifiés cette session
+- ROADMAP_EQUIPE_IA.md (créé)
+- docs/ROADMAP.md (mis à jour avec lien vers nouvelle roadmap)
+- README.md (mis à jour avec référence à ROADMAP_EQUIPE_IA)
+
+## Prochaine session
+Phase 0 à démarrer:
+- P0T1: Setup tests & fixtures (Quali)
+- P0T2: Templates documentation (Scribe)
+- P0T3: CI/CD pipeline (Fullo)

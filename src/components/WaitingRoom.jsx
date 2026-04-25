@@ -116,7 +116,7 @@ export default function WaitingRoom({ userId, onMatchFound }) {
     console.log("🚀 [MATCHMAKING] Initialisation d'un duel contre le Bot...");
     setIsQueueing(true);
     
-    const botId = "00000000-0000-0000-0000-000000000000";
+    const botId = import.meta.env.VITE_BOT_USER_ID;
     console.log("📡 [SUPABASE] Création de la ligne de match avec Bot ID:", botId);
 
     const { data, error } = await supabase
