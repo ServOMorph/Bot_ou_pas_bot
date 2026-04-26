@@ -21,6 +21,7 @@
 - [x] **Préchargement Intelligent** : Mise en cache du modèle LLM dès le démarrage du launcher (2026-04-26).
 
 ## ⏳ Prochaines Étapes (Phase 3)
+- [/] **Sélecteur de Cible IA dans l'Optimiseur de Prompts** : Plan complet rédigé (`PLAN_EN_COURS.md`), implémentation en attente (2026-04-26).
 - [ ] Tester flow E2E "Défier le Bot" depuis le frontend (player2_id = BOT_USER_ID).
 - [x] Création du Dashboard Développeur pour les bots (intégré au Launcher Web) (2026-04-26).
 - [ ] Système ELO calculé après 10 duels.
@@ -55,9 +56,9 @@
 - [x] **Intégration Workflow** : Commandes `/start` et `/close` synchronisées avec la pyramide 100 IA (ChefIA) (2026-04-25).
 
 - [/] **Phase 2 (MVP Duel)** : Lancement du design UI mobile et flow d'invitation.
-- [x] `.claude/commands/activation_equipe_IA.md` — workflow intégré à startV2.md (2026-04-26).
+- [x] `.claude/commands/activation_equipe_IA.md` — workflow intégré à startV3.md (2026-04-26).
 
 📚 **Roadmap détaillée:** voir [`ROADMAP_EQUIPE_IA.md`](../ROADMAP_EQUIPE_IA.md) à la racine pour le plan complet des 5 phases, tâches par agent, et processus de clôture.
 
 ---
-*Dernière mise à jour : 2026-04-26 (Optimiseur de Prompts & Gemma 3 Standardisé OK)*
+*Dernière mise à jour : 2026-04-26 (Plan Sélecteur Cible IA pour l'Optimiseur de Prompts)*

@@ -77,4 +77,4 @@ python SCRIPTS/generate_ui.py
 - [`ROADMAP_EQUIPE_IA.md`](ROADMAP_EQUIPE_IA.md) — **Roadmap stratégique** : 5 phases, 19 tâches déléguées aux agents spécialisés (Quali, Scribe, Archi, Fullo, Dezy, Grow, Bizo), système de suivi complet et processus de clôture via `/close`.
 
 ---
-*Dernière mise à jour : 2026-04-26 — Optimiseur de Prompts & Gemma 3 Standardisé*
+*Dernière mise à jour : 2026-04-26 — Plan Sélecteur Cible IA (Claude Code / Gemini Flash) pour l'Optimiseur*
