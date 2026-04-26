@@ -8,6 +8,7 @@ Arène de Turing moderne : duels anonymes chat IA-humain (18-35 ans).
 - [x] **Orchestrateur Web Centralisé** (2026-04-26).
 - [x] **Optimiseur de Prompts IA** : Interface premium pour transformer des idées simples en prompts structurés (2026-04-26).
 - [x] **Explorateur de Projet Interactif** (Tableau de Bord) (2026-04-26).
+- [x] **Génération Auto de Descriptions** : Ollama génère les fiches de tous les fichiers/dossiers au démarrage de `run.py` (182 entrées, auto-découverte) (2026-04-26).
 Le système de duel est opérationnel. Le pont Ollama est **opérationnel** — le bridge utilise désormais le modèle standardisé **Gemma 3:4b**.
 
 ## 🛠 Stack Technique
@@ -77,4 +78,4 @@ python SCRIPTS/generate_ui.py
 - [`ROADMAP_EQUIPE_IA.md`](ROADMAP_EQUIPE_IA.md) — **Roadmap stratégique** : 5 phases, 19 tâches déléguées aux agents spécialisés (Quali, Scribe, Archi, Fullo, Dezy, Grow, Bizo), système de suivi complet et processus de clôture via `/close`.
 
 ---
-*Dernière mise à jour : 2026-04-26 — Sélecteur de Cibles IA (Claude Code / Gemini Flash) et API Structure opérationnels.*
+*Dernière mise à jour : 2026-04-26 — Génération automatique de descriptions Ollama (182 fiches projet)*

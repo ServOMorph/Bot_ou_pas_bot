@@ -42,5 +42,689 @@
     "package.json": {
         "title": "Le Livre des Ingrédients",
         "desc": "Liste toutes les bibliothèques et outils nécessaires pour faire tourner le projet."
+    },
+    "config.py": {
+        "title": "Configuration du Projet",
+        "desc": "Ce fichier contient les paramètres de configuration essentiels du projet, tels que les URL des bases de données, les clés API et les chemins de fichiers."
+    },
+    "SCRIPTS/ollama_utils.py": {
+        "title": "Utilitaires Ollama",
+        "desc": "Ce fichier contient des fonctions utilitaires pour interagir avec l'API Ollama, notamment l'exécution de modèles et la gestion des modèles."
+    },
+    "SCRIPTS/ollama_bridge.py": {
+        "title": "Pont Ollama vers Python",
+        "desc": "Ce script crée un pont entre l'environnement Ollama et le code Python, permettant d'interagir avec les modèles Ollama via des appels API."
+    },
+    "SCRIPTS/generate_ui.py": {
+        "title": "Génération de l'interface utilisateur",
+        "desc": "Ce script génère automatiquement des fichiers d'interface utilisateur à partir de données de configuration, simplifiant le processus de développement de l'UI."
+    },
+    "SCRIPTS/description_generator.py": {
+        "title": "Générateur de Description",
+        "desc": "Ce script génère automatiquement des descriptions pour les fonctionnalités ou éléments du projet, facilitant la documentation et la communication."
+    },
+    "UI/dashboard.html": {
+        "title": "Tableau de bord HTML",
+        "desc": "Ce fichier HTML constitue l'interface utilisateur principale du tableau de bord, affichant les données et les contrôles pour l'utilisateur."
+    },
+    "UI/prompt_optimizer.html": {
+        "title": "Optimiseur de Prompts",
+        "desc": "Ce fichier HTML définit l'interface utilisateur pour l'optimisation des prompts, permettant la modification et le test des prompts dans l'application."
+    },
+    "UI/launcher.html": {
+        "title": "Fichier de lancement UI",
+        "desc": "Ce fichier HTML est le point d'entrée de l'interface utilisateur pour l'application, chargeant les composants et initialisant l'application principale."
+    },
+    "UI/descriptions.json": {
+        "title": "Descriptions Interface Utilisateur",
+        "desc": "Ce fichier JSON contient les descriptions textuelles pour chaque élément de l'interface utilisateur, assurant une documentation claire pour le développement et l'accessibilité."
+    },
+    "EQUIPE_IA/agents-registry.yaml": {
+        "title": "Registre des Agents IA",
+        "desc": "Ce fichier YAML définit et gère l'ensemble des agents d'IA utilisés dans le projet, incluant leurs noms, descriptions et configurations."
+    },
+    "APPRENTISSAGES": {
+        "title": "Dossier Apprentissages",
+        "desc": "Contient les notes, réflexions et objectifs d'apprentissage liés au projet logiciel. Il sert de trace écrite du processus d'apprentissage de l'équipe."
+    },
+    "APPRENTISSAGES/bugs_resolved": {
+        "title": "Résolution des Bugs",
+        "desc": "Ce dossier contient un historique des bugs corrigés, avec des notes sur leur résolution et les actions entreprises."
+    },
+    "APPRENTISSAGES/bugs_resolved/matchmaking_fixes.md": {
+        "title": "Corrections Bug Matchmaking",
+        "desc": "Ce fichier documente les bugs liés au matchmaking qui ont été résolus, incluant les descriptions, les solutions et les résultats des tests."
+    },
+    "APPRENTISSAGES/core": {
+        "title": "Coeur du projet",
+        "desc": "Ce dossier contient le code source principal de l'application, incluant la logique métier et les fonctionnalités centrales."
+    },
+    "APPRENTISSAGES/meta.json": {
+        "title": "Configuration des métadonnées",
+        "desc": "Ce fichier JSON contient les métadonnées du projet, telles que la version, l'auteur et la description, permettant de documenter et de suivre le projet."
+    },
+    "DOCS": {
+        "title": "Documentation du Projet",
+        "desc": "Contient la documentation complète du projet logiciel, incluant les spécifications, les guides d'utilisation et les schémas techniques."
+    },
+    "DOCS/docs à forunir.md": {
+        "title": "Documentation de l'application",
+        "desc": "Ce fichier `.md` contient la documentation de base pour le projet, incluant les instructions de mise en place et les points clés à connaître."
+    },
+    "DOCS/spec_produit.md": {
+        "title": "Spécifications Produit",
+        "desc": "Ce fichier détaille les exigences fonctionnelles et non fonctionnelles du produit logiciel, servant de base au développement et au test."
+    },
+    "DOCS/SSD_v6.md": {
+        "title": "Documentation Projet SSD",
+        "desc": "Ce fichier contient la documentation technique détaillée du projet SSD, incluant les spécifications, l'architecture et les procédures de développement."
+    },
+    "DOCS/test_de_turing.md": {
+        "title": "Test de Turing Documentation",
+        "desc": "Ce fichier documente le projet 'test_de_turing', expliquant son objectif, sa conception et les tests réalisés."
+    },
+    "DOCS/user_stories.md": {
+        "title": "User Stories Documentation",
+        "desc": "Ce fichier contient la liste des user stories du projet, décrivant les besoins des utilisateurs et les fonctionnalités à implémenter."
+    },
+    "EQUIPE_IA/agents": {
+        "title": "Agents IA",
+        "desc": "Ce dossier contient les fichiers définissant les différents agents d'intelligence artificielle du projet, incluant leurs comportements, leurs capacités et leurs interactions."
+    },
+    "EQUIPE_IA/agents/Archi": {
+        "title": "Architecture Agent IA",
+        "desc": "Ce dossier contient l'architecture de base des agents d'IA du projet, définissant leurs composants et interfaces communs."
+    },
+    "EQUIPE_IA/agents/Archi/Backend": {
+        "title": "Backend Archi Agents IA",
+        "desc": "Ce dossier contient le code du backend qui gère la logique et les interactions pour les agents d'IA définis dans l'architecture 'Archi'."
+    },
+    "EQUIPE_IA/agents/Archi/Db": {
+        "title": "Structure Base de Données",
+        "desc": "Dossier contenant la définition de la base de données pour l'équipe d'IA, incluant les schémas, tables et relations des données gérées par les agents."
+    },
+    "EQUIPE_IA/agents/Archi/Frontend": {
+        "title": "Frontend Agent IA",
+        "desc": "Contient le code source du frontend de l'agent IA, responsable de l'interface utilisateur et de la communication avec le backend."
+    },
+    "EQUIPE_IA/agents/Archi/Ollama": {
+        "title": "Gestionnaire Ollama",
+        "desc": "Ce dossier contient la configuration et les scripts nécessaires à l'intégration de l'API Ollama dans l'architecture IA du projet, permettant d'accéder et d'utiliser des modèles de langage via une interface standardisée."
+    },
+    "EQUIPE_IA/agents/Archi/Security": {
+        "title": "Architecture Sécurité Agents IA",
+        "desc": "Ce dossier contient l'architecture et les composants relatifs à la sécurité des agents d'IA, incluant les mécanismes de protection des données et les contrôles d'accès."
+    },
+    "EQUIPE_IA/agents/Archi/config.yaml": {
+        "title": "Configuration des Agents IA",
+        "desc": "Ce fichier YAML contient les paramètres de configuration des agents IA, définissant leur comportement, leurs compétences et leurs interactions au sein du système."
+    },
+    "EQUIPE_IA/agents/Archi/prompt.md": {
+        "title": "Prompt d'Archi IA",
+        "desc": "Ce fichier contient le prompt initial utilisé pour générer les descriptions et comportements de l'agent Archi, un agent de simulation IA pour l'étude de l'architecture des organisations."
+    },
+    "EQUIPE_IA/agents/Archi/tools.yaml": {
+        "title": "Outils d'architecture IA",
+        "desc": "Ce fichier YAML définit la configuration et les outils utilisés pour l'architecture des agents d'IA du projet, incluant des définitions de types et des scripts utilitaires."
+    },
+    "EQUIPE_IA/agents/Bizo": {
+        "title": "Agent Bizo",
+        "desc": "Ce dossier contient le code source de l'agent Bizo, un agent IA participant à la simulation du jeu, responsable de la prise de décision et des actions dans son environnement."
+    },
+    "EQUIPE_IA/agents/Bizo/Freemium": {
+        "title": "Bizo Freemium Agent",
+        "desc": "Ce dossier contient le code source et les configurations de l'agent Bizo, dédié à la fonctionnalité Freemium du projet IA. Il gère l'interaction de l'agent avec les utilisateurs freemium et leur attribution de fonctionnalités."
+    },
+    "EQUIPE_IA/agents/Bizo/Metrics": {
+        "title": "Métriques Agent Bizo",
+        "desc": "Ce dossier contient les métriques et scripts de suivi pour l'agent Bizo de l'IA, permettant de mesurer ses performances et son comportement."
+    },
+    "EQUIPE_IA/agents/Bizo/Premium": {
+        "title": "Agent Bizo Premium",
+        "desc": "Ce dossier contient les fichiers définissant l'agent Bizo Premium, un agent IA spécialisé dans la gestion de comptes clients de haut niveau, incluant son comportement et ses données."
+    },
+    "EQUIPE_IA/agents/Bizo/Pricing": {
+        "title": "Gestion des Prix Bizo",
+        "desc": "Ce dossier contient le code et les données liés à la logique de tarification spécifique à l'agent Bizo, intégrant des règles et des algorithmes pour déterminer les prix proposés aux clients."
+    },
+    "EQUIPE_IA/agents/Bizo/Sales": {
+        "title": "Agent Bizo - Ventes",
+        "desc": "Ce dossier contient le code source et les données de l'agent Bizo, un simulateur de vente utilisé dans le cadre du projet IA pour le domaine des ventes."
+    },
+    "EQUIPE_IA/agents/Bizo/config.yaml": {
+        "title": "Configuration Agent Bizo",
+        "desc": "Ce fichier YAML contient les paramètres de configuration spécifiques à l'agent Bizo, notamment ses interactions et ses données de référence."
+    },
+    "EQUIPE_IA/agents/Bizo/prompt.md": {
+        "title": "Prompt Bizo Agent IA",
+        "desc": "Ce fichier définit le prompt utilisé pour guider le comportement de l'agent Bizo de l'équipe IA, spécifiant ses rôles et ses objectifs conversationnels."
+    },
+    "EQUIPE_IA/agents/Bizo/tools.yaml": {
+        "title": "Outils Bizo IA",
+        "desc": "Ce fichier YAML définit les outils et fonctions spécifiques disponibles pour l'agent Bizo dans l'environnement IA du projet."
+    },
+    "EQUIPE_IA/agents/ChefIA": {
+        "title": "ChefIA Agent",
+        "desc": "Ce fichier définit l'agent IA principal, responsable de la coordination des autres agents et de la prise de décision stratégique du système."
+    },
+    "EQUIPE_IA/agents/ChefIA/config.yaml": {
+        "title": "Configuration ChefIA Agent",
+        "desc": "Définit les paramètres de configuration pour l'agent ChefIA \"ChefIA\" utilisé par le système d'IA, incluant des informations telles que les adresses IP et les clés d'API."
+    },
+    "EQUIPE_IA/agents/ChefIA/prompt.md": {
+        "title": "Prompt Chef IA",
+        "desc": "Définit les instructions et le rôle du Chef IA, un agent d'IA responsable de la coordination des autres agents et de la prise de décision stratégique."
+    },
+    "EQUIPE_IA/agents/ChefIA/tools.yaml": {
+        "title": "Outils du Chef IA",
+        "desc": "Ce fichier YAML définit les outils et les fonctions disponibles pour le Chef IA, facilitant son contrôle et sa gestion au sein du projet."
+    },
+    "EQUIPE_IA/agents/Dezy": {
+        "title": "Agent Dezy - IA",
+        "desc": "Ce dossier contient le code source et les données de configuration de l'agent IA Dezy, un personnage conversationnel participant à la simulation projet."
+    },
+    "EQUIPE_IA/agents/Dezy/Anim": {
+        "title": "Animaux de Dezy",
+        "desc": "Ce dossier contient les animations et les ressources graphiques spécifiques à l'agent Dezy, un personnage IA."
+    },
+    "EQUIPE_IA/agents/Dezy/Duels": {
+        "title": "Comportement Dezy en Duels",
+        "desc": "Ce dossier contient le code source définissant le comportement de l'agent IA Dezy lors des duels, incluant ses stratégies et actions spécifiques."
+    },
+    "EQUIPE_IA/agents/Dezy/Icons": {
+        "title": "Icônes Dezy Agent",
+        "desc": "Ce dossier contient les icônes graphiques associées à l'agent Dezy, un agent IA du projet."
+    },
+    "EQUIPE_IA/agents/Dezy/Landing": {
+        "title": "Page d'accueil Dezy",
+        "desc": "Présente Dezy, l'agent IA, et fournit un point d'entrée pour explorer ses capacités et son rôle dans le projet."
+    },
+    "EQUIPE_IA/agents/Dezy/Mobile": {
+        "title": "Composant Agent Dezy Mobile",
+        "desc": "Ce dossier contient le code source et les ressources spécifiques à l'agent Dezy, version mobile, du projet IA. Il gère les interactions et les comportements de Dezy sur les plateformes mobiles."
+    },
+    "EQUIPE_IA/agents/Dezy/config.yaml": {
+        "title": "Configuration Agent Dezy",
+        "desc": "Ce fichier YAML définit les paramètres de configuration spécifiques pour l'agent de simulation 'Dezy', incluant ses compétences, ses préférences et ses objectifs."
+    },
+    "EQUIPE_IA/agents/Dezy/prompt.md": {
+        "title": "Prompt Dezy l'Agent",
+        "desc": "Ce fichier contient le prompt détaillé utilisé pour guider le comportement et les réponses de l'agent IA 'Dezy', incluant son rôle, sa personnalité et ses objectifs."
+    },
+    "EQUIPE_IA/agents/Dezy/tools.yaml": {
+        "title": "Outils Dezy l'Agent IA",
+        "desc": "Ce fichier YAML définit les outils et fonctionnalités spécifiques disponibles pour l'agent IA 'Dezy', permettant son interaction et son exécution de tâches."
+    },
+    "EQUIPE_IA/agents/Fullo": {
+        "title": "Agent IA Complet",
+        "desc": "Ce dossier contient l'agent IA complet, responsable de la gestion de la conversation et de l'interaction avec l'utilisateur."
+    },
+    "EQUIPE_IA/agents/Fullo/Api": {
+        "title": "API Agent Fullo",
+        "desc": "Cette arborescence contient l'API utilisée pour interagir avec l'agent Fullo, gérant les requêtes et les interactions avec le système."
+    },
+    "EQUIPE_IA/agents/Fullo/Deploy": {
+        "title": "Déploiement Agent Fullo",
+        "desc": "Contient les fichiers nécessaires au déploiement de l'agent Fullo, notamment les scripts et configurations pour l'exécution dans l'environnement cible."
+    },
+    "EQUIPE_IA/agents/Fullo/Node": {
+        "title": "Nœuds de l'agent Fullo",
+        "desc": "Ce dossier contient les nœuds individuels qui composent l'agent Fullo, gérant des tâches spécifiques dans le processus d'IA."
+    },
+    "EQUIPE_IA/agents/Fullo/React": {
+        "title": "Composants React Fullo",
+        "desc": "Ce dossier contient les composants React spécifiques à l'agent Fullo, gérant son interface utilisateur et ses interactions."
+    },
+    "EQUIPE_IA/agents/Fullo/Tests": {
+        "title": "Tests Fullo Agent",
+        "desc": "Contient les fichiers de test unitaires et d'intégration pour l'agent Fullo de l'équipe IA."
+    },
+    "EQUIPE_IA/agents/Fullo/config.yaml": {
+        "title": "Configuration Agent Fullo",
+        "desc": "Définit les paramètres de configuration pour l'agent IA Fullo, incluant ses objectifs, ses actions et ses contraintes."
+    },
+    "EQUIPE_IA/agents/Fullo/prompt.md": {
+        "title": "Prompt Agent Fullo",
+        "desc": "Ce fichier contient le prompt utilisé pour guider le comportement de l'agent Fullo, définissant son rôle et ses instructions spécifiques pour les interactions."
+    },
+    "EQUIPE_IA/agents/Fullo/tools.yaml": {
+        "title": "Outils agent Fullo",
+        "desc": "Ce fichier YAML définit les outils disponibles pour l'agent Fullo, permettant l'interaction avec l'environnement et l'exécution de tâches spécifiques."
+    },
+    "EQUIPE_IA/agents/Grow": {
+        "title": "Agent Grow IA",
+        "desc": "Ce dossier contient le code source de l'agent IA 'Grow', responsable de la gestion et de la croissance de ressources dans l'environnement du jeu."
+    },
+    "EQUIPE_IA/agents/Grow/Discord": {
+        "title": "Intégration Discord Agent",
+        "desc": "Contient le code et les configurations nécessaires pour intégrer l'agent Grow dans le serveur Discord du projet, permettant ainsi la communication et l'interaction avec les utilisateurs."
+    },
+    "EQUIPE_IA/agents/Grow/Partners": {
+        "title": "Gestion des Partenaires IA",
+        "desc": "Ce dossier contient la logique de gestion et la définition des partenaires IA intégrés à l'agent Grow, permettant d'établir des relations et de collaborer avec d'autres entités d'IA."
+    },
+    "EQUIPE_IA/agents/Grow/Seo": {
+        "title": "Comportement SEO Agent",
+        "desc": "Ce dossier contient le code de Python définissant le comportement SEO de l'agent Grow, responsable de la création et de l'optimisation de contenu web."
+    },
+    "EQUIPE_IA/agents/Grow/Tiktok": {
+        "title": "Comportement TikTok Agent",
+        "desc": "Ce dossier contient les fichiers de code définissant le comportement de l'agent 'Grow' sur la plateforme TikTok, incluant la logique de publication et d'interaction."
+    },
+    "EQUIPE_IA/agents/Grow/Viral": {
+        "title": "Comportement Viral Agent",
+        "desc": "Ce dossier contient le code et les données définissant le comportement de l'agent 'Grow' ciblant la propagation virale dans le simulateur IA."
+    },
+    "EQUIPE_IA/agents/Grow/config.yaml": {
+        "title": "Configuration Agent Grow",
+        "desc": "Définit les paramètres de configuration spécifiques pour l'agent IA 'Grow', incluant ses objectifs, ses compétences et son comportement."
+    },
+    "EQUIPE_IA/agents/Grow/prompt.md": {
+        "title": "Prompt Agent Grow",
+        "desc": "Ce fichier contient le prompt utilisé par l'agent IA Grow pour générer du contenu textuel. Il définit le rôle, le style et les objectifs de l'agent."
+    },
+    "EQUIPE_IA/agents/Grow/tools.yaml": {
+        "title": "Outils d'agent Grow",
+        "desc": "Ce fichier YAML définit les outils disponibles pour l'agent Grow, permettant d'interagir avec l'environnement et d'effectuer des actions spécifiques."
+    },
+    "EQUIPE_IA/agents/Mobi": {
+        "title": "Agent Mobile IA",
+        "desc": "Ce dossier contient le code source et les données de définition d'un agent IA mobile, conçu pour interagir dans l'environnement du jeu."
+    },
+    "EQUIPE_IA/agents/Mobi/Android": {
+        "title": "Agent Mobi Android",
+        "desc": "Contient le code source et les ressources pour l'agent IA 'Mobi' fonctionnant sur Android, implémentant les interactions et fonctionnalités spécifiques à cette plateforme."
+    },
+    "EQUIPE_IA/agents/Mobi/Ios": {
+        "title": "Code iOS Agent Mobi",
+        "desc": "Ce dossier contient le code source spécifique à l'application iOS pour l'agent Mobi, assurant son intégration et son fonctionnement sur les appareils iOS."
+    },
+    "EQUIPE_IA/agents/Mobi/Pwa": {
+        "title": "Agent Mobi PWA",
+        "desc": "Ce dossier contient le code source de l'agent Mobi, implémenté via une application PWA, qui gère les interactions et les données spécifiques pour cet agent particulier."
+    },
+    "EQUIPE_IA/agents/Mobi/Sync": {
+        "title": "Synchronisation Agent Mobi",
+        "desc": "Ce dossier contient le code responsable de la synchronisation des données de l'agent Mobi avec le serveur central et inversement."
+    },
+    "EQUIPE_IA/agents/Mobi/Ui": {
+        "title": "Interface Utilisateur Mobi",
+        "desc": "Contient les fichiers UI spécifiques à l'agent Mobi de l'équipe IA, définissant son interface utilisateur et son interaction avec l'environnement."
+    },
+    "EQUIPE_IA/agents/Mobi/config.yaml": {
+        "title": "Configuration Agent Mobi",
+        "desc": "Ce fichier YAML définit les paramètres de configuration spécifiques pour l'agent Mobi, notamment ses actions, ses cibles et ses valeurs par défaut."
+    },
+    "EQUIPE_IA/agents/Mobi/prompt.md": {
+        "title": "Prompt pour Agent Mobi",
+        "desc": "Ce fichier contient le prompt initial et les instructions pour l'agent IA Mobi, définissant son rôle et ses objectifs principaux dans la simulation."
+    },
+    "EQUIPE_IA/agents/Mobi/tools.yaml": {
+        "title": "Outils Agents Mobiles",
+        "desc": "Ce fichier YAML définit les outils disponibles pour les agents mobiles (Mobi) au sein du projet IA, gérant leurs interactions et fonctionnalités spécifiques."
+    },
+    "EQUIPE_IA/agents/OpsIA": {
+        "title": "Agents d'Opérations IA",
+        "desc": "Ce dossier contient les définitions et la logique des agents IA responsables de l'exécution des opérations et du suivi du projet d'IA."
+    },
+    "EQUIPE_IA/agents/OpsIA/Admin": {
+        "title": "Gestion Administration OpsIA",
+        "desc": "Ce dossier contient le code source et les configurations relatives à l'administration des agents OpsIA, permettant la gestion des rôles, permissions et des paramètres système."
+    },
+    "EQUIPE_IA/agents/OpsIA/Backup": {
+        "title": "Sauvegarde Agents OpsIA",
+        "desc": "Ce dossier contient le code et les scripts pour effectuer des sauvegardes régulières des agents OpsIA, assurant la récupération des données en cas de besoin."
+    },
+    "EQUIPE_IA/agents/OpsIA/Maintenance": {
+        "title": "Maintenance des Agents IA",
+        "desc": "Ce dossier contient le code et les configurations nécessaires à la maintenance des agents d'IA de l'équipe OpsIA, incluant la surveillance, le diagnostic et les actions correctives."
+    },
+    "EQUIPE_IA/agents/OpsIA/Monitoring": {
+        "title": "Monitoring OpsIA",
+        "desc": "Ce dossier contient le code et les configurations relatives au monitoring des agents OpsIA, assurant la surveillance de leurs performances et de leur santé."
+    },
+    "EQUIPE_IA/agents/OpsIA/Support": {
+        "title": "Support OpsIA Agent",
+        "desc": "Ce dossier contient le code source et les ressources associées aux fonctionnalités de support pour l'agent OpsIA, notamment la gestion des incidents et l'assistance aux utilisateurs."
+    },
+    "EQUIPE_IA/agents/OpsIA/config.yaml": {
+        "title": "Configuration OpsIA Agent",
+        "desc": "Ce fichier YAML contient les paramètres de configuration spécifiques pour l'agent OpsIA, permettant de définir ses actions et ses interactions."
+    },
+    "EQUIPE_IA/agents/OpsIA/prompt.md": {
+        "title": "Prompt IA OpsIA",
+        "desc": "Ce fichier contient les instructions (prompt) utilisées par l'agent IA OpsIA pour interagir avec l'utilisateur et effectuer des tâches liées à l'optimisation des opérations."
+    },
+    "EQUIPE_IA/agents/Quali": {
+        "title": "Composants Agents Quali",
+        "desc": "Ce dossier contient les définitions et comportements des agents d'IA responsables de l'évaluation de la qualité des données et des services dans le projet EQUIPE_IA."
+    },
+    "EQUIPE_IA/agents/Quali/E2e": {
+        "title": "Tests E2E Quali",
+        "desc": "Ce dossier contient les scripts de tests d'acceptation à l'échelle des fonctionnalités (E2E) pour le module Quali, spécifiquement développés par l'équipe IA."
+    },
+    "EQUIPE_IA/agents/Quali/Load": {
+        "title": "Gestion Charge Quali IA",
+        "desc": "Ce dossier contient le code responsable de la gestion et de l'allocation de la charge de travail pour les agents IA dédiés à l'évaluation de la qualité."
+    },
+    "EQUIPE_IA/agents/Quali/Perf": {
+        "title": "Comportement Qualité Agent",
+        "desc": "Ce dossier contient les scripts de comportement de l'agent 'Quali', spécifiquement axés sur l'évaluation et l'amélioration des performances des autres agents."
+    },
+    "EQUIPE_IA/agents/Quali/Security": {
+        "title": "Comportement Agent Sécurité",
+        "desc": "Ce dossier contient les définitions et la logique de comportement des agents IA (Quali) dédiés à la surveillance et à la détection des menaces de sécurité."
+    },
+    "EQUIPE_IA/agents/Quali/Unit": {
+        "title": "Unit Agent IA",
+        "desc": "Ce dossier contient les agents IA spécifiques (Unit) dédiés à l'évaluation de la qualité, utilisés par le module 'Quali' de l'équipe IA."
+    },
+    "EQUIPE_IA/agents/Quali/config.yaml": {
+        "title": "Configuration Quali Agent",
+        "desc": "Ce fichier YAML définit les paramètres de configuration pour l'agent IA Quali, incluant des informations sur les données, les règles et le comportement de l'agent."
+    },
+    "EQUIPE_IA/agents/Quali/prompt.md": {
+        "title": "Prompt Quali IA",
+        "desc": "Ce fichier contient les prompts utilisés par l'agent IA Quali pour générer des données et des analyses relatives à la qualité des données."
+    },
+    "EQUIPE_IA/agents/Quali/tools.yaml": {
+        "title": "Outils d'IA Quali",
+        "desc": "Ce fichier YAML définit les outils et fonctions spécifiques utilisés pour l'analyse de la qualité dans le projet IA Quali, assurant la gestion des données et les calculs nécessaires à la modélisation."
+    },
+    "EQUIPE_IA/agents/Scribe": {
+        "title": "Agent Scribe",
+        "desc": "Ce dossier contient l'agent IA Scribe, responsable de la transcription et de la reformulation de texte."
+    },
+    "EQUIPE_IA/agents/Scribe/Docs": {
+        "title": "Documentation Scribe Agent",
+        "desc": "Contient la documentation relative à l'agent Scribe, un scribe IA, incluant ses fonctionnalités, son fonctionnement et ses dépendances."
+    },
+    "EQUIPE_IA/agents/Scribe/Legal": {
+        "title": "Scribe Agent Juridique",
+        "desc": "Ce dossier contient la logique et les données spécifiques de l'agent Scribe spécialisé dans le droit, permettant de générer des documents juridiques et de répondre à des questions juridiques de base."
+    },
+    "EQUIPE_IA/agents/Scribe/Marketing": {
+        "title": "Scribe Marketing Agent",
+        "desc": "Ce dossier contient les fichiers relatifs à l'agent Scribe spécialisé dans les tâches marketing, gérant la création et la distribution de contenu promotionnel."
+    },
+    "EQUIPE_IA/agents/Scribe/Stories": {
+        "title": "Gestion des Histoires",
+        "desc": "Ce dossier contient les fichiers définissant les histoires (stories) utilisées par l'agent Scribe pour générer des récits narratifs."
+    },
+    "EQUIPE_IA/agents/Scribe/Tutos": {
+        "title": "Tutoriels Scribe IA",
+        "desc": "Ce dossier contient les tutoriels et exemples de code pour l'utilisation de l'agent Scribe, un agent IA conçu pour la rédaction de textes."
+    },
+    "EQUIPE_IA/agents/Scribe/config.yaml": {
+        "title": "Configuration Scribe Agent",
+        "desc": "Ce fichier YAML définit les paramètres de configuration de l'agent Scribe, incluant les connexions aux bases de données et les définitions des tâches."
+    },
+    "EQUIPE_IA/agents/Scribe/prompt.md": {
+        "title": "Prompt Scribe Agent",
+        "desc": "Ce fichier contient le prompt détaillé utilisé pour guider l'agent IA Scribe, définissant son rôle et ses instructions spécifiques pour la génération de texte."
+    },
+    "EQUIPE_IA/agents/Scribe/tools.yaml": {
+        "title": "Outils Scribe IA",
+        "desc": "Ce fichier YAML définit les outils disponibles pour l'agent Scribe, notamment ceux liés à la collecte et au traitement d'informations."
+    },
+    "EQUIPE_IA/docs": {
+        "title": "Documentation Projet IA",
+        "desc": "Ce dossier contient la documentation associée au projet d'IA, incluant les spécifications, les choix techniques et les plans de développement."
+    },
+    "EQUIPE_IA/docs/glossaire.md": {
+        "title": "Glossaire IA",
+        "desc": "Ce fichier définit les termes clés utilisés dans le projet d'IA, assurant une compréhension commune de tous les membres de l'équipe."
+    },
+    "EQUIPE_IA/docs/hierarchie_pyramide.md": {
+        "title": "Hiérarchie Pyramide IA",
+        "desc": "Ce document décrit la structure hiérarchique de l'équipe IA, organisée sous forme de pyramide pour visualiser les rôles et responsabilités. Il détaille les niveaux de gestion et les compétences clés au sein de l'équipe."
+    },
+    "EQUIPE_IA/shared": {
+        "title": "Partage de Code IA",
+        "desc": "Ce dossier contient les fichiers de code partagés entre les différentes équipes travaillant sur l'IA, facilitant la réutilisation et la cohérence des composants."
+    },
+    "EQUIPE_IA/shared/context": {
+        "title": "Contexte Partagé IA",
+        "desc": "Ce dossier contient des fichiers de configuration et des données partagées nécessaires au fonctionnement des différents composants de l'équipe IA, centralisant ainsi des informations communes et optimisant la collaboration."
+    },
+    "EQUIPE_IA/shared/context/glossaire.md": {
+        "title": "Glossaire IA Projet",
+        "desc": "Définit les termes clés et leurs définitions spécifiques au projet IA, assurant une compréhension commune de l'équipe."
+    },
+    "EQUIPE_IA/shared/context/projet.md": {
+        "title": "Contexte Projet IA",
+        "desc": "Définit les informations générales et les objectifs communs à tous les projets d'IA utilisant cette équipe. Contient des détails sur la stratégie, les indicateurs clés et les parties prenantes."
+    },
+    "EQUIPE_IA/shared/templates": {
+        "title": "Modèles Partagés IA",
+        "desc": "Contient des modèles de fichiers pré-construits, notamment des templates de rapports et de documentation, utilisés par l'équipe IA pour accélérer le développement et assurer la cohérence."
+    },
+    "EQUIPE_IA/shared/tools": {
+        "title": "Outils Partagés IA",
+        "desc": "Ce dossier contient des outils et scripts réutilisables pour le développement et le support des projets d'Intelligence Artificielle, facilitant la collaboration et la standardisation des pratiques."
+    },
+    "EQUIPE_IA/templates": {
+        "title": "Templates IA",
+        "desc": "Contient des modèles de pages web et de composants d'interface utilisateur pré-construits pour les projets d'IA, facilitant le développement et assurant une cohérence visuelle."
+    },
+    "EQUIPE_IA/templates/template_phase.md": {
+        "title": "Template Phase IA",
+        "desc": "Définit la structure et le contenu d'un modèle de phase pour les projets d'IA, incluant les sections standard à inclure."
+    },
+    "EQUIPE_IA/templates/template_session.md": {
+        "title": "Modèle de Session",
+        "desc": "Ce fichier MD contient le modèle Markdown utilisé pour générer les templates de session pour les tests d'IA, définissant la structure et le contenu des rapports."
+    },
+    "EQUIPE_IA/templates/template_tache.md": {
+        "title": "Template Tâche IA",
+        "desc": "Ce fichier MD contient le modèle de base pour la création de descriptions de tâches liées à l'équipe d'IA, structurant les informations clés sur l'objectif, les critères de réussite et les étapes à suivre."
+    },
+    "EQUIPE_IA/workflows": {
+        "title": "Workflows IA",
+        "desc": "Contient les workflows définissant les processus d'apprentissage automatique et de traitement des données pour l'équipe IA."
+    },
+    "EQUIPE_IA/workflows/phase1_docs.yaml": {
+        "title": "Workflow Phase 1",
+        "desc": "Ce fichier YAML définit les étapes et les transitions du workflow de la phase 1 du projet IA, gérant les données d'entrée et la production des résultats préliminaires."
+    },
+    "EQUIPE_IA/workflows/phase2_dev.yaml": {
+        "title": "Workflow Phase 2",
+        "desc": "Ce fichier YAML définit les workflows de développement pour la phase 2 du projet IA, incluant les étapes et les transitions entre elles."
+    },
+    "EQUIPE_IA/workflows/phase3_gtm.yaml": {
+        "title": "Workflow Phase 3",
+        "desc": "Définit le workflow automatisé pour la phase 3 de la stratégie de marketing (GTM), incluant les étapes de génération et d'attribution de leads."
+    },
+    "EQUIPE_IA/workflows/phase4_scale.yaml": {
+        "title": "Workflow Phase 4",
+        "desc": "Ce fichier YAML définit le workflow pour l'étape 4 du projet IA, axée sur l'échelle et la détection de masse."
+    },
+    "EQUIPE_IA/config.yaml": {
+        "title": "Configuration IA",
+        "desc": "Ce fichier YAML contient les paramètres de configuration pour le système d'IA, incluant les modèles, les sources de données et les paramètres de traitement."
+    },
+    "EQUIPE_IA/README.md": {
+        "title": "Fichier README - IA",
+        "desc": "Ce fichier contient des instructions générales sur le projet IA, y compris les objectifs, l'architecture et les étapes à suivre."
+    },
+    "EQUIPE_IA/session_manager.md": {
+        "title": "Gestionnaire de Sessions IA",
+        "desc": "Ce fichier MD documente la logique de gestion des sessions pour les modèles d'IA, incluant la création, la persistance et la destruction des sessions."
+    },
+    "EQUIPE_IA/tools.yaml": {
+        "title": "Outils d'IA",
+        "desc": "Ce fichier YAML définit la configuration des différents outils d'intelligence artificielle utilisés dans le projet, incluant leurs paramètres et leurs dépendances."
+    },
+    "SCRIPTS/__init__.py": {
+        "title": "Initialisation du module",
+        "desc": "Ce fichier initialise le répertoire `SCRIPTS` comme un package Python, permettant d'importer ses scripts et fonctions de manière modulaire."
+    },
+    "SCRIPTS/agent_logger.py": {
+        "title": "Journalisation Agent",
+        "desc": "Ce script enregistre les actions de l'agent dans un fichier journal, permettant le suivi et le débogage des opérations."
+    },
+    "SCRIPTS/create_bot_user.py": {
+        "title": "Création Utilisateur Bot",
+        "desc": "Ce script automatise la création d'un nouveau compte utilisateur pour le bot, incluant la configuration initiale de base."
+    },
+    "SCRIPTS/create_equipe_ia.py": {
+        "title": "Création d'équipe IA",
+        "desc": "Ce script automatise la création d'une équipe IA, incluant la génération de profils et leur attribution à des tâches spécifiques."
+    },
+    "SCRIPTS/creation_fichier_architecture.py": {
+        "title": "Création Architecture Fichier",
+        "desc": "Ce script génère le fichier d'architecture du projet, définissant les modules et leurs dépendances, assurant une structure cohérente."
+    },
+    "SCRIPTS/descriptions_index.json": {
+        "title": "Index des Descriptions",
+        "desc": "Ce fichier JSON contient un index des descriptions de fonctionnalités, facilitant la recherche et la navigation dans la documentation du projet."
+    },
+    "SCRIPTS/final_test.py": {
+        "title": "Test Final Script",
+        "desc": "Ce script exécute les tests unitaires définis pour le module principal, enregistrant les résultats et produisant un rapport de test final."
+    },
+    "SCRIPTS/generate_pyramid_100.py": {
+        "title": "Génération Pyramide CSV",
+        "desc": "Ce script génère un fichier CSV représentant une pyramide de données, probablement pour des rapports ou des analyses de données."
+    },
+    "SCRIPTS/prompt_targets.json": {
+        "title": "Cibles de Prompts JSON",
+        "desc": "Ce fichier définit les cibles spécifiques (ID, nom, description) que les prompts du système peuvent utiliser pour guider le modèle de langage dans la génération de contenu."
+    },
+    "SCRIPTS/setup_logs.py": {
+        "title": "Configuration des Logs",
+        "desc": "Ce script initialise et configure la gestion des logs pour le projet, assurant un suivi précis des événements et erreurs."
+    },
+    "SCRIPTS/test_matchmaking.js": {
+        "title": "Test Matchmaking Script",
+        "desc": "Ce script contient les tests unitaires pour le module de matchmaking du projet."
+    },
+    "SCRIPTS/test_orchestration.py": {
+        "title": "Tests Orchestration Scripts",
+        "desc": "Ce script contient des tests automatisés pour valider le bon fonctionnement de l'orchestration des tâches du projet."
+    },
+    "src/components": {
+        "title": "Composants Logique",
+        "desc": "Ce dossier contient les blocs de code réutilisables qui constituent l'interface utilisateur de l'application. Il définit les composants individuels et leurs interactions."
+    },
+    "src/components/ChatDuel.jsx": {
+        "title": "Composant Duel de Chat",
+        "desc": "Ce composant React gère l'interface utilisateur pour un duel de chat entre deux participants, affichant leurs messages et permettant la saisie de texte."
+    },
+    "src/components/VoteScreen.jsx": {
+        "title": "Écran de Vote",
+        "desc": "Contient la logique et les composants React pour afficher et gérer l'écran de vote de l'application."
+    },
+    "src/components/WaitingRoom.jsx": {
+        "title": "Salle d'attente React",
+        "desc": "Ce composant React gère l'interface utilisateur de la salle d'attente, affichant des informations et permettant aux utilisateurs de patienter."
+    },
+    "src/lib": {
+        "title": "Bibliothèque Logicielle",
+        "desc": "Contient les bibliothèques et composants réutilisables du projet, essentiels pour la logique métier et les fonctionnalités principales."
+    },
+    "src/lib/supabaseClient.js": {
+        "title": "Client Supabase",
+        "desc": "Ce fichier contient la logique d'initialisation et d'interaction avec l'instance Supabase du projet, assurant la connexion et la gestion des opérations de base de données."
+    },
+    "src/tests": {
+        "title": "Tests du logiciel",
+        "desc": "Contient les fichiers de test unitaires et d'intégration pour le logiciel principal."
+    },
+    "src/tests/basic.test.js": {
+        "title": "Tests de base",
+        "desc": "Ce fichier contient des tests unitaires de base pour le code source principal du projet, assurant la fonctionnalité minimale des composants clés."
+    },
+    "src/tests/fixtures.js": {
+        "title": "Fixtures de Tests",
+        "desc": "Ce fichier contient des données de test pré-remplies, utilisées pour alimenter les tests unitaires du projet."
+    },
+    "src/tests/setup.js": {
+        "title": "Configuration Tests",
+        "desc": "Ce fichier configure Babel et Jest pour le projet, définissant les options de compilation et d'exécution des tests."
+    },
+    "src/App.jsx": {
+        "title": "Composant Racine Application",
+        "desc": "Ce fichier est le composant principal de l'application, responsable de la gestion de l'état et du rendu de l'interface utilisateur."
+    },
+    "src/index.css": {
+        "title": "Fichier CSS Principal",
+        "desc": "Ce fichier contient les styles globaux et les variables CSS utilisés dans l'application, définissant l'apparence de l'interface utilisateur."
+    },
+    "src/main.jsx": {
+        "title": "Point d'entrée principal",
+        "desc": "Ce fichier est le composant React principal qui rend l'application et gère le routage initial."
+    },
+    "UI/assets": {
+        "title": "Ressources Interface Utilisateur",
+        "desc": "Ce dossier contient les assets graphiques (images, icônes, etc.) nécessaires au développement de l'interface utilisateur du projet."
+    },
+    "UI/assets/cyber-ui.css": {
+        "title": "Styles UI Cyber",
+        "desc": "Ce fichier contient les styles CSS spécifiques à l'interface utilisateur Cyber UI, définissant l'apparence des éléments de l'interface."
+    },
+    "UI/V1": {
+        "title": "Interface Utilisateur V1",
+        "desc": "Ce dossier contient la conception et les éléments de base de l'interface utilisateur pour la version 1 du logiciel."
+    },
+    "UI/V1/screens": {
+        "title": "Écrans V1 Interface Utilisateur",
+        "desc": "Ce dossier contient les fichiers de conception des écrans de l'interface utilisateur de la version 1 du projet."
+    },
+    "UI/V1/screens/chat.jsx": {
+        "title": "Écran de Chat",
+        "desc": "Ce fichier React définit l'interface utilisateur pour l'écran de chat, permettant aux utilisateurs d'envoyer et de recevoir des messages."
+    },
+    "UI/V1/screens/homepage.jsx": {
+        "title": "Page d'accueil UI",
+        "desc": "Ce fichier React définit la structure et les composants de l'interface utilisateur de la page d'accueil principale du projet."
+    },
+    "UI/V1/screens/leaderboard.jsx": {
+        "title": "Écran Classement Leaderboard",
+        "desc": "Ce fichier JSX définit l'interface utilisateur du classement des meilleurs joueurs (leaderboard) dans la version 1 de l'application."
+    },
+    "UI/V1/screens/result.jsx": {
+        "title": "Écran Résultats",
+        "desc": "Ce fichier React définit l'interface utilisateur pour l'écran affichant les résultats d'une opération, incluant les données et potentiellement des graphiques."
+    },
+    "UI/V1/screens/shared.jsx": {
+        "title": "Composants d'Interface Partagés",
+        "desc": "Ce fichier contient des composants d'interface utilisateur réutilisables et des fonctions partagées, utilisés dans plusieurs écrans de la V1."
+    },
+    "UI/V1/app.jsx": {
+        "title": "Application Principale React",
+        "desc": "Contient la structure principale de l'application React, initialisant les composants et gérant les routes."
+    },
+    "UI/V1/Bot ou pas Bot.html": {
+        "title": "Page Bot HTML",
+        "desc": "Contient la page HTML principale de l'interface utilisateur pour le bot, incluant les éléments de design et d'interaction de base."
+    },
+    "UI/V1/design-canvas.jsx": {
+        "title": "Canvas de Conception UI",
+        "desc": "Ce fichier JSX contient le canvas principal pour la conception de l'interface utilisateur de la version 1, permettant de manipuler les éléments visuels et de définir leur structure."
+    },
+    "UI/V2": {
+        "title": "Interface Utilisateur V2",
+        "desc": "Contient la version 2 des éléments de l'interface utilisateur, incluant des maquettes et des composants mis à jour."
+    },
+    "UI/V2/index.html": {
+        "title": "Page d'index HTML",
+        "desc": "Définit la structure et le contenu principal du site web, servant de point d'entrée pour l'utilisateur."
+    },
+    "ARCHITECTURE.md": {
+        "title": "Architecture du Projet",
+        "desc": "Ce fichier décrit l'architecture globale du logiciel, incluant ses modules principaux, leurs interactions et les technologies utilisées."
+    },
+    "eslint.config.js": {
+        "title": "Configuration ESLint Projet",
+        "desc": "Ce fichier contient la configuration de l'outil ESLint, qui analyse le code JavaScript pour détecter les erreurs de style et les potentielles erreurs de programmation."
+    },
+    "index.html": {
+        "title": "Page Web Principale",
+        "desc": "Contient la structure HTML de la page web principale du projet, définissant le contenu et la disposition de l'interface utilisateur."
+    },
+    "RUN_COMMANDS.md": {
+        "title": "Commandes d'Exécution",
+        "desc": "Ce fichier contient la liste des commandes à exécuter pour le processus de test et de déploiement du projet."
     }
 }

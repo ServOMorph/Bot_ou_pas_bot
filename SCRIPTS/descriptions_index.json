@@ -1,0 +1,31 @@
+{
+  "discover": {
+    "enabled": true,
+    "max_depth": 3,
+    "exclude_dirs": [
+      ".git", ".github", "node_modules", "dist", "coverage", "__pycache__",
+      ".claude", "SCREEN_SHOTS", "Expert", "memory"
+    ],
+    "exclude_paths": [
+      "scratch", "outputs", "EQUIPE_IA/outputs",
+      "package-lock.json", "PLAN_EN_COURS.md", "PROMPT_PLAN_EN_COURS.md",
+      "UI/V2/registry.json", "UI/V2/activity_stream.json",
+      "EQUIPE_IA/memory/prompts_history.json",
+      "EQUIPE_IA/agents-registry copy.yaml",
+      "EQUIPE_IA/noms.txt",
+      "EQUIPE_IA/outputs",
+      "ROADMAP_EQUIPE_IA.md"
+    ],
+    "include_extensions": [
+      ".py", ".jsx", ".js", ".md", ".yaml", ".yml",
+      ".json", ".css", ".html", ".sql", ".txt"
+    ],
+    "exclude_extensions": [
+      ".lock", ".mjs", ".png", ".jpg", ".jpeg",
+      ".gif", ".svg", ".docx"
+    ]
+  },
+  "paths": [
+    "root"
+  ]
+}

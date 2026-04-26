@@ -19,6 +19,7 @@
 - [x] **Optimiseur de Prompts IA** : Interface premium pour transformer des idées simples en prompts structurés (2026-04-26).
 - [x] **Standardisation Ollama** : Utilisation de `gemma3:4b` comme modèle unique via `config.py` (2026-04-26).
 - [x] **Préchargement Intelligent** : Mise en cache du modèle LLM dès le démarrage du launcher (2026-04-26).
+- [x] **Génération Auto de Descriptions** : `description_generator.py` — Ollama génère en background les fiches de tous les fichiers/dossiers du projet au démarrage (182 descriptions, auto-découverte par règles) (2026-04-26).
 
 ## ⏳ Prochaines Étapes (Phase 3)
 - [x] **Sélecteur de Cible IA dans l'Optimiseur de Prompts** : Implémentation du chargement dynamique via JSON (Claude Code, Gemini Flash) (2026-04-26).
@@ -61,4 +62,4 @@
 📚 **Roadmap détaillée:** voir [`ROADMAP_EQUIPE_IA.md`](../ROADMAP_EQUIPE_IA.md) à la racine pour le plan complet des 5 phases, tâches par agent, et processus de clôture.
 
 ---
-*Dernière mise à jour : 2026-04-26 (Sélecteur Cible IA & API Structure opérationnels)*
+*Dernière mise à jour : 2026-04-26 (Génération auto descriptions via Ollama — 182 fiches)*

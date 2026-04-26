@@ -10,6 +10,7 @@ import json
 from urllib.parse import urlparse, parse_qs
 from pathlib import Path
 import SCRIPTS.ollama_utils as ollama_utils
+import SCRIPTS.description_generator as desc_gen
 import config
 
 PORT = config.PORT
@@ -298,6 +299,7 @@ if __name__ == "__main__":
 
     # Préchargement du modèle étoile en arrière-plan
     threading.Thread(target=ollama_utils.preload_model, daemon=True).start()
+    threading.Thread(target=desc_gen.run_generator, daemon=True).start()
 
     print("\n" + "="*50)
     print("🤖 BOT OU PAS BOT - SERVEUR D'ORCHESTRATION")
