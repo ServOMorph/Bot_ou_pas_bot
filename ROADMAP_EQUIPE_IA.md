@@ -119,7 +119,7 @@
 
 | ID | Tâche | Agent | Statut | % Avance | Début | Fin | Définition de Fait | Blocker |
 |----|-------|-------|--------|----------|-------|-----|------------------|---------|
-| **P2T1** | Slash command `/activation_equipe_ia` | **Fullo** | 🔴 À démarrer | 0% | — | — | Commande opérationnelle, validée args, invoke any agent par nom, output visible | Phase 1 ✅ |
+| **P2T1** | Slash command `/activation_equipe_ia` | **Fullo** | ✅ Complété | 100% | 2026-04-26 | 2026-04-26 | Commande opérationnelle, validée args, invoke any agent par nom, output visible | Phase 1 ✅ |
 | **P2T2** | Dashboard UI live | **Dezy + Fullo** | 🟠 Bloqué | 0% | — | — | UI affiche 100 agents, statut online/offline/busy, responsive mobile, dark/light mode | **Claude Design** |
 | **P2T3** | E2E test "défi bot" | **Quali** | 🔴 À démarrer | 0% | — | — | Bot apparaît dans liste adversaires, 10 duels complets sans erreur, Ollama intégré ✅ | P2T2 🟠 |
 | **P2T4** | Intégration bridge | **Archi + Fullo** | 🔴 À démarrer | 0% | — | — | `ollama_bridge.py` dialogue avec Supabase realtime, messages bot s'affichent en <2sec | P2T3 ✅ |

@@ -54,7 +54,7 @@
 - [x] **Intégration Workflow** : Commandes `/start` et `/close` synchronisées avec la pyramide 100 IA (ChefIA) (2026-04-25).
 
 - [/] **Phase 2 (MVP Duel)** : Lancement du design UI mobile et flow d'invitation.
-- [x] `.claude/commands/activation_equipe_IA.md` — workflow intégré à startV2.md (2026-04-25).
+- [x] `.claude/commands/activation_equipe_IA.md` — workflow intégré à startV2.md (2026-04-26).
 
 📚 **Roadmap détaillée:** voir [`ROADMAP_EQUIPE_IA.md`](../ROADMAP_EQUIPE_IA.md) à la racine pour le plan complet des 5 phases, tâches par agent, et processus de clôture.
 

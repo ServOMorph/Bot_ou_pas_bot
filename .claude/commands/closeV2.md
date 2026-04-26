@@ -16,15 +16,19 @@ Parcourir toute la conversation pour identifier :
 - Les points en suspens
 
 ### 2. Clôture de l'Équipe IA (100 Agents) 🤖
+*Note : Uniquement si l'équipe a été activée au démarrage.*
 
 En tant qu'orchestrateur (**ChefIA**), assurer la synchronisation de la pyramide :
 1. **Rapport de Session** : Générer un résumé détaillé des actions (Niv1, Niv2, Niv3) dans `EQUIPE_IA/outputs/ChefIA/session_[DATE]_[HEURE].md`.
 2. **Source de Vérité** : Mettre à jour `EQUIPE_IA/outputs/ChefIA/dernier_session.md` (copie du dernier rapport).
-3. **Dashboard & Registre** : 
+3. **Mise à jour Roadmaps** : 
+   - Mettre à jour `ROADMAP_EQUIPE_IA.md` (statut des tâches déléguées).
+   - Si une phase est terminée (ex: `/close phase 1`), générer le rapport de phase dans `EQUIPE_IA/outputs/P[N]/REPORT.md`.
+4. **Dashboard & Registre** : 
    - Mettre à jour `EQUIPE_IA/agents-registry.yaml` si la hiérarchie a évolué.
    - Régénérer le fichier `registry.json` pour l'UI :
      ```bash
-     python DEV_RAPH_SCRIPTS/generate_ui.py
+     python SCRIPTS/generate_ui.py
      ```
 
 ### 3. Mise à jour de la ROADMAP
