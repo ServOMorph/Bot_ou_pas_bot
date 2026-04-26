@@ -376,6 +376,34 @@
             text-transform: uppercase;
             flex-shrink: 0;
         }
+        /* ── Logo ── */
+        .logo-bottom-left {
+            position: fixed;
+            bottom: clamp(12px, 2vh, 24px);
+            left: clamp(12px, 2vw, 24px);
+            z-index: 100;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-bottom-left:hover {
+            opacity: 1;
+        }
+
+        .logo-bottom-left img {
+            display: block;
+            width: clamp(60px, 10vw, 120px);
+            height: auto;
+            max-width: 120px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 12px rgba(0, 255, 136, 0.2));
+        }
+
+        @media (max-width: 480px) {
+            .logo-bottom-left img {
+                width: clamp(50px, 12vw, 80px);
+            }
+        }
 
         @media (max-width: 1400px) {
             .info-bubble {
@@ -405,6 +433,7 @@
     </style>
 </head>
 <body>
+    <div class="logo-bottom-left"><img src="/UI/V3/logo ServOMorph.png" alt="ServOMorph"></div>
     <div class="background-glow"></div>
 
     <div id="info-left" class="info-bubble">
@@ -482,7 +511,7 @@
             <div class="card full-stack" data-service="all" onclick="launch('all', this)">
                 <div class="icon"></div>
                 <div class="title">Mode Full Stack</div>
-                <div class="description">Lancer Jeu, Dashboard et Bridge en un clic</div>
+                <div class="description">Tout lancer d'un coup, attention ça peut faire mal</div>
                 <button class="btn-label">Tout Lancer</button>
             </div>
         </div>
@@ -620,3 +649,5 @@
     </script>
 </body>
 </html>
+
+
