@@ -6,6 +6,7 @@ Arène de Turing moderne : duels anonymes chat IA-humain (18-35 ans).
 - [x] Système de gestion de session (`session_manager.md`).
 - [x] Outil d'automatisation **AutoAntigravity** (Clicker + Capture de zone) (2026-04-25).
 - [x] **Orchestrateur Web Centralisé** (2026-04-26).
+- [x] **Explorateur de Projet Interactif** (Tableau de Bord) (2026-04-26).
 Le système de duel est opérationnel. Le pont Ollama est **opérationnel** — le bridge détecte les matchs et messages en temps réel. Le flow E2E "Défier le Bot" est la prochaine étape.
 
 ## 🛠 Stack Technique

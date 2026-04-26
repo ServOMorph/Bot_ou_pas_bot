@@ -1,0 +1,4 @@
+[Technique]
+- Génération d'arborescence JSON récursive en Python via Pathlib.
+- Association dynamique de métadonnées (descriptions) à une structure de fichiers via des clés de chemin.
+- Interface "Explorateur" en Vanilla JS avec système de toggle de dossiers.

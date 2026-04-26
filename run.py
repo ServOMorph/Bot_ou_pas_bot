@@ -18,6 +18,7 @@ DASHBOARD_PATH = "UI/V2/index.html"
 services = {
     "game": {"name": "Vite (Jeu)", "cmd": "npm run dev", "proc": None, "url": "http://localhost:5173"},
     "dashboard": {"name": "Dashboard IA", "cmd": None, "proc": None, "url": f"http://localhost:{PORT}/{DASHBOARD_PATH}"},
+    "stats": {"name": "Tableau de Bord", "cmd": None, "proc": None, "url": f"http://localhost:{PORT}/UI/dashboard.html"},
     "bridge": {"name": "Bridge Ollama", "cmd": f"{sys.executable} SCRIPTS/ollama_bridge.py", "proc": None, "url": None}
 }
 
@@ -67,11 +68,55 @@ class LauncherAPIHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(json.dumps(status).encode())
             return
 
+        # Route API : Structure
+        if parsed_url.path == '/api/structure':
+            structure = self.get_project_structure(".")
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps(structure).encode())
+            return
+
         # Par défaut, servir les fichiers statiques
         if self.path == '/':
             self.path = LAUNCHER_PATH
             
         return super().do_GET()
+
+    def get_project_structure(self, root_path):
+        """Scanne le projet pour générer une arborescence JSON"""
+        tree = {"name": "Bot ou pas Bot ?", "type": "directory", "children": [], "path": "root"}
+        exclude_dirs = {'.git', 'node_modules', 'dist', 'coverage', '__pycache__', '.claude'}
+        
+        path_obj = Path(root_path)
+        
+        def build_tree(current_path, current_node):
+            try:
+                # Trier pour avoir les dossiers en premier, puis fichiers
+                entries = sorted(list(current_path.iterdir()), key=lambda x: (not x.is_dir(), x.name.lower()))
+                
+                for entry in entries:
+                    if entry.name in exclude_dirs:
+                        continue
+                        
+                    node = {
+                        "name": entry.name,
+                        "type": "directory" if entry.is_dir() else "file",
+                        "path": str(entry.relative_to(root_path)).replace("\\", "/")
+                    }
+                    
+                    if entry.is_dir():
+                        node["children"] = []
+                        # On limite la profondeur pour certains dossiers si besoin, 
+                        # mais ici on descend partout sauf exclus
+                        build_tree(entry, node)
+                    
+                    current_node["children"].append(node)
+            except Exception as e:
+                print(f"Erreur scan {current_path}: {e}")
+
+        build_tree(path_obj, tree)
+        return tree
 
     def launch_service(self, service_id):
         service = services.get(service_id)

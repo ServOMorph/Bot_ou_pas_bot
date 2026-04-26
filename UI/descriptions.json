@@ -1,0 +1,46 @@
+{
+    "root": {
+        "title": "Racine du Projet",
+        "desc": "C'est le point d'entrée de 'Bot ou pas Bot ?'. Ici se trouvent les fichiers de configuration globaux et les outils pour lancer l'application."
+    },
+    "src": {
+        "title": "Cœur du Jeu (React)",
+        "desc": "Ce dossier contient tout le code visuel du jeu. C'est ici que sont définis les composants du chat, de la salle d'attente et du vote."
+    },
+    "EQUIPE_IA": {
+        "title": "La Pyramide des 100 Agents",
+        "desc": "Le cerveau collectif du projet. Ce dossier gère l'orchestration de 100 intelligences artificielles spécialisées qui collaborent pour faire évoluer le projet."
+    },
+    "SCRIPTS": {
+        "title": "La Boîte à Outils",
+        "desc": "Contient des scripts Python automatisés pour créer des bots, générer des rapports ou tester le matchmaking sans lancer tout le jeu."
+    },
+    "UI": {
+        "title": "Interfaces de Monitoring",
+        "desc": "Ici se trouvent les tableaux de bord et les lanceurs qui permettent de surveiller l'activité des IA et l'état du serveur."
+    },
+    "run.py": {
+        "title": "Le Chef d'Orchestre",
+        "desc": "C'est le fichier magique. Lance-le et il s'occupe d'ouvrir le launcher pour que tu puisses démarrer tous les services en un clic."
+    },
+    "README.md": {
+        "title": "Le Guide de Bienvenue",
+        "desc": "Un document qui explique comment installer le projet et ce qu'il fait."
+    },
+    "ROADMAP.md": {
+        "title": "Le Plan de Route",
+        "desc": "La liste des tâches accomplies et de ce qu'il reste à faire pour terminer le projet."
+    },
+    "supabase.sql": {
+        "title": "Le Schéma de la Base de Données",
+        "desc": "Le plan de construction de la mémoire du projet (utilisateurs, messages, matchs)."
+    },
+    "vite.config.js": {
+        "title": "Configurateur Visuel",
+        "desc": "Paramètres techniques pour que l'interface React soit rapide et efficace."
+    },
+    "package.json": {
+        "title": "Le Livre des Ingrédients",
+        "desc": "Liste toutes les bibliothèques et outils nécessaires pour faire tourner le projet."
+    }
+}

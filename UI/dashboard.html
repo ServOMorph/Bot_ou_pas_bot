@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord - Explorateur</title>
+    <style>
+        :root {
+            --bg-color: #0a0a0c;
+            --sidebar-bg: #111114;
+            --accent: #007cf0;
+            --accent-cyan: #00dfd8;
+            --text-main: #ffffff;
+            --text-dim: #a1a1a6;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, sans-serif;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 350px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar h2::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-right: 10px;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .tree-root {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tree-item {
+            margin: 4px 0;
+        }
+
+        .tree-label {
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            color: var(--text-dim);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .tree-label:hover {
+            background: var(--glass);
+            color: var(--text-main);
+        }
+
+        .tree-label.active {
+            background: rgba(0, 124, 240, 0.15);
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        .tree-label i {
+            margin-right: 10px;
+            font-style: normal;
+            width: 16px;
+            text-align: center;
+        }
+
+        .folder-content {
+            margin-left: 20px;
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            padding-left: 10px;
+            display: none;
+        }
+
+        .folder-content.open {
+            display: block;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            flex: 1;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at top right, rgba(0, 124, 240, 0.05), transparent);
+        }
+
+        .info-card {
+            max-width: 600px;
+            width: 100%;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .info-card h1 {
+            margin: 0 0 20px 0;
+            font-size: 2rem;
+            background: linear-gradient(to right, var(--accent), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .info-card p {
+            line-height: 1.6;
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .info-card .path {
+            font-family: monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+        }
+
+        .placeholder {
+            text-align: center;
+            color: var(--text-dim);
+        }
+
+        .placeholder i {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Explorateur</h2>
+        <ul id="project-tree" class="tree-root">
+            <li class="placeholder">Chargement...</li>
+        </ul>
+    </div>
+
+    <div class="main-content" id="detail-view">
+        <div class="placeholder">
+            <i>📂</i>
+            <p>Sélectionnez un fichier ou un dossier pour voir sa description synthétique.</p>
+        </div>
+    </div>
+
+    <script>
+        let projectDescriptions = {};
+
+        // Charger les descriptions
+        async function loadDescriptions() {
+            try {
+                const res = await fetch('/UI/descriptions.json');
+                projectDescriptions = await res.json();
+            } catch (err) {
+                console.error("Erreur descriptions:", err);
+            }
+        }
+
+        // Charger la structure
+        async function loadStructure() {
+            try {
+                const res = await fetch('/api/structure');
+                const data = await res.json();
+                renderTree(data, document.getElementById('project-tree'));
+            } catch (err) {
+                console.error("Erreur structure:", err);
+            }
+        }
+
+        function renderTree(node, container) {
+            container.innerHTML = '';
+            node.children.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'tree-item';
+                
+                const label = document.createElement('div');
+                label.className = 'tree-label';
+                label.innerHTML = `<i>${item.type === 'directory' ? '📁' : '📄'}</i> ${item.name}`;
+                
+                label.onclick = (e) => {
+                    e.stopPropagation();
+                    document.querySelectorAll('.tree-label').forEach(el => el.classList.remove('active'));
+                    label.classList.add('active');
+                    
+                    showDetail(item);
+                    
+                    if (item.type === 'directory') {
+                        const content = li.querySelector('.folder-content');
+                        if (content) content.classList.toggle('open');
+                    }
+                };
+                
+                li.appendChild(label);
+                
+                if (item.type === 'directory' && item.children) {
+                    const childContainer = document.createElement('ul');
+                    childContainer.className = 'folder-content';
+                    renderTree(item, childContainer);
+                    li.appendChild(childContainer);
+                }
+                
+                container.appendChild(li);
+            });
+        }
+
+        function showDetail(item) {
+            const detailView = document.getElementById('detail-view');
+            
+            // Chercher la description (exacte ou par parent)
+            let data = projectDescriptions[item.path] || projectDescriptions[item.name];
+            
+            if (!data) {
+                data = {
+                    title: item.name,
+                    desc: "Pas encore de description spécifique pour ce composant. C'est un élément structurel du projet."
+                };
+            }
+
+            detailView.innerHTML = `
+                <div class="info-card">
+                    <span class="path">${item.path}</span>
+                    <h1>${data.title}</h1>
+                    <p>${data.desc}</p>
+                    <div style="font-size: 0.8rem; color: var(--text-dim); border-top: 1px solid var(--border); padding-top: 20px;">
+                        Type : ${item.type === 'directory' ? 'Dossier' : 'Fichier Source'}
+                    </div>
+                </div>
+            `;
+        }
+
+        window.onload = async () => {
+            await loadDescriptions();
+            await loadStructure();
+        };
+    </script>
+</body>
+</html>

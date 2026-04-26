@@ -17,6 +17,7 @@
 - [x] Outil **AutoAntigravity** : Clicker, Capture DPI-aware, Statistiques et Overlay dynamique (2026-04-25).
 - [x] **Logs IA en temps réel** : Affichage des étapes de réflexion d'Ollama directement dans l'interface de chat (2026-04-25).
 - [x] **Orchestrateur Web (Launcher)** : Interface premium unifiée pour lancer le Jeu, le Dashboard et le Bridge Ollama (2026-04-26).
+- [x] **Explorateur de Projet Dynamique** : Interface interactive expliquant l'architecture aux novices (2026-04-26).
 
 ## ⏳ Prochaines Étapes (Phase 3)
 - [ ] Tester flow E2E "Défier le Bot" depuis le frontend (player2_id = BOT_USER_ID).
