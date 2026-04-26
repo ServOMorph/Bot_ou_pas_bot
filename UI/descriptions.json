@@ -742,5 +742,9 @@
     "UI/V3/Charte Graphique v3.html": {
         "title": "Charte Graphique Web",
         "desc": "Ce fichier HTML présente la charte graphique version 3 du projet, définissant les couleurs, typographies et éléments visuels à utiliser pour l'interface utilisateur."
+    },
+    "launcher.html": {
+        "title": "Fichier Lanceur Web",
+        "desc": "Ce fichier HTML est le point d'entrée pour l'application, chargant l'interface utilisateur principale et initialisant le jeu."
     }
 }
