@@ -7,7 +7,7 @@ Analyse le projet pour démarrer une session de travail efficace.
 Tu dois effectuer les actions suivantes dans l'ordre :
 
 ### 1. Lecture des documents clés
-- Lire `docs/ROADMAP.md` (s'il existe) pour comprendre les phases, tâches et statuts actuels
+- Lire `ROADMAP.md` (s'il existe) pour comprendre les phases, tâches et statuts actuels
 - Lire `README.md` (s'il existe) pour comprendre le contexte global du projet
 
 ### 2. Activation de l'Équipe IA (Optionnel) 🤖

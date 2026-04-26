@@ -88,5 +88,83 @@
     "event": "TEST_COMMAND",
     "details": "Verification de la commande /activation_equipe_ia",
     "created_at": "2026-04-26T10:39:24Z"
+  },
+  {
+    "agent_id": "ChefIA",
+    "event": "ORCHESTRATOR_START",
+    "details": "Serveur Web Launcher demarre (Threaded)",
+    "created_at": "2026-04-26T11:18:10Z"
+  },
+  {
+    "agent_id": "ChefIA",
+    "event": "ORCHESTRATOR_START",
+    "details": "Serveur Web Launcher demarre (Threaded)",
+    "created_at": "2026-04-26T11:18:31Z"
+  },
+  {
+    "agent_id": "ChefIA",
+    "event": "ORCHESTRATOR_START",
+    "details": "Serveur Web Launcher demarre (Threaded)",
+    "created_at": "2026-04-26T11:19:17Z"
+  },
+  {
+    "agent_id": "ChefIA",
+    "event": "ORCHESTRATOR_START",
+    "details": "Serveur Web Launcher demarre (Threaded)",
+    "created_at": "2026-04-26T11:24:01Z"
+  },
+  {
+    "agent_id": "ChefIA",
+    "event": "ORCHESTRATOR_START",
+    "details": "Serveur Web Launcher demarre (Threaded)",
+    "created_at": "2026-04-26T12:00:18Z"
+  },
+  {
+    "agent_id": "ChefIA",
+    "event": "ORCHESTRATOR_START",
+    "details": "Serveur Web Launcher demarre (Threaded)",
+    "created_at": "2026-04-26T12:01:42Z"
+  },
+  {
+    "agent_id": "ChefIA",
+    "event": "ORCHESTRATOR_START",
+    "details": "Serveur Web Launcher demarre (Threaded)",
+    "created_at": "2026-04-26T12:03:51Z"
+  },
+  {
+    "agent_id": "ChefIA",
+    "event": "ORCHESTRATOR_START",
+    "details": "Serveur Web Launcher demarre (Threaded)",
+    "created_at": "2026-04-26T12:05:11Z"
+  },
+  {
+    "agent_id": "ChefIA",
+    "event": "ORCHESTRATOR_START",
+    "details": "Serveur Web Launcher demarre (Threaded)",
+    "created_at": "2026-04-26T12:13:08Z"
+  },
+  {
+    "agent_id": "ChefIA",
+    "event": "ORCHESTRATOR_START",
+    "details": "Serveur Web Launcher demarre (Threaded)",
+    "created_at": "2026-04-26T12:16:41Z"
+  },
+  {
+    "agent_id": "ChefIA",
+    "event": "ORCHESTRATOR_START",
+    "details": "Serveur Web Launcher demarre (Threaded)",
+    "created_at": "2026-04-26T12:17:58Z"
+  },
+  {
+    "agent_id": "ChefIA",
+    "event": "ORCHESTRATOR_START",
+    "details": "Serveur Web Launcher demarre (Threaded)",
+    "created_at": "2026-04-26T12:19:54Z"
+  },
+  {
+    "agent_id": "ChefIA",
+    "event": "ORCHESTRATOR_START",
+    "details": "Serveur Web Launcher demarre (Threaded)",
+    "created_at": "2026-04-26T12:25:25Z"
   }
 ]

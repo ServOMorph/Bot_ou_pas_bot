@@ -9,8 +9,10 @@ import sys
 import json
 from urllib.parse import urlparse, parse_qs
 from pathlib import Path
+import SCRIPTS.ollama_utils as ollama_utils
+import config
 
-PORT = 8000
+PORT = config.PORT
 LAUNCHER_PATH = "UI/launcher.html"
 DASHBOARD_PATH = "UI/V2/index.html"
 
@@ -30,7 +32,7 @@ class ThreadedTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
 class LauncherAPIHandler(http.server.SimpleHTTPRequestHandler):
     def log_message(self, format, *args):
         # On logue uniquement les erreurs ou les API calls importants
-        if "/api/" in args[0]:
+        if len(args) > 0 and isinstance(args[0], str) and "/api/" in args[0]:
             print(f"📡 API: {args[0]}")
 
     def do_GET(self):
@@ -53,6 +55,7 @@ class LauncherAPIHandler(http.server.SimpleHTTPRequestHandler):
             
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
             self.end_headers()
             self.wfile.write(json.dumps({"status": "success" if success else "error"}).encode())
             return
@@ -64,17 +67,19 @@ class LauncherAPIHandler(http.server.SimpleHTTPRequestHandler):
             status["dashboard"] = True 
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
             self.end_headers()
             self.wfile.write(json.dumps(status).encode())
             return
 
-        # Route API : Structure
-        if parsed_url.path == '/api/structure':
-            structure = self.get_project_structure(".")
+        # Route API : Models
+        if parsed_url.path == '/api/models':
+            models = ollama_utils.get_local_models()
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
             self.end_headers()
-            self.wfile.write(json.dumps(structure).encode())
+            self.wfile.write(json.dumps(models).encode())
             return
 
         # Par défaut, servir les fichiers statiques
@@ -82,6 +87,47 @@ class LauncherAPIHandler(http.server.SimpleHTTPRequestHandler):
             self.path = LAUNCHER_PATH
             
         return super().do_GET()
+
+    def do_POST(self):
+        parsed_url = urlparse(self.path)
+        
+        # Route API : Optimize
+        if parsed_url.path == '/api/optimize':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                post_data = self.rfile.read(content_length)
+                params = json.loads(post_data)
+                
+                user_prompt = params.get('prompt', '')
+                model_name = params.get('model')
+                
+                print(f"🧠 Optimisation du prompt via {model_name or 'Auto-selection'}...")
+                result = ollama_utils.optimize_prompt(user_prompt, model_name)
+                
+                # Sauvegarde historique
+                self.save_prompt_history(user_prompt, result)
+                
+                self.send_response(200)
+                self.send_header('Content-type', 'application/json')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.end_headers()
+                self.wfile.write(json.dumps(result).encode())
+            except Exception as e:
+                print(f"❌ Erreur API Optimize: {e}")
+                self.send_response(500)
+                self.end_headers()
+            return
+
+        self.send_response(404)
+        self.end_headers()
+
+    def do_OPTIONS(self):
+        """Gestion du Preflight CORS"""
+        self.send_response(200)
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        self.end_headers()
 
     def get_project_structure(self, root_path):
         """Scanne le projet pour générer une arborescence JSON"""
@@ -118,13 +164,39 @@ class LauncherAPIHandler(http.server.SimpleHTTPRequestHandler):
         build_tree(path_obj, tree)
         return tree
 
+    def save_prompt_history(self, original, result):
+        """Sauvegarde l'historique des prompts optimisés"""
+        history_file = "EQUIPE_IA/memory/prompts_history.json"
+        try:
+            os.makedirs(os.path.dirname(history_file), exist_ok=True)
+            history = []
+            if os.path.exists(history_file):
+                with open(history_file, "r", encoding="utf-8") as f:
+                    history = json.load(f)
+            
+            history.append({
+                "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                "original": original,
+                "optimized": result.get("optimized"),
+                "model": result.get("model")
+            })
+            
+            # Garder les 50 derniers
+            history = history[-50:]
+            
+            with open(history_file, "w", encoding="utf-8") as f:
+                json.dump(history, f, indent=2, ensure_ascii=False)
+        except Exception as e:
+            print(f"Erreur sauvegarde historique: {e}")
+
     def launch_service(self, service_id):
         service = services.get(service_id)
         if not service:
             return False
             
         # Si le service a une URL, on l'ouvre systématiquement (pour permettre de ré-ouvrir l'onglet)
-        if service["url"]:
+        # SAUF pour le dashboard et stats qui sont gérés par le frontend JS du launcher (pour éviter les doublons)
+        if service["url"] and service_id not in ["dashboard", "stats"]:
             print(f"🌐 Ouverture/Réouverture : {service['url']}")
             # On utilise un délai court pour laisser le temps au processus de démarrer si besoin
             delay = 2.0 if service["proc"] is None and service["cmd"] else 0.1
@@ -186,12 +258,20 @@ if __name__ == "__main__":
         import ctypes
         kernel32 = ctypes.windll.kernel32
         kernel32.SetConsoleMode(kernel32.GetStdHandle(-11), 7)
+    
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+    except:
+        pass
 
     # Sync registry
     try:
         subprocess.run([sys.executable, "SCRIPTS/generate_ui.py"], capture_output=True)
     except:
         pass
+
+    # Préchargement du modèle étoile en arrière-plan
+    threading.Thread(target=ollama_utils.preload_model, daemon=True).start()
 
     print("\n" + "="*50)
     print("🤖 BOT OU PAS BOT - SERVEUR D'ORCHESTRATION")

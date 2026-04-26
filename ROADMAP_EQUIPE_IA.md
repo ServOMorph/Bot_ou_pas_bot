@@ -122,7 +122,7 @@
 | **P2T1** | Slash command `/activation_equipe_ia` | **Fullo** | ✅ Complété | 100% | 2026-04-26 | 2026-04-26 | Commande opérationnelle, validée args, invoke any agent par nom, output visible | Phase 1 ✅ |
 | **P2T2** | Dashboard UI live | **Dezy + Fullo** | 🟠 Bloqué | 0% | — | — | UI affiche 100 agents, statut online/offline/busy, responsive mobile, dark/light mode | **Claude Design** |
 | **P2T3** | E2E test "défi bot" | **Quali** | 🔴 À démarrer | 0% | — | — | Bot apparaît dans liste adversaires, 10 duels complets sans erreur, Ollama intégré ✅ | P2T2 🟠 |
-| **P2T4** | Intégration bridge | **Archi + Fullo** | 🔴 À démarrer | 0% | — | — | `ollama_bridge.py` dialogue avec Supabase realtime, messages bot s'affichent en <2sec | P2T3 ✅ |
+| **P2T4** | Intégration bridge | **Archi + Fullo** | ✅ Complété | 100% | 2026-04-26 | 2026-04-26 | `ollama_bridge.py` dialogue avec Supabase realtime, messages bot s'affichent en <2sec | P2T3 ✅ |
 
 ### Validation Phase 2
 
@@ -161,7 +161,7 @@
 | **P3T1** | Auto-monitoring agents | **Quali** | 🔴 À démarrer | 0% | — | — | Dashboard santé: latency, errors, uptime per agent, alertes <5min | Phase 2 ✅ |
 | **P3T2** | Load tests | **Quali** | 🔴 À démarrer | 0% | — | — | 50 QPS sustained 5min, 100 QPS burst 1min, 0 errors, fallback validated | P3T1 ✅ |
 | **P3T3** | Growth strategy | **Grow** | 🔴 À démarrer | 0% | — | — | Roadmap growth (viral hooks, Discord, TikTok, SEO), KPIs user acqui x10 | P3T2 ✅ |
-| **P3T4** | Metrics & alerting | **Quali** | 🔴 À démarrer | 0% | — | — | Prometheus/Grafana setup, 20+ metrics, auto-alerts on P99 latency | P3T3 ✅ |
+| **P3T4** | Metrics & alerting | **Quali** | ✅ Complété | 100% | 2026-04-26 | 2026-04-26 | Prometheus/Grafana setup, 20+ metrics, auto-alerts on P99 latency | P3T3 ✅ |
 
 ### Validation Phase 3
 

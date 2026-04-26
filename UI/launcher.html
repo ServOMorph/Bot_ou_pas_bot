@@ -4,53 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Launcher - Bot ou pas Bot ?</title>
+    <link rel="stylesheet" href="/UI/assets/cyber-ui.css">
     <style>
-        :root {
-            --bg-color: #0a0a0c;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --accent-blue: #007cf0;
-            --accent-cyan: #00dfd8;
-            --accent-purple: #7928ca;
-            --text-color: #ffffff;
-            --text-dim: #a1a1a6;
-            --success: #00ff80;
-        }
-
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            margin: 0;
             overflow: hidden;
         }
 
-        .background-glow {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(0, 124, 240, 0.15) 0%, transparent 70%);
-            z-index: -1;
-            filter: blur(80px);
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(to right, var(--accent-blue), var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
-
-        p.subtitle {
+        .subtitle {
             color: var(--text-dim);
             margin-bottom: 3rem;
             font-size: 1.1rem;
@@ -65,25 +29,12 @@
         }
 
         .card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            padding: 24px;
-            border-radius: 20px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             position: relative;
             overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .card.active {
@@ -143,22 +94,10 @@
 
         .btn-label {
             margin-top: 20px;
-            padding: 8px 16px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transition: all 0.2s;
         }
 
         .card:hover .btn-label {
             background: var(--accent-blue);
-        }
-
-        footer {
-            margin-top: 4rem;
-            color: var(--text-dim);
-            font-size: 0.8rem;
         }
     </style>
 </head>
@@ -205,6 +144,15 @@
             <div class="btn-label">Lancer</div>
         </div>
 
+        <!-- Optimiseur de Prompts -->
+        <div class="card" onclick="window.open('/UI/prompt_optimizer.html?v=' + Date.now(), '_blank')">
+            <div class="status" id="status-optimizer"><div class="status-dot"></div>Ollama Ready</div>
+            <div class="icon">🚀</div>
+            <div class="title">Optimiseur de Prompts</div>
+            <div class="description">Transformez vos idées en prompts structurés et puissants.</div>
+            <div class="btn-label">Ouvrir</div>
+        </div>
+
         <!-- Full Stack -->
         <div class="card full-stack" onclick="launch('all', this)">
             <div class="icon">⚡</div>
@@ -225,10 +173,16 @@
                 if (data.status === 'success') {
                     if (service !== 'all') {
                         updateStatus(service, true);
+                        // Ouvrir l'URL dans un nouvel onglet si elle est disponible
+                        if (service === 'dashboard') window.open('/UI/V2/index.html?v=' + Date.now(), '_blank');
+                        if (service === 'stats') window.open('/UI/dashboard.html?v=' + Date.now(), '_blank');
                     } else {
                         updateStatus('game', true);
                         updateStatus('dashboard', true);
                         updateStatus('bridge', true);
+                        // Mode Full Stack : On laisse Python ouvrir le jeu (avec délai) 
+                        // et on ouvre le dashboard ici
+                        setTimeout(() => window.open('/UI/V2/index.html?v=' + Date.now(), '_blank'), 500);
                     }
                     element.classList.add('active');
                 }

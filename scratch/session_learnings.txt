@@ -1,0 +1,7 @@
+Session 2026-04-26: Bot ou pas Bot
+- Implémentation de l'Optimiseur de Prompts : UI premium (cyber-ui.css), API GET/POST.
+- Standardisation Ollama : Utilisation impérative de gemma3:4b via config.py.
+- Piège résolu : Les serveurs Python (SimpleHTTPRequestHandler) servent les fichiers statiques de manière plus fiable avec des chemins absolus commençant par / (ex: /UI/assets/...) lorsqu'on utilise un orchestrateur qui sert la racine.
+- Piège résolu : L'ouverture automatique d'onglets via webbrowser.open (Python) et window.open (JS) au même moment crée des doublons. Il faut privilégier le contrôle frontend pour la navigation utilisateur.
+- Patterns : Préchargement (preload) des modèles LLM en arrière-plan (threading) pour réduire la latence perçue au premier usage.
+- 패턴 : Utilisation d'un paramètre de version ?v=timestamp pour forcer l'ouverture d'un nouvel onglet au lieu de réutiliser un onglet existant.

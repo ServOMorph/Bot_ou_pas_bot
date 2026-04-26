@@ -8,8 +8,12 @@ sys.stdout.reconfigure(encoding='utf-8')
 from supabase import create_client, Client
 from dotenv import load_dotenv
 
+import config
+
 # Charger les variables d'environnement
 load_dotenv()
+
+OLLAMA_MODEL = config.OLLAMA_MODEL
 
 SUPABASE_URL = os.getenv("VITE_SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
@@ -35,7 +39,7 @@ def get_bot_response(history):
         role = "assistant" if msg['user_id'] == BOT_USER_ID else "user"
         messages.append({"role": role, "content": msg['text']})
     
-    response = ollama.chat(model='llama3.1:8b', messages=messages)
+    response = ollama.chat(model=OLLAMA_MODEL, messages=messages)
     return response['message']['content']
 
 def handle_new_match(payload):
@@ -95,7 +99,7 @@ def handle_new_message(payload):
             log_event(match_id, f"Récupération de l'historique ({len(history)} messages)")
             
             print("   💭 Le bot réfléchit...")
-            log_event(match_id, "Ollama réfléchit (llama3.1:8b)...")
+            log_event(match_id, f"Ollama réfléchit ({OLLAMA_MODEL})...")
             
             start_time = time.time()
             bot_reply = get_bot_response(history)

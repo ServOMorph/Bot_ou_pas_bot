@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimiseur de Prompts - Bot ou pas Bot ?</title>
+    <link rel="stylesheet" href="/UI/assets/cyber-ui.css">
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .back-link {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        textarea {
+            height: 150px;
+            resize: none;
+            margin-bottom: 16px;
+        }
+        .result-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--accent-blue);
+            border-radius: 12px;
+            padding: 20px;
+            min-height: 200px;
+            position: relative;
+            white-space: pre-wrap;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent-blue);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            display: none;
+        }
+        .loading {
+            display: none;
+            color: var(--accent-cyan);
+            font-style: italic;
+        }
+        body {
+            background-color: var(--bg-color) !important;
+        }
+        .optimizer-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-glow"></div>
+    
+    <div class="container">
+        <div class="header">
+            <div>
+                <a href="#" onclick="window.close(); return false;" class="back-link">← Fermer et retourner au Launcher</a>
+                <h1>Optimiseur de Prompts</h1>
+            </div>
+            <div class="status" id="ollama-status"><div class="status-dot"></div>Gemma 3:4b Ready</div>
+        </div>
+
+        <div class="optimizer-content">
+            <div class="card">
+                <div class="title">Votre demande</div>
+                <p class="description">Saisissez votre idée. Le modèle <b>Gemma 3:4b</b> s'occupe de la reformulation experte.</p>
+                <textarea id="user-prompt" class="input-field" placeholder="Ex: Crée une mécanique de combat au tour par tour..."></textarea>
+                
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <button id="optimize-btn" class="btn-label" style="flex: 1; padding: 12px;">Optimiser mon Prompt 🚀</button>
+                    <span id="loading-spinner" class="loading">Gemma 3 réfléchit...</span>
+                </div>
+
+                <div class="title" style="margin-top: 30px;">Résultat Optimisé</div>
+                <div class="result-box" id="result-box">
+                    <button id="copy-btn" class="copy-btn">Copier</button>
+                    <span id="result-text" style="color: var(--text-dim);">Le prompt optimisé apparaîtra ici...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>Bot ou pas Bot ? - Orchestrateur de Prompts v1.1</footer>
+
+    <script>
+        async function optimize() {
+            const prompt = document.getElementById('user-prompt').value;
+            if (!prompt) return;
+
+            const btn = document.getElementById('optimize-btn');
+            const loading = document.getElementById('loading-spinner');
+            const resultText = document.getElementById('result-text');
+            const copyBtn = document.getElementById('copy-btn');
+
+            btn.disabled = true;
+            loading.style.display = 'inline';
+            resultText.style.color = 'var(--text-dim)';
+            resultText.textContent = "Génération en cours...";
+
+            try {
+                const response = await fetch('/api/optimize', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt })
+                });
+                const data = await response.json();
+
+                if (data.optimized) {
+                    resultText.textContent = data.optimized;
+                    resultText.style.color = 'white';
+                    copyBtn.style.display = 'block';
+                } else {
+                    resultText.textContent = "Erreur: " + (data.error || "IA indisponible");
+                }
+            } catch (err) {
+                resultText.textContent = "Erreur de connexion au serveur.";
+            } finally {
+                btn.disabled = false;
+                loading.style.display = 'none';
+            }
+        }
+
+        document.getElementById('optimize-btn').onclick = optimize;
+        
+        document.getElementById('copy-btn').onclick = () => {
+            const text = document.getElementById('result-text').textContent;
+            navigator.clipboard.writeText(text);
+            const btn = document.getElementById('copy-btn');
+            btn.textContent = "Copié !";
+            setTimeout(() => btn.textContent = "Copier", 2000);
+        };
+    </script>
+</body>
+</html>

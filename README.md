@@ -6,8 +6,9 @@ Arène de Turing moderne : duels anonymes chat IA-humain (18-35 ans).
 - [x] Système de gestion de session (`session_manager.md`).
 - [x] Outil d'automatisation **AutoAntigravity** (Clicker + Capture de zone) (2026-04-25).
 - [x] **Orchestrateur Web Centralisé** (2026-04-26).
+- [x] **Optimiseur de Prompts IA** : Interface premium pour transformer des idées simples en prompts structurés (2026-04-26).
 - [x] **Explorateur de Projet Interactif** (Tableau de Bord) (2026-04-26).
-Le système de duel est opérationnel. Le pont Ollama est **opérationnel** — le bridge détecte les matchs et messages en temps réel. Le flow E2E "Défier le Bot" est la prochaine étape.
+Le système de duel est opérationnel. Le pont Ollama est **opérationnel** — le bridge utilise désormais le modèle standardisé **Gemma 3:4b**.
 
 ## 🛠 Stack Technique
 - **Frontend** : React (Vite) + Vanilla CSS (Dark Mode Premium).
@@ -38,7 +39,7 @@ L'exécution de `python run.py` ouvre un **Launcher Web** permettant d'activer e
 - **Chat de 3 minutes** : Avec compte à rebours synchronisé.
 - **Vote de Turing** : Identification de l'adversaire (Humain ou Bot).
 - **Mode Invité** : Supabase Anonymous Auth (`signInAnonymously`).
-- **Bridge Ollama** : Polling Supabase, détection matchs/messages, réponses bot via `llama3.1:8b`.
+- **Bridge Ollama** : Polling Supabase, détection matchs/messages, réponses bot via `gemma3:4b`.
 - **Mode Duel** : Matchmaking opérationnel, bouton Annuler ajouté.
 - **Auto-Clicker** : Outil `AUTO_CLICK/` pour tests et captures de zone (DPI-aware, stats persistantes, overlay dynamique avec compteur de clics).
 - **Équipe IA 100** : Pyramide de 100 agents opérationnelle, hiérarchie validée par tests d'orchestration.
@@ -76,4 +77,4 @@ python SCRIPTS/generate_ui.py
 - [`ROADMAP_EQUIPE_IA.md`](ROADMAP_EQUIPE_IA.md) — **Roadmap stratégique** : 5 phases, 19 tâches déléguées aux agents spécialisés (Quali, Scribe, Archi, Fullo, Dezy, Grow, Bizo), système de suivi complet et processus de clôture via `/close`.
 
 ---
-*Dernière mise à jour : 2026-04-25 — Pyramide 100 Agents & CI/CD*
+*Dernière mise à jour : 2026-04-26 — Optimiseur de Prompts & Gemma 3 Standardisé*

@@ -16,8 +16,9 @@
 - [x] Système de gestion de session (`session_manager.md`).
 - [x] Outil **AutoAntigravity** : Clicker, Capture DPI-aware, Statistiques et Overlay dynamique (2026-04-25).
 - [x] **Logs IA en temps réel** : Affichage des étapes de réflexion d'Ollama directement dans l'interface de chat (2026-04-25).
-- [x] **Orchestrateur Web (Launcher)** : Interface premium unifiée pour lancer le Jeu, le Dashboard et le Bridge Ollama (2026-04-26).
-- [x] **Explorateur de Projet Dynamique** : Interface interactive expliquant l'architecture aux novices (2026-04-26).
+- [x] **Optimiseur de Prompts IA** : Interface premium pour transformer des idées simples en prompts structurés (2026-04-26).
+- [x] **Standardisation Ollama** : Utilisation de `gemma3:4b` comme modèle unique via `config.py` (2026-04-26).
+- [x] **Préchargement Intelligent** : Mise en cache du modèle LLM dès le démarrage du launcher (2026-04-26).
 
 ## ⏳ Prochaines Étapes (Phase 3)
 - [ ] Tester flow E2E "Défier le Bot" depuis le frontend (player2_id = BOT_USER_ID).
@@ -36,7 +37,7 @@
 - **Design en attente** : Les tâches de design (Dezy/Mobi) sont en pause jusqu'à réception des maquettes de Claude Design.
 - **Focus actuel** : Développement des fonctionnalités "autres" (Matchmaking, Bot, Backend).
 - Flow "Défier le Bot" non encore testé E2E depuis le frontend.
-- Modèle Ollama utilisé : `llama3.1:8b`.
+- Modèle Ollama utilisé : `gemma3:4b` (Standardisé).
 - L'overlay AutoAntigravity utilise désormais Rouge=Actif / Vert=Inactif selon préférence utilisateur.
 
 ## 🤖 Équipe IA — Configuration (Session 2026-04-24)
@@ -59,4 +60,4 @@
 📚 **Roadmap détaillée:** voir [`ROADMAP_EQUIPE_IA.md`](../ROADMAP_EQUIPE_IA.md) à la racine pour le plan complet des 5 phases, tâches par agent, et processus de clôture.
 
 ---
-*Dernière mise à jour : 2026-04-26 (Orchestrateur Web & multi-threading OK)*
+*Dernière mise à jour : 2026-04-26 (Optimiseur de Prompts & Gemma 3 Standardisé OK)*
