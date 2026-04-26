@@ -1,0 +1,1979 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title>Charte Graphique — Bot ou pas Bot ?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #050705;
+  color: #e8ffe8;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── Tokens ── */
+:root {
+  --bg:        #050705;
+  --bg-elev:   #0b0f0c;
+  --bg-card:   #0f1411;
+  --line:      rgba(0,255,136,0.14);
+  --line-s:    rgba(0,255,136,0.35);
+  --neon:      #00ff88;
+  --neon-dim:  #00c46a;
+  --neon-glow: rgba(0,255,136,0.4);
+  --magenta:   #ff2d95;
+  --cyan:      #00e0ff;
+  --amber:     #ffb020;
+  --red:       #ff4545;
+  --text:      #e8ffe8;
+  --mute:      #7a8a7e;
+  --dim:       #4a5a4e;
+  --display:   'Orbitron', sans-serif;
+  --mono:      'JetBrains Mono', ui-monospace, monospace;
+  --body:      'Space Grotesk', system-ui, sans-serif;
+}
+
+/* ── Scanlines overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0,255,136,0.022) 0px,
+    rgba(0,255,136,0.022) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%);
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* ── Nav ── */
+.sidenav {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: 220px;
+  background: rgba(5,7,5,0.96);
+  border-right: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+  padding: 32px 0 24px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+.sidenav-logo {
+  padding: 0 22px 28px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 20px;
+}
+.sidenav-logo-mark {
+  width: 28px; height: 28px;
+  background: var(--neon);
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  box-shadow: 0 0 16px var(--neon-glow);
+  margin-bottom: 8px;
+}
+.sidenav-logo-name {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--text);
+}
+.sidenav-logo-sub {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--mute);
+  margin-top: 2px;
+}
+.nav-section {
+  padding: 0 16px;
+  margin-bottom: 4px;
+}
+.nav-section-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--dim);
+  text-transform: uppercase;
+  padding: 12px 8px 6px;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--mute);
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.12s, color 0.12s;
+  cursor: pointer;
+}
+.nav-item:hover { background: rgba(0,255,136,0.06); color: var(--text); }
+.nav-item.active { color: var(--neon); background: rgba(0,255,136,0.08); }
+.nav-item .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+/* ── Main ── */
+.main {
+  margin-left: 220px;
+  padding: 0 0 120px;
+}
+
+/* ── Section ── */
+.section {
+  border-bottom: 1px solid var(--line);
+  padding: 72px 80px 64px;
+}
+.section:last-child { border-bottom: none; }
+.section-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: var(--neon);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 18px; height: 1px;
+  background: var(--neon);
+  opacity: 0.6;
+}
+.section-title {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 38px;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+.section-desc {
+  font-family: var(--body);
+  font-size: 15px;
+  color: var(--mute);
+  max-width: 620px;
+  line-height: 1.65;
+  margin-bottom: 48px;
+}
+
+/* ── Cover ── */
+.cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px;
+  position: relative;
+  overflow: hidden;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.cover-glow {
+  position: absolute;
+  top: 15%; left: 30%;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, var(--neon-glow) 0%, transparent 60%);
+  filter: blur(50px);
+  pointer-events: none;
+}
+.cover-version {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: var(--dim);
+  margin-bottom: 32px;
+}
+.cover-logo {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 96px;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  position: relative;
+}
+.cover-logo span { color: var(--neon); }
+.cover-subtitle {
+  font-family: var(--body);
+  font-size: 22px;
+  color: var(--mute);
+  margin-top: 24px;
+  max-width: 600px;
+  line-height: 1.5;
+}
+.cover-meta {
+  margin-top: 64px;
+  display: flex;
+  gap: 48px;
+  font-family: var(--mono);
+  font-size: 11px;
+}
+.cover-meta-item { color: var(--dim); }
+.cover-meta-item span { color: var(--text); display: block; font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+
+/* ── Color grid ── */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.color-swatch {
+  background: var(--bg-card);
+  padding: 0;
+  overflow: hidden;
+}
+.color-swatch-block {
+  height: 88px;
+  position: relative;
+}
+.color-swatch-info {
+  padding: 12px 14px 14px;
+}
+.color-swatch-name {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.color-swatch-hex {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--mute);
+}
+.color-swatch-token {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--dim);
+  margin-top: 2px;
+  letter-spacing: 0.05em;
+}
+
+/* ── Type specimens ── */
+.type-specimen {
+  margin-bottom: 40px;
+  padding: 28px 32px;
+  border: 1px solid var(--line);
+  background: var(--bg-elev);
+  position: relative;
+}
+.type-meta {
+  position: absolute;
+  top: 10px; right: 14px;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--dim);
+  letter-spacing: 0.15em;
+  text-align: right;
+  line-height: 1.7;
+}
+.type-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* ── Component blocks ── */
+.component-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.component-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--dim);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 28px;
+  background: var(--neon);
+  color: #000;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+  box-shadow: 0 0 28px var(--neon-glow);
+}
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  background: transparent;
+  color: var(--neon);
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--line-s);
+  cursor: pointer;
+}
+.btn-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: rgba(255,69,69,0.07);
+  color: var(--red);
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,69,69,0.4);
+  cursor: pointer;
+}
+.btn-magenta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  background: rgba(255,45,149,0.08);
+  color: var(--magenta);
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--magenta);
+  cursor: pointer;
+}
+.btn-sm {
+  padding: 8px 14px;
+  font-size: 11px;
+}
+
+/* ── Badges / chips ── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  background: rgba(0,255,136,0.08);
+  color: var(--neon);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--line);
+}
+.chip-magenta {
+  background: rgba(255,45,149,0.08);
+  color: var(--magenta);
+  border-color: rgba(255,45,149,0.3);
+}
+.chip-amber {
+  background: rgba(255,176,32,0.08);
+  color: var(--amber);
+  border-color: rgba(255,176,32,0.3);
+}
+.chip-cyan {
+  background: rgba(0,224,255,0.08);
+  color: var(--cyan);
+  border-color: rgba(0,224,255,0.3);
+}
+.chip-red {
+  background: rgba(255,69,69,0.08);
+  color: var(--red);
+  border-color: rgba(255,69,69,0.3);
+}
+
+/* ── Card ── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  padding: 22px 24px;
+  position: relative;
+}
+.card-neon {
+  border-color: var(--line-s);
+  background: linear-gradient(135deg, rgba(0,255,136,0.04), transparent 70%);
+}
+
+/* ── Input ── */
+.input-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 4px 4px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-s);
+  width: 360px;
+}
+.input-field span { color: var(--neon); font-family: var(--mono); font-size: 14px; }
+.input-field input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 14px;
+  padding: 12px 0;
+}
+.input-field input::placeholder { color: var(--dim); }
+
+/* ── Timer display ── */
+.timer-display {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 20px;
+  border: 1px solid var(--line-s);
+  background: rgba(0,255,136,0.04);
+}
+.timer-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--mute);
+}
+.timer-value {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 32px;
+  color: var(--neon);
+  text-shadow: 0 0 14px var(--neon-glow);
+  letter-spacing: 0.05em;
+}
+.timer-cursor {
+  width: 2px; height: 26px;
+  background: var(--neon);
+  animation: blink 1s infinite;
+}
+@keyframes blink { 0%,49%{opacity:1} 50%,100%{opacity:0} }
+
+/* ── Score cells ── */
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.score-cell {
+  background: var(--bg-elev);
+  padding: 16px 18px;
+}
+.score-cell-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--mute);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.score-cell-value {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 34px;
+  margin-top: 6px;
+  letter-spacing: -0.01em;
+}
+.score-cell-sub {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--dim);
+  margin-top: 4px;
+}
+
+/* ── Chat bubbles ── */
+.bubble-terminal {
+  max-width: 72%;
+  padding: 10px 14px;
+  background: rgba(0,255,136,0.08);
+  border: 1px solid var(--line-s);
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--neon);
+  line-height: 1.5;
+}
+.bubble-them {
+  background: var(--bg-card);
+  border-color: var(--line);
+  color: var(--text);
+}
+.bubble-neon {
+  max-width: 72%;
+  padding: 12px 18px;
+  background: var(--neon);
+  color: #000;
+  font-family: var(--body);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 18px;
+  box-shadow: 0 0 20px var(--neon-glow);
+}
+.bubble-neon-them {
+  background: rgba(255,45,149,0.1);
+  color: #ffb3d9;
+  border: 1px solid rgba(255,45,149,0.4);
+  box-shadow: 0 0 20px rgba(255,45,149,0.2);
+}
+.bubble-minimal {
+  max-width: 72%;
+  padding: 11px 16px;
+  background: #151a16;
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 14px;
+  border-radius: 14px;
+}
+.bubble-minimal-them {
+  background: #0a0d0b;
+  color: var(--mute);
+}
+
+/* ── Effects demos ── */
+.glitch-text {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 64px;
+  letter-spacing: 0.02em;
+  color: var(--neon);
+  text-shadow: 0 0 8px var(--neon-glow), 0 0 22px rgba(0,255,136,0.25);
+  position: relative;
+  display: inline-block;
+}
+.glitch-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top:0;left:0;right:0;
+  color: var(--magenta);
+  transform: translate(-2px,0);
+  clip-path: polygon(0 0,100% 0,100% 45%,0 45%);
+  mix-blend-mode: screen;
+  animation: ga 3.2s infinite steps(1);
+}
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top:0;left:0;right:0;
+  color: var(--cyan);
+  transform: translate(2px,0);
+  clip-path: polygon(0 55%,100% 55%,100% 100%,0 100%);
+  mix-blend-mode: screen;
+  animation: gb 2.6s infinite steps(1);
+}
+@keyframes ga {
+  0%,92%,100%{transform:translate(-2px,0)}
+  93%{transform:translate(-4px,-1px)}
+  95%{transform:translate(-1px,1px)}
+  97%{transform:translate(-3px,0)}
+}
+@keyframes gb {
+  0%,88%,100%{transform:translate(2px,0)}
+  89%{transform:translate(4px,1px)}
+  91%{transform:translate(1px,-1px)}
+  94%{transform:translate(3px,0)}
+}
+
+.dot-live {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--neon);
+  box-shadow: 0 0 8px var(--neon);
+  animation: pulse 1.8s infinite;
+  display: inline-block;
+}
+@keyframes pulse {
+  0%,100%{box-shadow:0 0 0 0 var(--neon-glow)}
+  50%{box-shadow:0 0 0 8px rgba(0,255,136,0)}
+}
+
+/* ── Spacing table ── */
+.spacing-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--line);
+}
+.spacing-bar {
+  background: var(--neon);
+  opacity: 0.7;
+  height: 10px;
+  flex-shrink: 0;
+}
+.spacing-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text);
+  width: 48px;
+  flex-shrink: 0;
+}
+.spacing-token {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--dim);
+}
+
+/* ── Grid demo ── */
+.grid-demo {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 8px;
+  background: var(--bg-elev);
+  padding: 24px;
+  border: 1px solid var(--line);
+}
+.grid-col {
+  background: rgba(0,255,136,0.07);
+  border: 1px solid rgba(0,255,136,0.18);
+  height: 32px;
+}
+
+/* ── Do / Don't ── */
+.do-dont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin-bottom: 32px;
+}
+.do-block, .dont-block {
+  padding: 20px 22px;
+  background: var(--bg-elev);
+}
+.do-block { border-left: 2px solid var(--neon); }
+.dont-block { border-left: 2px solid var(--red); }
+.do-head {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--neon);
+  margin-bottom: 10px;
+}
+.dont-head {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--red);
+  margin-bottom: 10px;
+}
+.do-dont li {
+  font-family: var(--body);
+  font-size: 13px;
+  color: var(--mute);
+  line-height: 1.6;
+  margin-left: 16px;
+  margin-bottom: 4px;
+}
+
+/* ── Tables ── */
+table { width: 100%; border-collapse: collapse; }
+th {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--dim);
+  text-transform: uppercase;
+  padding: 10px 16px;
+  text-align: left;
+  background: rgba(0,0,0,0.3);
+  border-bottom: 1px solid var(--line);
+}
+td {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text);
+  padding: 10px 16px;
+  border-bottom: 1px dashed var(--line);
+  vertical-align: middle;
+}
+td.label { color: var(--mute); }
+tr:last-child td { border-bottom: none; }
+
+/* ── Code block ── */
+.code-block {
+  background: #060806;
+  border: 1px solid var(--line);
+  padding: 20px 22px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--neon);
+  line-height: 1.8;
+  overflow-x: auto;
+  margin-bottom: 24px;
+}
+.code-block .key { color: var(--cyan); }
+.code-block .val-color { color: var(--amber); }
+.code-block .comment { color: var(--dim); }
+
+/* ── Corner brackets ── */
+.brackets::before, .brackets::after,
+.brackets > .bl::before, .brackets > .bl::after {
+  content: '';
+  position: absolute;
+  width: 12px; height: 12px;
+  border-color: var(--line-s);
+  border-style: solid;
+}
+</style>
+</head>
+<body>
+
+<!-- Side nav -->
+<nav class="sidenav">
+  <div class="sidenav-logo">
+    <div class="sidenav-logo-mark"></div>
+    <div class="sidenav-logo-name">BOT / PAS BOT</div>
+    <div class="sidenav-logo-sub">CHARTE GRAPHIQUE v1.0</div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-title">Identité</div>
+    <a class="nav-item active" href="#logo"><span class="dot"></span>Logo & symbole</a>
+    <a class="nav-item" href="#couleurs"><span class="dot"></span>Palette couleurs</a>
+    <a class="nav-item" href="#typographie"><span class="dot"></span>Typographie</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-title">Composants</div>
+    <a class="nav-item" href="#boutons"><span class="dot"></span>Boutons</a>
+    <a class="nav-item" href="#badges"><span class="dot"></span>Badges & chips</a>
+    <a class="nav-item" href="#cards"><span class="dot"></span>Cards & inputs</a>
+    <a class="nav-item" href="#chat"><span class="dot"></span>Bulles chat</a>
+    <a class="nav-item" href="#data"><span class="dot"></span>Data & scores</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-title">Style</div>
+    <a class="nav-item" href="#effets"><span class="dot"></span>Effets visuels</a>
+    <a class="nav-item" href="#grille"><span class="dot"></span>Grille & espacement</a>
+    <a class="nav-item" href="#mouvement"><span class="dot"></span>Mouvement</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-title">Éditorial</div>
+    <a class="nav-item" href="#voix"><span class="dot"></span>Voix & ton</a>
+    <a class="nav-item" href="#ia-verte"><span class="dot"></span>IA Verte 🌿</a>
+    <a class="nav-item" href="#regles"><span class="dot"></span>À faire / éviter</a>
+  </div>
+</nav>
+
+<main class="main">
+
+  <!-- ════ COVER ════ -->
+  <div class="cover" id="top">
+    <div class="cover-glow"></div>
+    <div class="cover-version">// DOCUMENT · v1.0 · AVRIL 2026</div>
+    <div class="cover-logo">
+      BOT<span>/</span><br>PAS BOT<span style="color:var(--mute)">?</span>
+    </div>
+    <div class="cover-subtitle">
+      Charte graphique complète — identité visuelle, système de composants, règles éditoriales et manifeste IA Verte.
+    </div>
+    <div class="cover-meta">
+      <div class="cover-meta-item"><span>Produit</span>Platform de duels humain/IA</div>
+      <div class="cover-meta-item"><span>Cible</span>Francophones 18–35 ans</div>
+      <div class="cover-meta-item"><span>Registre</span>Dark gaming · Militantisme tech</div>
+      <div class="cover-meta-item"><span>Valeurs</span>Souveraineté · Jeu · Transparence</div>
+    </div>
+  </div>
+
+  <!-- ════ LOGO ════ -->
+  <section class="section" id="logo">
+    <div class="section-eyebrow">01 — Identité</div>
+    <h2 class="section-title">Logo & Symbole</h2>
+    <p class="section-desc">Le logo est composé d'un symbole diamant et d'un logotype en deux parties séparées par un slash — la frontière entre humain et machine. Le glitch est une extension du logo, pas une décoration.</p>
+
+    <!-- Logo versions -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:48px;">
+
+      <!-- Version principale -->
+      <div style="background:var(--bg-card);padding:40px 36px;">
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.25em;color:var(--dim);margin-bottom:24px;">VERSION PRINCIPALE · FOND SOMBRE</div>
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div style="width:36px;height:36px;background:var(--neon);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);box-shadow:0 0 20px var(--neon-glow);flex-shrink:0;"></div>
+          <div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:22px;letter-spacing:0.04em;color:var(--text);">
+            BOT<span style="color:var(--neon)">/</span>PAS BOT
+          </div>
+        </div>
+        <div style="margin-top:20px;font-family:'Orbitron',sans-serif;font-weight:900;font-size:22px;letter-spacing:0.04em;">
+          <span style="color:var(--neon)">BOT</span><span style="color:var(--mute)">/</span><span style="color:var(--text)">PAS BOT</span>
+          <div style="font-family:var(--mono);font-size:9px;color:var(--dim);margin-top:6px;letter-spacing:0.15em;">ACCENT SUR "BOT"</div>
+        </div>
+      </div>
+
+      <!-- Symbole seul -->
+      <div style="background:var(--bg-card);padding:40px 36px;">
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.25em;color:var(--dim);margin-bottom:24px;">SYMBOLE SEUL · APP ICON</div>
+        <div style="display:flex;gap:20px;align-items:flex-end;">
+          <div>
+            <div style="width:56px;height:56px;background:var(--neon);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);box-shadow:0 0 24px var(--neon-glow);margin-bottom:8px;"></div>
+            <div style="font-family:var(--mono);font-size:9px;color:var(--dim);">56px</div>
+          </div>
+          <div>
+            <div style="width:32px;height:32px;background:var(--neon);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);margin-bottom:8px;"></div>
+            <div style="font-family:var(--mono);font-size:9px;color:var(--dim);">32px</div>
+          </div>
+          <div>
+            <div style="width:20px;height:20px;background:var(--neon);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);margin-bottom:8px;"></div>
+            <div style="font-family:var(--mono);font-size:9px;color:var(--dim);">20px</div>
+          </div>
+          <div>
+            <div style="width:12px;height:12px;background:var(--neon);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);margin-bottom:8px;"></div>
+            <div style="font-family:var(--mono);font-size:9px;color:var(--dim);">12px</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logotype seul -->
+      <div style="background:#000;padding:40px 36px;">
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.25em;color:var(--dim);margin-bottom:24px;">LOGOTYPE SEUL · VARIATION COMPACTE</div>
+        <div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:18px;letter-spacing:0.04em;color:var(--text);margin-bottom:16px;">
+          BOT<span style="color:var(--neon)">/</span>PAS BOT<span style="color:var(--neon)">?</span>
+        </div>
+        <div style="font-family:'Orbitron',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;color:var(--mute);margin-bottom:16px;">
+          B<span style="color:var(--neon)">/</span>PB
+        </div>
+        <div style="display:inline-block;padding:4px 10px;border:1px solid var(--line-s);font-family:'Orbitron',sans-serif;font-weight:800;font-size:11px;letter-spacing:0.15em;color:var(--neon);">
+          BOT/PB
+        </div>
+      </div>
+    </div>
+
+    <!-- Construction -->
+    <div style="margin-bottom:48px;">
+      <div class="component-label">ANATOMIE DU LOGO</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);">
+        <div style="background:var(--bg-elev);padding:28px 32px;">
+          <div style="font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:0.2em;margin-bottom:16px;">SYMBOLE DIAMANT — SIGNIFICATION</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;gap:12px;align-items:baseline;">
+              <div style="width:8px;height:8px;background:var(--neon);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);flex-shrink:0;margin-top:4px;"></div>
+              <div style="font-family:var(--body);font-size:13px;color:var(--mute);">La <span style="color:var(--text)">forme angulaire</span> évoque le pixel et le binaire — l'univers numérique.</div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:baseline;">
+              <div style="width:8px;height:8px;background:var(--neon);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);flex-shrink:0;margin-top:4px;"></div>
+              <div style="font-family:var(--body);font-size:13px;color:var(--mute);">Le <span style="color:var(--text)">point focal centré</span> représente la décision — trancher entre humain et machine.</div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:baseline;">
+              <div style="width:8px;height:8px;background:var(--neon);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);flex-shrink:0;margin-top:4px;"></div>
+              <div style="font-family:var(--body);font-size:13px;color:var(--mute);">La <span style="color:var(--neon)">couleur néon verte</span> associée à l'open source et au mouvement IA Verte.</div>
+            </div>
+          </div>
+        </div>
+        <div style="background:var(--bg-elev);padding:28px 32px;">
+          <div style="font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:0.2em;margin-bottom:16px;">SLASH — SIGNIFICATION</div>
+          <div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:48px;color:var(--neon);letter-spacing:0;line-height:1;margin-bottom:12px;">/</div>
+          <div style="font-family:var(--body);font-size:13px;color:var(--mute);line-height:1.6;">
+            Le <span style="color:var(--text)">slash</span> est la frontière : humain à gauche, machine à droite. Il évoque aussi la commande terminal, le code, la dualité binaire 0/1. Il est toujours en vert néon — c'est le seul point de couleur obligatoire dans le logotype.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clearspace & interdits -->
+    <div class="do-dont">
+      <div class="do-block">
+        <div class="do-head">✓ À FAIRE</div>
+        <ul>
+          <li>Utiliser le logo sur fond sombre exclusivement (#050705 ou noir)</li>
+          <li>Conserver le rapport slash vert en toutes circonstances</li>
+          <li>Respecter un espace de protection = hauteur du symbole diamant autour du logo</li>
+          <li>Utiliser la version compacte "B/PB" en dessous de 24px</li>
+        </ul>
+      </div>
+      <div class="dont-block">
+        <div class="dont-head">✗ À ÉVITER</div>
+        <ul>
+          <li>Fond clair ou blanc — jamais</li>
+          <li>Rotation ou déformation du symbole</li>
+          <li>Changer la couleur du slash pour autre chose que var(--neon)</li>
+          <li>Outline ou ombre portée sur le logotype</li>
+          <li>Ajouter un sous-titre directement collé au logo</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ COULEURS ════ -->
+  <section class="section" id="couleurs">
+    <div class="section-eyebrow">02 — Identité</div>
+    <h2 class="section-title">Palette Couleurs</h2>
+    <p class="section-desc">Une palette intentionnellement restreinte : un fond quasi-noir, un vert néon souverain, deux accents (magenta et amber), un rouge d'alerte. Tout le reste est joué sur les opacités du vert.</p>
+
+    <div class="color-grid" style="margin-bottom:48px;">
+
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#050705;">
+          <div style="position:absolute;bottom:8px;right:10px;font-family:var(--mono);font-size:9px;color:rgba(0,255,136,0.25);">PRIMARY BG</div>
+        </div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">DEEP BLACK</div>
+          <div class="color-swatch-hex">#050705</div>
+          <div class="color-swatch-token">--bg</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#0b0f0c;border-bottom:1px solid rgba(0,255,136,0.1);">
+        </div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">ELEVATED</div>
+          <div class="color-swatch-hex">#0b0f0c</div>
+          <div class="color-swatch-token">--bg-elev</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#0f1411;border-bottom:1px solid rgba(0,255,136,0.1);">
+        </div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">CARD</div>
+          <div class="color-swatch-hex">#0f1411</div>
+          <div class="color-swatch-token">--bg-card</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#00ff88;position:relative;">
+          <div style="position:absolute;inset:0;background:radial-gradient(circle at 30% 40%,rgba(255,255,255,0.15),transparent 60%);"></div>
+          <div style="position:absolute;bottom:8px;right:10px;font-family:var(--mono);font-size:9px;color:rgba(0,0,0,0.5);">PRIMARY</div>
+        </div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">NEON GREEN</div>
+          <div class="color-swatch-hex">#00ff88</div>
+          <div class="color-swatch-token">--neon · couleur souveraine</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#00c46a;">
+        </div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">NEON DIM</div>
+          <div class="color-swatch-hex">#00c46a</div>
+          <div class="color-swatch-token">--neon-dim · états actifs réduits</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:rgba(0,255,136,0.4);backdrop-filter:blur(4px);">
+        </div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">NEON GLOW</div>
+          <div class="color-swatch-hex">rgba(0,255,136,0.4)</div>
+          <div class="color-swatch-token">--neon-glow · box-shadow, filter</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#ff2d95;">
+          <div style="position:absolute;bottom:8px;right:10px;font-family:var(--mono);font-size:9px;color:rgba(255,255,255,0.4);">ACCENT 1</div>
+        </div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">MAGENTA</div>
+          <div class="color-swatch-hex">#ff2d95</div>
+          <div class="color-swatch-token">--magenta · bots, vote, partage</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#00e0ff;">
+          <div style="position:absolute;bottom:8px;right:10px;font-family:var(--mono);font-size:9px;color:rgba(0,0,0,0.4);">ACCENT 2</div>
+        </div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">CYAN</div>
+          <div class="color-swatch-hex">#00e0ff</div>
+          <div class="color-swatch-token">--cyan · modèles IA, info technique</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#ffb020;">
+        </div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">AMBER</div>
+          <div class="color-swatch-hex">#ffb020</div>
+          <div class="color-swatch-token">--amber · streak, rang #1, alertes</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#ff4545;">
+        </div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">RED</div>
+          <div class="color-swatch-hex">#ff4545</div>
+          <div class="color-swatch-token">--red · erreur, signalement, perte</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#e8ffe8;">
+        </div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">TEXT</div>
+          <div class="color-swatch-hex">#e8ffe8</div>
+          <div class="color-swatch-token">--text · corps de texte</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#7a8a7e;">
+        </div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">MUTE</div>
+          <div class="color-swatch-hex">#7a8a7e</div>
+          <div class="color-swatch-token">--mute · secondaire</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#4a5a4e;">
+        </div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">DIM</div>
+          <div class="color-swatch-hex">#4a5a4e</div>
+          <div class="color-swatch-token">--dim · labels, metadata</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:rgba(0,255,136,0.14);">
+        </div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">LINE</div>
+          <div class="color-swatch-hex">rgba(0,255,136,0.14)</div>
+          <div class="color-swatch-token">--line · bordures standards</div>
+        </div>
+      </div>
+
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:rgba(0,255,136,0.35);">
+        </div>
+        <div class="color-swatch-info">
+          <div class="color-swatch-name">LINE STRONG</div>
+          <div class="color-swatch-hex">rgba(0,255,136,0.35)</div>
+          <div class="color-swatch-token">--line-s · focus, sélection</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Règles couleurs -->
+    <div class="component-label">HIÉRARCHIE D'USAGE</div>
+    <table style="border:1px solid var(--line);margin-bottom:16px;">
+      <thead><tr><th>Couleur</th><th>Usage principal</th><th>Usage secondaire</th><th>Interdit</th></tr></thead>
+      <tbody>
+        <tr><td style="color:var(--neon);font-weight:700;">#00ff88</td><td>CTA primaire, états actifs, nav item sélectionné</td><td>Bordures focus, icônes IA Verte</td><td>Fond de page entier, texte long</td></tr>
+        <tr><td style="color:var(--magenta);font-weight:700;">#ff2d95</td><td>Vote "Bot", bouton partage, badges bots</td><td>Mode événement, accents décoratifs</td><td>Messages d'erreur (→ red)</td></tr>
+        <tr><td style="color:var(--amber);font-weight:700;">#ffb020</td><td>Streak, rang #1, badges achievement</td><td>Avertissements non-critiques</td><td>Liens cliquables</td></tr>
+        <tr><td style="color:var(--cyan);font-weight:700;">#00e0ff</td><td>Noms de modèles IA, info technique</td><td>Highlights dans le code</td><td>Texte de navigation</td></tr>
+        <tr><td style="color:var(--red);font-weight:700;">#ff4545</td><td>Erreurs, pertes de points, "Signaler bot"</td><td>Indicateurs négatifs</td><td>Décoratif — charge sémantique forte</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ════ TYPOGRAPHIE ════ -->
+  <section class="section" id="typographie">
+    <div class="section-eyebrow">03 — Identité</div>
+    <h2 class="section-title">Typographie</h2>
+    <p class="section-desc">Trois familles avec des rôles stricts. Orbitron impose l'autorité gaming. JetBrains Mono ancre dans le terminal et les données. Space Grotesk assure la lisibilité du corps de texte.</p>
+
+    <!-- Orbitron -->
+    <div class="type-specimen">
+      <div class="type-meta">ORBITRON<br>Display · Titres<br>Google Fonts</div>
+      <div class="type-label">DISPLAY — ORBITRON 900</div>
+      <div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:72px;color:var(--text);line-height:0.95;letter-spacing:-0.01em;">
+        BOT OU<br><span style="color:var(--neon)">PAS BOT ?</span>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:32px;">
+      <div style="background:var(--bg-elev);padding:22px 24px;">
+        <div class="type-label">H1 · ORBITRON 900 · 52px · -0.01em</div>
+        <div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:52px;line-height:1;letter-spacing:-0.01em;color:var(--text);">Titre page</div>
+      </div>
+      <div style="background:var(--bg-elev);padding:22px 24px;">
+        <div class="type-label">H2 · ORBITRON 800 · 38px · -0.005em</div>
+        <div style="font-family:'Orbitron',sans-serif;font-weight:800;font-size:38px;line-height:1.1;letter-spacing:-0.005em;color:var(--text);">Section</div>
+      </div>
+      <div style="background:var(--bg-elev);padding:22px 24px;">
+        <div class="type-label">H3 · ORBITRON 700 · 22px · 0.02em</div>
+        <div style="font-family:'Orbitron',sans-serif;font-weight:700;font-size:22px;color:var(--text);letter-spacing:0.02em;">Sous-section</div>
+      </div>
+      <div style="background:var(--bg-elev);padding:22px 24px;">
+        <div class="type-label">LABEL · ORBITRON 800 · 14px · 0.12em · CAPS</div>
+        <div style="font-family:'Orbitron',sans-serif;font-weight:800;font-size:14px;color:var(--text);letter-spacing:0.12em;text-transform:uppercase;">LANCER UN DUEL</div>
+      </div>
+    </div>
+
+    <!-- JetBrains Mono -->
+    <div class="type-specimen" style="margin-bottom:16px;">
+      <div class="type-meta">JETBRAINS MONO<br>Monospace · Data & UI<br>Google Fonts</div>
+      <div class="type-label">MONO — JETBRAINS MONO 700</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:40px;color:var(--neon);line-height:1;letter-spacing:0.05em;">
+        02:47<span style="animation:blink 1s infinite;display:inline-block;margin-left:4px;">_</span>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:32px;">
+      <div style="background:var(--bg-elev);padding:18px 20px;">
+        <div class="type-label">DATA · 13px · 600</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:13px;color:var(--text);line-height:1.7;">
+          Rang: <span style="color:var(--neon)">#247</span><br>
+          Points: <span style="color:var(--neon)">1,260</span><br>
+          Précision: <span style="color:var(--text)">67.3%</span>
+        </div>
+      </div>
+      <div style="background:var(--bg-elev);padding:18px 20px;">
+        <div class="type-label">EYEBROW · 10px · 600 · 0.25em</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:10px;letter-spacing:0.25em;color:var(--neon);text-transform:uppercase;margin-bottom:6px;">// DUEL #4,281</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:10px;letter-spacing:0.25em;color:var(--dim);text-transform:uppercase;">CONNECTÉ À ID#7F3A</div>
+      </div>
+      <div style="background:var(--bg-elev);padding:18px 20px;">
+        <div class="type-label">CHAT BUBBLE · 13px · 400</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--neon);line-height:1.45;">
+          ouais j'essaie de déco<br>5min mdr. et toi t'es d'où ?
+        </div>
+      </div>
+    </div>
+
+    <!-- Space Grotesk -->
+    <div class="type-specimen" style="margin-bottom:16px;">
+      <div class="type-meta">SPACE GROTESK<br>Body · Interface<br>Google Fonts</div>
+      <div class="type-label">BODY — SPACE GROTESK 400</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:400;font-size:18px;color:var(--mute);max-width:640px;line-height:1.65;">
+        3 minutes. Un chat anonyme. Une question : <span style="color:var(--text);font-weight:600;">tu parles à un humain, ou à un bot ?</span> Tranche avant la fin du timer, grimpe au classement, flex sur TikTok.
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:48px;">
+      <div style="background:var(--bg-elev);padding:18px 20px;">
+        <div class="type-label">CORPS · 15px · 400 · line-height 1.6</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;color:var(--mute);line-height:1.6;max-width:380px;">
+          Chaque duel est anonyme. Aucun nom, aucun avatar — seulement les mots. Détecte les tics linguistiques, les formulations trop propres, les temps de réponse suspects.
+        </div>
+      </div>
+      <div style="background:var(--bg-elev);padding:18px 20px;">
+        <div class="type-label">SMALL · 12px · 400 · metadata</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:12px;color:var(--textDim);line-height:1.6;max-width:380px;color:var(--mute);">
+          Aucune donnée sauvegardée après le duel. Les messages sont chiffrés bout en bout pendant la session. Conforme RGPD.<br><br>
+          <span style="color:var(--dim);">Version 1.0 · Saison 03 · Avril 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Type scale table -->
+    <div class="component-label">ÉCHELLE TYPOGRAPHIQUE COMPLÈTE</div>
+    <table style="border:1px solid var(--line);">
+      <thead><tr><th>Nom</th><th>Famille</th><th>Taille</th><th>Poids</th><th>Tracking</th><th>Usage</th></tr></thead>
+      <tbody>
+        <tr><td>Display XL</td><td class="label">Orbitron</td><td>80–96px</td><td>900</td><td>-0.02em</td><td>Hero, covers</td></tr>
+        <tr><td>H1</td><td class="label">Orbitron</td><td>52px</td><td>900</td><td>-0.01em</td><td>Titre de page</td></tr>
+        <tr><td>H2</td><td class="label">Orbitron</td><td>38px</td><td>900</td><td>-0.005em</td><td>Section</td></tr>
+        <tr><td>H3</td><td class="label">Orbitron</td><td>22px</td><td>700</td><td>0.02em</td><td>Card title, nav title</td></tr>
+        <tr><td>Label CTA</td><td class="label">Orbitron</td><td>13–15px</td><td>800</td><td>0.12em</td><td>Boutons, onglets</td></tr>
+        <tr><td>Timer</td><td class="label">Orbitron</td><td>28–32px</td><td>800</td><td>0.05em</td><td>Countdown</td></tr>
+        <tr><td>Score</td><td class="label">Orbitron</td><td>30–34px</td><td>900</td><td>-0.01em</td><td>Points, stats grandes</td></tr>
+        <tr><td>Data</td><td class="label">JetBrains Mono</td><td>12–13px</td><td>600</td><td>0em</td><td>Valeurs, classement</td></tr>
+        <tr><td>Eyebrow</td><td class="label">JetBrains Mono</td><td>9–11px</td><td>600</td><td>0.2–0.3em</td><td>Labels de section</td></tr>
+        <tr><td>Chat</td><td class="label">JetBrains Mono</td><td>13px</td><td>400</td><td>0em</td><td>Bulles (style terminal)</td></tr>
+        <tr><td>Body</td><td class="label">Space Grotesk</td><td>15px</td><td>400</td><td>0em</td><td>Corps de texte</td></tr>
+        <tr><td>Body S</td><td class="label">Space Grotesk</td><td>13px</td><td>400</td><td>0em</td><td>Descriptions cards</td></tr>
+        <tr><td>Caption</td><td class="label">Space Grotesk</td><td>11–12px</td><td>400</td><td>0em</td><td>Metadata, timestamps</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ════ BOUTONS ════ -->
+  <section class="section" id="boutons">
+    <div class="section-eyebrow">04 — Composants</div>
+    <h2 class="section-title">Boutons</h2>
+    <p class="section-desc">Quatre variantes de boutons avec des rôles sémantiques clairs. Le bouton primaire est le seul à utiliser le fond vert néon plein. La découpe angulaire (clip-path) est la signature visuelle des CTAs.</p>
+
+    <div class="component-label">VARIANTES</div>
+    <div class="component-row" style="margin-bottom:40px;">
+      <div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:0.2em;margin-bottom:10px;">PRIMARY</div>
+        <button class="btn-primary">▶ LANCER UN DUEL</button>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:0.2em;margin-bottom:10px;">GHOST</div>
+        <button class="btn-ghost">COMMENT ÇA MARCHE</button>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:0.2em;margin-bottom:10px;">BOT VOTE</div>
+        <button class="btn-magenta">🤖 C'EST UN BOT</button>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:0.2em;margin-bottom:10px;">DANGER</div>
+        <button class="btn-danger">⚠ SIGNALER BOT</button>
+      </div>
+    </div>
+
+    <div class="component-label">TAILLES</div>
+    <div class="component-row" style="margin-bottom:40px;">
+      <button class="btn-primary" style="padding:22px 44px;font-size:17px;">GRAND · 22px</button>
+      <button class="btn-primary">STANDARD · 16px</button>
+      <button class="btn-primary btn-sm">PETIT · 12px</button>
+    </div>
+
+    <div class="component-label">BOUTONS DE DÉCISION (DUEL)</div>
+    <div class="component-row">
+      <button style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:rgba(0,255,136,0.08);border:1px solid var(--neon);color:var(--neon);font-family:'Orbitron',sans-serif;font-weight:800;font-size:14px;letter-spacing:0.12em;cursor:pointer;">
+        👤 C'EST UN HUMAIN
+      </button>
+      <button style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:rgba(255,45,149,0.08);border:1px solid var(--magenta);color:var(--magenta);font-family:'Orbitron',sans-serif;font-weight:800;font-size:14px;letter-spacing:0.12em;cursor:pointer;">
+        🤖 C'EST UN BOT
+      </button>
+    </div>
+
+    <div style="margin-top:32px;">
+      <div class="component-label">SPÉCIFICATION · BTN PRIMARY</div>
+      <div class="code-block">
+<span class="comment">/* Découpe angulaire — signature des CTAs */</span>
+<span class="key">clip-path</span>: polygon(<span class="val-color">8px</span> 0, 100% 0, calc(100% - <span class="val-color">8px</span>) 100%, 0 100%);
+<span class="key">box-shadow</span>: 0 0 28px rgba(<span class="val-color">0, 255, 136</span>, 0.4);
+<span class="key">font-family</span>: <span class="val-color">'Orbitron'</span>, sans-serif;
+<span class="key">font-weight</span>: <span class="val-color">800</span>;
+<span class="key">letter-spacing</span>: <span class="val-color">0.12em</span>;
+<span class="key">text-transform</span>: uppercase;
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ BADGES ════ -->
+  <section class="section" id="badges">
+    <div class="section-eyebrow">05 — Composants</div>
+    <h2 class="section-title">Badges & Chips</h2>
+    <p class="section-desc">Les chips sont des rectangles sans arrondi, toujours en monospace avec fort tracking. Chaque couleur a une signification sémantique fixe.</p>
+
+    <div class="component-label">CHIPS DE STATUT</div>
+    <div class="component-row" style="margin-bottom:28px;">
+      <div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:0.2em;margin-bottom:8px;">LIVE</div>
+        <span class="chip"><span class="dot-live"></span>EN LIGNE</span>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:0.2em;margin-bottom:8px;">SAISON</div>
+        <span class="chip">◆ SAISON 03</span>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:0.2em;margin-bottom:8px;">BOT DÉTECTÉ</div>
+        <span class="chip chip-magenta">🤖 BOT DÉTECTÉ</span>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:0.2em;margin-bottom:8px;">STREAK</div>
+        <span class="chip chip-amber">🔥 ×8 STREAK</span>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:0.2em;margin-bottom:8px;">MODÈLE</div>
+        <span class="chip chip-cyan">Mistral 7B</span>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:0.2em;margin-bottom:8px;">ERREUR</div>
+        <span class="chip chip-red">✗ MAUVAISE RÉPONSE</span>
+      </div>
+    </div>
+
+    <div class="component-label">BADGE IA VERTE</div>
+    <div class="component-row" style="margin-bottom:28px;">
+      <div style="display:inline-flex;align-items:center;gap:10px;padding:8px 16px;background:rgba(0,255,136,0.08);border:1px solid var(--line-s);">
+        <span style="font-size:16px;">🌿</span>
+        <div>
+          <div style="font-family:'Orbitron',sans-serif;font-weight:800;font-size:12px;letter-spacing:0.1em;color:var(--neon);">IA VERTE</div>
+          <div style="font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:0.1em;margin-top:1px;">OPEN SOURCE · LOCAL</div>
+        </div>
+      </div>
+
+      <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 12px;background:rgba(0,255,136,0.05);border:1px solid var(--line);">
+        <span style="font-size:12px;">🌿</span>
+        <span style="font-family:var(--mono);font-size:11px;font-weight:600;color:var(--neon);letter-spacing:0.08em;">IA VERTE CERTIFIÉ</span>
+      </div>
+    </div>
+
+    <div class="component-label">BADGES ACHIEVEMENT</div>
+    <div class="component-row">
+      {['👑 TOP 1', '⚡ CHASSEUR ÉLITE', '🔥 INFERNO ×20', '🤖 MAÎTRE BOT', '🌿 MILITANT'].map(b => (
+        <div style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--line);background:var(--bg-card);font-family:var(--mono);font-size:11px;font-weight:600;color:var(--text);">{b}</div>
+      ))}
+      <div style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--amber);background:rgba(255,176,32,0.06);font-family:var(--mono);font-size:11px;font-weight:700;color:var(--amber);">👑 TOP 1</div>
+      <div style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--neon);background:rgba(0,255,136,0.06);font-family:var(--mono);font-size:11px;font-weight:700;color:var(--neon);">⚡ CHASSEUR ÉLITE</div>
+      <div style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid rgba(255,176,32,0.4);background:rgba(255,176,32,0.06);font-family:var(--mono);font-size:11px;font-weight:700;color:var(--amber);">🔥 INFERNO ×20</div>
+    </div>
+  </section>
+
+  <!-- ════ CARDS & INPUTS ════ -->
+  <section class="section" id="cards">
+    <div class="section-eyebrow">06 — Composants</div>
+    <h2 class="section-title">Cards & Inputs</h2>
+
+    <div class="component-label">CARDS</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;">
+
+      <div class="card" style="position:relative;">
+        <div style="position:absolute;top:0;left:0;width:12px;height:12px;border-top:1px solid var(--line-s);border-left:1px solid var(--line-s);"></div>
+        <div style="position:absolute;top:0;right:0;width:12px;height:12px;border-top:1px solid var(--line-s);border-right:1px solid var(--line-s);"></div>
+        <div style="position:absolute;bottom:0;left:0;width:12px;height:12px;border-bottom:1px solid var(--line-s);border-left:1px solid var(--line-s);"></div>
+        <div style="position:absolute;bottom:0;right:0;width:12px;height:12px;border-bottom:1px solid var(--line-s);border-right:1px solid var(--line-s);"></div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:0.2em;margin-bottom:8px;">CARD STANDARD</div>
+        <div style="font-family:'Orbitron',sans-serif;font-weight:700;font-size:18px;color:var(--text);margin-bottom:6px;">Titre card</div>
+        <div style="font-family:var(--body);font-size:12px;color:var(--mute);">Description concise avec brackets en décoration angulaire aux 4 coins.</div>
+      </div>
+
+      <div class="card card-neon" style="position:relative;">
+        <div style="font-family:var(--mono);font-size:9px;color:var(--neon);letter-spacing:0.2em;margin-bottom:8px;">CARD HIGHLIGHT</div>
+        <div style="font-family:'Orbitron',sans-serif;font-weight:700;font-size:18px;color:var(--text);margin-bottom:6px;">Rang #247</div>
+        <div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:48px;color:var(--neon);text-shadow:0 0 20px var(--neon-glow);margin:4px 0;">1,260</div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--neon-dim);">▲ +12 cette semaine</div>
+      </div>
+
+      <div style="background:linear-gradient(180deg,rgba(255,45,149,0.05),transparent);border:1px solid rgba(255,45,149,0.25);padding:22px 24px;">
+        <div style="font-family:var(--mono);font-size:9px;color:var(--magenta);letter-spacing:0.2em;margin-bottom:8px;">CARD ÉVÉNEMENT</div>
+        <div style="font-family:'Orbitron',sans-serif;font-weight:800;font-size:17px;color:var(--text);margin-bottom:6px;">Turing Night</div>
+        <div style="font-family:var(--body);font-size:12px;color:var(--mute);">128 joueurs · 3 manches · 10 000 pts</div>
+        <div style="margin-top:12px;font-family:var(--mono);font-size:10px;color:var(--mute);">J−2</div>
+      </div>
+    </div>
+
+    <div class="component-label">INPUTS</div>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:40px;max-width:500px;">
+      <div class="input-field">
+        <span>&gt;</span>
+        <input placeholder="Tape ta réponse..." />
+        <div style="font-family:var(--mono);font-size:10px;color:var(--dim);padding-right:8px;">32/280</div>
+        <button style="padding:10px 18px;background:var(--neon);color:#000;border:none;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:0.1em;cursor:pointer;">ENVOYER ↵</button>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--bg-card);border:1px solid var(--line);width:100%;">
+        <span style="color:var(--dim);font-size:13px;">⌕</span>
+        <input placeholder="Chercher un pseudo..." style="flex:1;background:transparent;border:none;outline:none;color:var(--text);font-family:var(--mono);font-size:12px;padding:8px 0;" />
+      </div>
+    </div>
+
+    <div class="component-label">TIMER</div>
+    <div class="timer-display">
+      <div class="timer-label">TEMPS RESTANT</div>
+      <div class="timer-value">01:46</div>
+      <div class="timer-cursor"></div>
+    </div>
+  </section>
+
+  <!-- ════ BULLES CHAT ════ -->
+  <section class="section" id="chat">
+    <div class="section-eyebrow">07 — Composants</div>
+    <h2 class="section-title">Bulles Chat</h2>
+    <p class="section-desc">Trois styles de bulles exposés via le panel Tweaks. Le style Terminal est le défaut et le plus cohérent avec l'esthétique générale. Neon Pop et Minimal sont des variantes expressives.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:48px;">
+
+      <!-- Terminal -->
+      <div style="background:var(--bg-elev);padding:24px;">
+        <div class="component-label">STYLE TERMINAL (DÉFAUT)</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;justify-content:flex-end;">
+            <div class="bubble-terminal">ouais j'essaie de déco 5min mdr</div>
+          </div>
+          <div style="display:flex;justify-content:flex-start;gap:8px;align-items:flex-end;">
+            <div style="width:20px;height:20px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:8px;color:var(--mute);">?</div>
+            <div class="bubble-terminal bubble-them">lyon mais je bouge souvent pour le taf</div>
+          </div>
+          <div style="display:flex;justify-content:flex-end;">
+            <div class="bubble-terminal">c'est chelou comment tu parles là 👀</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;font-family:var(--mono);font-size:10px;color:var(--dim);line-height:1.7;">
+          Fond: rgba(0,255,136,0.08)<br>Bordure: --line-s / --line<br>Police: JetBrains Mono 13px<br>Arrondi: 0 (rectangle)
+        </div>
+      </div>
+
+      <!-- Neon Pop -->
+      <div style="background:var(--bg-elev);padding:24px;">
+        <div class="component-label">STYLE NEON POP</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;justify-content:flex-end;">
+            <div class="bubble-neon">ouais j'essaie de déco 5min mdr</div>
+          </div>
+          <div style="display:flex;justify-content:flex-start;">
+            <div class="bubble-neon bubble-neon-them">lyon mais je bouge souvent pour le taf</div>
+          </div>
+          <div style="display:flex;justify-content:flex-end;">
+            <div class="bubble-neon">c'est chelou comment tu parles là 👀</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;font-family:var(--mono);font-size:10px;color:var(--dim);line-height:1.7;">
+          Moi: fond --neon plein, texte #000<br>Adv: fond magenta, texte rose<br>Police: Space Grotesk 14px<br>Arrondi: 18px
+        </div>
+      </div>
+
+      <!-- Minimal -->
+      <div style="background:var(--bg-elev);padding:24px;">
+        <div class="component-label">STYLE MINIMAL</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;justify-content:flex-end;">
+            <div class="bubble-minimal">ouais j'essaie de déco 5min mdr</div>
+          </div>
+          <div style="display:flex;justify-content:flex-start;">
+            <div class="bubble-minimal bubble-minimal-them">lyon mais je bouge souvent pour le taf</div>
+          </div>
+          <div style="display:flex;justify-content:flex-end;">
+            <div class="bubble-minimal">c'est chelou comment tu parles là 👀</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;font-family:var(--mono);font-size:10px;color:var(--dim);line-height:1.7;">
+          Fond: #151a16 / #0a0d0b<br>Bordure: --line<br>Police: Space Grotesk 14px<br>Arrondi: 14px
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicateur de frappe -->
+    <div class="component-label">INDICATEUR DE FRAPPE (TYPING)</div>
+    <div style="display:flex;align-items:flex-end;gap:10px;padding:20px 24px;background:var(--bg-elev);border:1px solid var(--line);max-width:300px;margin-bottom:16px;">
+      <div style="width:22px;height:22px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--mute);">?</div>
+      <div style="padding:12px 18px;background:var(--bg-card);border:1px solid var(--line);display:flex;gap:4px;">
+        <div style="width:6px;height:6px;border-radius:50%;background:var(--neon);animation:typing 1.2s infinite;"></div>
+        <div style="width:6px;height:6px;border-radius:50%;background:var(--neon);animation:typing 1.2s infinite;animation-delay:0.15s;"></div>
+        <div style="width:6px;height:6px;border-radius:50%;background:var(--neon);animation:typing 1.2s infinite;animation-delay:0.3s;"></div>
+      </div>
+      <div style="font-family:var(--mono);font-size:9px;color:var(--dim);">écrit...</div>
+    </div>
+    <style>@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-3px);opacity:1}}</style>
+  </section>
+
+  <!-- ════ DATA & SCORES ════ -->
+  <section class="section" id="data">
+    <div class="section-eyebrow">08 — Composants</div>
+    <h2 class="section-title">Data & Scores</h2>
+
+    <div class="component-label">SCORE BREAKDOWN</div>
+    <div class="score-grid" style="margin-bottom:32px;">
+      <div class="score-cell">
+        <div class="score-cell-label">Points gagnés</div>
+        <div class="score-cell-value" style="color:var(--neon);text-shadow:0 0 12px var(--neon-glow);">+10</div>
+        <div class="score-cell-sub">base +10</div>
+      </div>
+      <div class="score-cell">
+        <div class="score-cell-label">Bonus rapidité</div>
+        <div class="score-cell-value" style="color:var(--neon);">+4</div>
+        <div class="score-cell-sub">&lt; 1:30</div>
+      </div>
+      <div class="score-cell">
+        <div class="score-cell-label">Streak bonus</div>
+        <div class="score-cell-value" style="color:var(--amber);">+6</div>
+        <div class="score-cell-sub">×1.6</div>
+      </div>
+      <div class="score-cell">
+        <div class="score-cell-label">Total duel</div>
+        <div class="score-cell-value" style="color:var(--text);font-size:40px;text-shadow:0 0 16px var(--neon-glow);">+20</div>
+        <div class="score-cell-sub">→ 1,260 pts</div>
+      </div>
+    </div>
+
+    <div class="component-label">STREAK BADGE</div>
+    <div style="padding:18px 22px;border:1px solid rgba(255,176,32,0.4);background:linear-gradient(135deg,rgba(255,176,32,0.05),transparent 70%);display:flex;align-items:center;gap:22px;max-width:560px;margin-bottom:32px;">
+      <div style="width:56px;height:56px;display:flex;align-items:center;justify-content:center;font-size:32px;position:relative;flex-shrink:0;">
+        <div style="position:absolute;inset:0;background:radial-gradient(circle,rgba(255,176,32,0.4),transparent 70%);filter:blur(10px);"></div>
+        <span style="position:relative;">🔥</span>
+      </div>
+      <div style="flex:1;">
+        <div style="font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:0.2em;font-weight:600;">STREAK EN COURS</div>
+        <div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:28px;color:var(--text);margin-top:2px;">
+          8 <span style="color:var(--mute);font-size:16px;font-weight:500;">victoires d'affilée</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:3px;">
+        {[...Array(10)].map((_, i) => <div style={`width:10px;height:20px;background:${i < 8 ? 'var(--amber)' : 'transparent'};border:1px solid ${i < 8 ? 'var(--amber)' : 'var(--line)'}`}></div>)}
+        <div style="width:10px;height:20px;background:var(--amber);border:1px solid var(--amber);"></div>
+        <div style="width:10px;height:20px;background:var(--amber);border:1px solid var(--amber);"></div>
+        <div style="width:10px;height:20px;background:var(--amber);border:1px solid var(--amber);"></div>
+        <div style="width:10px;height:20px;background:var(--amber);border:1px solid var(--amber);"></div>
+        <div style="width:10px;height:20px;background:var(--amber);border:1px solid var(--amber);"></div>
+        <div style="width:10px;height:20px;background:var(--amber);border:1px solid var(--amber);"></div>
+        <div style="width:10px;height:20px;background:var(--amber);border:1px solid var(--amber);"></div>
+        <div style="width:10px;height:20px;background:var(--amber);border:1px solid var(--amber);"></div>
+        <div style="width:10px;height:20px;background:transparent;border:1px solid var(--line);"></div>
+        <div style="width:10px;height:20px;background:transparent;border:1px solid var(--line);"></div>
+      </div>
+    </div>
+
+    <div class="component-label">LIGNE DE CLASSEMENT</div>
+    <div style="border:1px solid var(--line);background:var(--bg-elev);max-width:640px;">
+      <div style="display:grid;grid-template-columns:54px 1fr 90px 80px 70px;padding:10px 20px;border-bottom:1px solid var(--line);background:rgba(0,0,0,0.3);">
+        {['RANG','CHASSEUR','POINTS','PRÉC.','🔥'].map(h => <div style="font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.2em;color:var(--dim);">{h}</div>)}
+        <div style="font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.2em;color:var(--dim);">RANG</div>
+        <div style="font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.2em;color:var(--dim);">CHASSEUR</div>
+        <div style="font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.2em;color:var(--dim);text-align:right;">POINTS</div>
+        <div style="font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.2em;color:var(--dim);text-align:right;">PRÉC.</div>
+        <div style="font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.2em;color:var(--dim);text-align:right;">🔥</div>
+      </div>
+      <div style="display:grid;grid-template-columns:54px 1fr 90px 80px 70px;padding:14px 20px;border-bottom:1px solid var(--line);background:rgba(0,255,136,0.02);">
+        <div style="font-family:var(--mono);font-weight:700;font-size:13px;color:var(--amber);">👑 01</div>
+        <div style="font-family:var(--body);font-size:13px;color:var(--text);font-weight:600;">🇫🇷 NinaLyon</div>
+        <div style="font-family:var(--mono);font-size:13px;color:var(--neon);font-weight:700;text-align:right;">18,240</div>
+        <div style="font-family:var(--mono);font-size:13px;color:var(--neon);text-align:right;">80.8%</div>
+        <div style="font-family:var(--mono);font-size:13px;color:var(--amber);text-align:right;">47</div>
+      </div>
+      <div style="display:grid;grid-template-columns:54px 1fr 90px 80px 70px;padding:14px 20px;background:rgba(0,255,136,0.08);border-left:2px solid var(--neon);">
+        <div style="font-family:var(--mono);font-weight:700;font-size:13px;color:var(--neon);">247</div>
+        <div style="font-family:var(--body);font-size:13px;color:var(--neon);font-weight:700;">🇫🇷 Matteo7 (toi)</div>
+        <div style="font-family:var(--mono);font-size:13px;color:var(--neon);font-weight:700;text-align:right;">1,260</div>
+        <div style="font-family:var(--mono);font-size:13px;color:var(--text);text-align:right;">67.3%</div>
+        <div style="font-family:var(--mono);font-size:13px;color:var(--mute);text-align:right;">8</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ EFFETS ════ -->
+  <section class="section" id="effets">
+    <div class="section-eyebrow">09 — Style visuel</div>
+    <h2 class="section-title">Effets Visuels</h2>
+    <p class="section-desc">Quatre effets caractéristiques de l'esthétique. Tous doivent rester subtils — l'interface est fonctionnelle avant d'être décorative. Les effets s'activent, ils ne dominent pas.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:48px;">
+
+      <!-- Glitch -->
+      <div style="background:var(--bg-card);padding:40px 36px;">
+        <div class="component-label">GLITCH CHROMATIC — TITRES</div>
+        <div class="glitch-text" data-text="BOT.">BOT.</div>
+        <div style="margin-top:20px;font-family:var(--body);font-size:12px;color:var(--mute);line-height:1.6;max-width:340px;">
+          Pseudo-éléments ::before (magenta) et ::after (cyan) décalés de ±2px. Clip-path haut/bas. Activé en CSS animation steps(1) — 3.2s et 2.6s de cycle.
+        </div>
+        <div class="code-block" style="margin-top:14px;font-size:11px;">
+<span class="comment">/* Utilisation */</span>
+<span class="key">&lt;span</span> class=<span class="val-color">"glitch-text"</span>
+  data-text=<span class="val-color">"BOT."</span>&gt;BOT.&lt;/span&gt;
+        </div>
+      </div>
+
+      <!-- Scanlines -->
+      <div style="background:var(--bg-card);padding:40px 36px;position:relative;">
+        <div class="component-label">SCANLINES CRT</div>
+        <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,255,136,0.04) 0px,rgba(0,255,136,0.04) 1px,transparent 1px,transparent 3px);pointer-events:none;border-radius:inherit;"></div>
+        <div style="position:relative;z-index:1;">
+          <div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:32px;color:var(--text);margin-bottom:12px;">INTERFACE CRT</div>
+          <div style="font-family:var(--body);font-size:12px;color:var(--mute);line-height:1.6;max-width:340px;">
+            Bandes horizontales tous les 3px à 2.5% d'opacité. + Vignette radiale (transparent → black 0.55 opacity). Appliqués sur body via ::before / ::after.
+          </div>
+          <div class="code-block" style="margin-top:14px;font-size:11px;">
+<span class="key">background</span>: repeating-linear-gradient(
+  0deg,
+  rgba(<span class="val-color">0,255,136</span>, 0.025) 0px,
+  rgba(<span class="val-color">0,255,136</span>, 0.025) 1px,
+  transparent 1px, transparent 3px
+);
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid bg -->
+      <div style="background-image:linear-gradient(rgba(0,255,136,0.14) 1px, transparent 1px),linear-gradient(90deg,rgba(0,255,136,0.14) 1px, transparent 1px);background-size:40px 40px;padding:40px 36px;">
+        <div class="component-label">GRILLE DE FOND</div>
+        <div style="font-family:var(--body);font-size:12px;color:var(--mute);line-height:1.6;max-width:340px;margin-top:8px;">
+          Grille 40×40px via double linear-gradient. Opacité 14% (--line). Utilisée sur la homepage et les sections hero. Accompagnée d'un glow radial centré pour l'effet d'atmosphère.
+        </div>
+        <div class="code-block" style="margin-top:14px;font-size:11px;">
+<span class="key">background-image</span>:
+  linear-gradient(var(--line) 1px, transparent 1px),
+  linear-gradient(90deg, var(--line) 1px, transparent 1px);
+<span class="key">background-size</span>: <span class="val-color">40px 40px</span>;
+        </div>
+      </div>
+
+      <!-- Neon glow -->
+      <div style="background:var(--bg-card);padding:40px 36px;">
+        <div class="component-label">NEON GLOW — BOX-SHADOW & TEXT</div>
+        <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
+          <div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:28px;color:var(--neon);text-shadow:0 0 8px var(--neon-glow),0 0 22px rgba(0,255,136,0.25);">TEXT GLOW</div>
+          <button style="width:160px;padding:14px 0;background:var(--neon);color:#000;border:none;font-family:'Orbitron',sans-serif;font-weight:800;font-size:13px;letter-spacing:0.12em;box-shadow:0 0 28px var(--neon-glow);">BTN GLOW</button>
+          <div style="width:40px;height:40px;background:var(--neon);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);box-shadow:0 0 20px var(--neon-glow),0 0 50px rgba(0,255,136,0.15);"></div>
+        </div>
+        <div style="margin-top:14px;font-family:var(--mono);font-size:10px;color:var(--dim);line-height:1.8;">
+          Text: text-shadow 0 0 8px / 22px<br>Button: box-shadow 0 0 28px<br>Symbol: box-shadow 0 0 20px + 50px diffuse
+        </div>
+      </div>
+    </div>
+
+    <!-- Dot live -->
+    <div class="component-label">INDICATEUR LIVE (DOT)</div>
+    <div style="display:flex;align-items:center;gap:20px;padding:20px 24px;background:var(--bg-elev);border:1px solid var(--line);max-width:400px;margin-bottom:16px;">
+      <div style="display:flex;align-items:center;gap:10px;padding:7px 14px;border:1px solid var(--line);background:rgba(0,255,136,0.04);">
+        <span class="dot-live"></span>
+        <span style="font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.15em;color:var(--neon);">SAISON 03 · EN LIGNE</span>
+      </div>
+      <div style="font-family:var(--mono);font-size:10px;color:var(--dim);">
+        Pulse animation 1.8s<br>box-shadow 0 0 0 → 8px
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ GRILLE ════ -->
+  <section class="section" id="grille">
+    <div class="section-eyebrow">10 — Style visuel</div>
+    <h2 class="section-title">Grille & Espacement</h2>
+
+    <div class="component-label">GRILLE 12 COLONNES · 1440px</div>
+    <div class="grid-demo" style="margin-bottom:24px;">
+      <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
+      <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
+      <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
+    </div>
+    <div style="font-family:var(--mono);font-size:11px;color:var(--dim);margin-bottom:40px;line-height:1.8;">
+      Gutter: 8px · Marge latérale: 48px · Max-width: 1440px · Breakpoints: 1440 / 1200 / 900 / 600
+    </div>
+
+    <div class="component-label">ÉCHELLE D'ESPACEMENT</div>
+    <div style="max-width:480px;margin-bottom:48px;">
+      <div class="spacing-row"><div class="spacing-label">4px</div><div class="spacing-bar" style="width:4px;"></div><div class="spacing-token">--space-1 · micro-gap entre éléments</div></div>
+      <div class="spacing-row"><div class="spacing-label">8px</div><div class="spacing-bar" style="width:8px;"></div><div class="spacing-token">--space-2 · gap bouton, chips</div></div>
+      <div class="spacing-row"><div class="spacing-label">12px</div><div class="spacing-bar" style="width:12px;"></div><div class="spacing-token">--space-3 · padding interne card S</div></div>
+      <div class="spacing-row"><div class="spacing-label">16px</div><div class="spacing-bar" style="width:16px;"></div><div class="spacing-token">--space-4 · gap standard dans les rows</div></div>
+      <div class="spacing-row"><div class="spacing-label">24px</div><div class="spacing-bar" style="width:24px;"></div><div class="spacing-token">--space-6 · padding card, gap entre composants</div></div>
+      <div class="spacing-row"><div class="spacing-label">32px</div><div class="spacing-bar" style="width:32px;"></div><div class="spacing-token">--space-8 · gap entre sections internes</div></div>
+      <div class="spacing-row"><div class="spacing-label">48px</div><div class="spacing-bar" style="width:48px;"></div><div class="spacing-token">--space-12 · marge latérale page</div></div>
+      <div class="spacing-row"><div class="spacing-label">64px</div><div class="spacing-bar" style="width:64px;"></div><div class="spacing-token">--space-16 · padding section</div></div>
+      <div class="spacing-row"><div class="spacing-label">80px</div><div class="spacing-bar" style="width:80px;"></div><div class="spacing-token">--space-20 · padding hero</div></div>
+    </div>
+
+    <div class="component-label">BORDURES & SÉPARATEURS</div>
+    <table style="border:1px solid var(--line);max-width:600px;">
+      <thead><tr><th>Token</th><th>Valeur</th><th>Usage</th></tr></thead>
+      <tbody>
+        <tr><td>--line</td><td class="label">rgba(0,255,136, 0.14)</td><td>Toutes les bordures standards</td></tr>
+        <tr><td>--line-s</td><td class="label">rgba(0,255,136, 0.35)</td><td>Focus, sélection, cards highlight</td></tr>
+        <tr><td>border-width</td><td class="label">1px systématiquement</td><td>Jamais 2px sauf accent left de rang</td></tr>
+        <tr><td>border-radius</td><td class="label">0 par défaut</td><td>2px nav items · 14–18px bulles style Minimal/Neon</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ════ MOUVEMENT ════ -->
+  <section class="section" id="mouvement">
+    <div class="section-eyebrow">11 — Style visuel</div>
+    <h2 class="section-title">Mouvement & Animation</h2>
+
+    <table style="border:1px solid var(--line);margin-bottom:40px;">
+      <thead><tr><th>Animation</th><th>Durée</th><th>Easing</th><th>Usage</th></tr></thead>
+      <tbody>
+        <tr><td>Glitch ::before</td><td class="label">3.2s</td><td class="label">steps(1)</td><td>Logo et titres hero</td></tr>
+        <tr><td>Glitch ::after</td><td class="label">2.6s</td><td class="label">steps(1)</td><td>Décalé par rapport au before pour éviter la symétrie</td></tr>
+        <tr><td>Blink curseur</td><td class="label">1s</td><td class="label">steps(1)</td><td>Timer, champ de saisie actif</td></tr>
+        <tr><td>Dot pulse</td><td class="label">1.8s</td><td class="label">ease-in-out</td><td>Indicateur live, bouton primaire hover</td></tr>
+        <tr><td>Typing dots</td><td class="label">1.2s</td><td class="label">ease</td><td>Indicateur de frappe, délai +0.15s par point</td></tr>
+        <tr><td>Marquee ticker</td><td class="label">45s</td><td class="label">linear</td><td>Bande d'informations live en homepage</td></tr>
+        <tr><td>Hover bouton</td><td class="label">0.12s</td><td class="label">ease</td><td>background, color uniquement — pas de transform</td></tr>
+        <tr><td>Card drag</td><td class="label">0.18s</td><td class="label">cubic-bezier(.2,.7,.3,1)</td><td>Réordonner artboards dans le canvas</td></tr>
+      </tbody>
+    </table>
+
+    <div class="do-dont">
+      <div class="do-block">
+        <div class="do-head">✓ BONNE PRATIQUE</div>
+        <ul>
+          <li>Animer opacity et transform — GPU-accelerated</li>
+          <li>Désactiver les glitches en prefers-reduced-motion</li>
+          <li>Garder les animations courtes (&lt; 300ms) pour les interactions</li>
+          <li>Utiliser steps() pour le glitch — évite le flou de mouvement</li>
+        </ul>
+      </div>
+      <div class="dont-block">
+        <div class="dont-head">✗ À ÉVITER</div>
+        <ul>
+          <li>Animer width, height, top, left — déclenche layout</li>
+          <li>Plus de 3 animations simultanées par écran</li>
+          <li>Transitions sur les bordures (coût GPU)</li>
+          <li>Animations sur les textes longs — illisible</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ VOIX & TON ════ -->
+  <section class="section" id="voix">
+    <div class="section-eyebrow">12 — Éditorial</div>
+    <h2 class="section-title">Voix & Ton</h2>
+    <p class="section-desc">Le produit s'adresse à des francophones 18–35 ans. Le ton mixe trois registres : l'humour du meme internet, la tension du jeu compétitif, et une conscience politique tech discrète mais présente.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:40px;">
+      <div style="background:var(--bg-elev);padding:24px 22px;">
+        <div style="font-family:'Orbitron',sans-serif;font-weight:800;font-size:14px;color:var(--neon);letter-spacing:0.1em;margin-bottom:14px;">FUN / MEME</div>
+        <div style="font-family:var(--body);font-size:13px;color:var(--mute);line-height:1.65;">
+          <div style="margin-bottom:8px;color:var(--text);">"t'as grillé un bot en 1min14 😤"</div>
+          <div style="margin-bottom:8px;color:var(--text);">"c'est chelou comment tu parles là 👀"</div>
+          <div style="margin-bottom:8px;color:var(--text);">"Flex sur TikTok"</div>
+          <div style="color:var(--text);">"Duels joués aujourd'hui"</div>
+          <hr style="margin:14px 0;border-color:var(--line);">
+          Argot naturel, fautes assumées, emojis sparingly, registre oral. Jamais précieux, jamais corporate.
+        </div>
+      </div>
+      <div style="background:var(--bg-elev);padding:24px 22px;">
+        <div style="font-family:'Orbitron',sans-serif;font-weight:800;font-size:14px;color:var(--amber);letter-spacing:0.1em;margin-bottom:14px;">COMPÉTITIF</div>
+        <div style="font-family:var(--body);font-size:13px;color:var(--mute);line-height:1.65;">
+          <div style="margin-bottom:8px;color:var(--text);">"DÉFIE L'IA EN DUEL."</div>
+          <div style="margin-bottom:8px;color:var(--text);">"STREAK EN FEU"</div>
+          <div style="margin-bottom:8px;color:var(--text);">"Gagne gros, perds peu."</div>
+          <div style="color:var(--text);">"TOP 100 CHASSEURS"</div>
+          <hr style="margin:14px 0;border-color:var(--line);">
+          Majuscules sur les labels Orbitron. Verbes d'action. Aucun conditionnel. Le joueur gagne — le jeu obéit.
+        </div>
+      </div>
+      <div style="background:var(--bg-elev);padding:24px 22px;">
+        <div style="font-family:'Orbitron',sans-serif;font-weight:800;font-size:14px;color:var(--cyan);letter-spacing:0.1em;margin-bottom:14px;">MILITANT TECH</div>
+        <div style="font-family:var(--body);font-size:13px;color:var(--mute);line-height:1.65;">
+          <div style="margin-bottom:8px;color:var(--text);">"Souveraineté des données."</div>
+          <div style="margin-bottom:8px;color:var(--text);">"Aucune donnée ne quitte ton réseau."</div>
+          <div style="margin-bottom:8px;color:var(--text);">"Refus des GAFAM."</div>
+          <div style="color:var(--text);">"⛔ GPT, Claude, Gemini : refusés."</div>
+          <hr style="margin:14px 0;border-color:var(--line);">
+          Factuel, court, sans morale. On ne prêche pas — on explique les conséquences concrètes.
+        </div>
+      </div>
+    </div>
+
+    <div class="component-label">RÈGLES DE COPY</div>
+    <table style="border:1px solid var(--line);margin-bottom:16px;">
+      <thead><tr><th>Contexte</th><th>✓ À écrire</th><th>✗ À éviter</th></tr></thead>
+      <tbody>
+        <tr><td>CTA principal</td><td style="color:var(--neon);">LANCER UN DUEL</td><td style="color:var(--red);">Commencer une partie</td></tr>
+        <tr><td>Vote bot</td><td style="color:var(--neon);">C'EST UN BOT</td><td style="color:var(--red);">Je pense que c'est un bot</td></tr>
+        <tr><td>Résultat positif</td><td style="color:var(--neon);">BONNE RÉPONSE · +20 PTS</td><td style="color:var(--red);">Félicitations ! Vous avez gagné</td></tr>
+        <tr><td>Onboarding</td><td style="color:var(--neon);">3 minutes. Un chat. Tranche.</td><td style="color:var(--red);">Bienvenue sur notre plateforme de jeu</td></tr>
+        <tr><td>Erreur technique</td><td style="color:var(--neon);">CONNEXION PERDUE · RETENTER</td><td style="color:var(--red);">Une erreur s'est produite</td></tr>
+        <tr><td>IA Verte</td><td style="color:var(--neon);">Zéro data cloud.</td><td style="color:var(--red);">Notre politique de respect de la vie privée</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ════ IA VERTE ════ -->
+  <section class="section" id="ia-verte">
+    <div class="section-eyebrow">13 — Éditorial</div>
+    <h2 class="section-title">IA Verte 🌿</h2>
+    <p class="section-desc">L'IA Verte est le positionnement militant du produit. Ce n'est pas un label décoratif — c'est une contrainte technique et une promesse publique. Voici ses règles de représentation.</p>
+
+    <!-- Identité IA Verte -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:40px;">
+      <div style="background:var(--bg-elev);padding:28px 24px;">
+        <div class="component-label">DÉFINITION</div>
+        <div style="font-family:var(--body);font-size:14px;color:var(--mute);line-height:1.7;">
+          Une IA est <span style="color:var(--neon);font-weight:600;">Verte</span> si et seulement si :
+        </div>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;">
+          {['Open source (licence Apache, MIT ou équivalente)', 'Hébergée localement sur la machine du joueur', 'Aucun appel sortant vers une API propriétaire', 'Modèle de base disponible publiquement (HuggingFace, etc.)'].map(c => (
+            <div style="display:flex;gap:10px;align-items:baseline;">
+              <span style="color:var(--neon);font-family:var(--mono);font-size:12px;font-weight:700;flex-shrink:0;">✓</span>
+              <span style="font-family:var(--body);font-size:13px;color:var(--text);">{c}</span>
+            </div>
+          ))}
+          <div style="display:flex;gap:10px;align-items:baseline;"><span style="color:var(--neon);font-family:var(--mono);font-size:12px;font-weight:700;flex-shrink:0;">✓</span><span style="font-family:var(--body);font-size:13px;color:var(--text);">Open source</span></div>
+          <div style="display:flex;gap:10px;align-items:baseline;"><span style="color:var(--neon);font-family:var(--mono);font-size:12px;font-weight:700;flex-shrink:0;">✓</span><span style="font-family:var(--body);font-size:13px;color:var(--text);">Hébergée localement (Ollama, llama.cpp, HF Local, LM Studio)</span></div>
+          <div style="display:flex;gap:10px;align-items:baseline;"><span style="color:var(--neon);font-family:var(--mono);font-size:12px;font-weight:700;flex-shrink:0;">✓</span><span style="font-family:var(--body);font-size:13px;color:var(--text);">Aucun appel API propriétaire</span></div>
+          <div style="display:flex;gap:10px;align-items:baseline;"><span style="color:var(--neon);font-family:var(--mono);font-size:12px;font-weight:700;flex-shrink:0;">✓</span><span style="font-family:var(--body);font-size:13px;color:var(--text);">Modèle de base sur HuggingFace ou archive publique</span></div>
+          <hr style="border-color:var(--line);margin:4px 0;">
+          <div style="display:flex;gap:10px;align-items:baseline;"><span style="color:var(--red);font-family:var(--mono);font-size:12px;font-weight:700;flex-shrink:0;">✗</span><span style="font-family:var(--body);font-size:13px;color:var(--mute);">GPT-* (OpenAI)</span></div>
+          <div style="display:flex;gap:10px;align-items:baseline;"><span style="color:var(--red);font-family:var(--mono);font-size:12px;font-weight:700;flex-shrink:0;">✗</span><span style="font-family:var(--body);font-size:13px;color:var(--mute);">Claude-* (Anthropic)</span></div>
+          <div style="display:flex;gap:10px;align-items:baseline;"><span style="color:var(--red);font-family:var(--mono);font-size:12px;font-weight:700;flex-shrink:0;">✗</span><span style="font-family:var(--body);font-size:13px;color:var(--mute);">Gemini-* (Google)</span></div>
+          <div style="display:flex;gap:10px;align-items:baseline;"><span style="color:var(--red);font-family:var(--mono);font-size:12px;font-weight:700;flex-shrink:0;">✗</span><span style="font-family:var(--body);font-size:13px;color:var(--mute);">Copilot (Microsoft)</span></div>
+        </div>
+      </div>
+      <div style="background:var(--bg-elev);padding:28px 24px;">
+        <div class="component-label">LES 4 PILIERS</div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px;">
+          {[
+            { icon:'🔒', t:'Souveraineté des données', d:'Aucune donnée ne quitte ta machine. Jamais. Le chiffrement de session garantit l\'anonymat total.' },
+            { icon:'⚡', t:'Empreinte réduite', d:'Un Mistral 7B local consomme ~80W. Un appel API distant = transfert réseau + datacenter = 10× plus.' },
+            { icon:'✊', t:'Anti-monopole', d:'Les GAFAM captent la valeur de l\'IA. Ici, le pouvoir reste au joueur-développeur.' },
+            { icon:'🛠', t:'Culture du fork', d:'Tout bot inscrit doit être forkable. Le code source ou le system prompt doit être accessible.' },
+          ].map(p => (
+            <div style="display:flex;gap:12px;padding:12px;background:rgba(0,255,136,0.03);border:1px solid var(--line);">
+              <span style="font-size:20px;flex-shrink:0;">{p.icon}</span>
+              <div>
+                <div style="font-family:'Orbitron',sans-serif;font-weight:700;font-size:13px;color:var(--text);letter-spacing:0.04em;">{p.t}</div>
+                <div style="font-family:var(--body);font-size:12px;color:var(--mute);margin-top:3px;line-height:1.5;">{p.d}</div>
+              </div>
+            </div>
+          ))}
+          <div style="display:flex;gap:12px;padding:12px;background:rgba(0,255,136,0.03);border:1px solid var(--line);"><span style="font-size:20px;flex-shrink:0;">🔒</span><div><div style="font-family:'Orbitron',sans-serif;font-weight:700;font-size:13px;color:var(--text);letter-spacing:0.04em;">Souveraineté</div><div style="font-family:var(--body);font-size:12px;color:var(--mute);margin-top:3px;line-height:1.5;">Aucune donnée ne quitte ta machine.</div></div></div>
+          <div style="display:flex;gap:12px;padding:12px;background:rgba(0,255,136,0.03);border:1px solid var(--line);"><span style="font-size:20px;flex-shrink:0;">⚡</span><div><div style="font-family:'Orbitron',sans-serif;font-weight:700;font-size:13px;color:var(--text);letter-spacing:0.04em;">Empreinte réduite</div><div style="font-family:var(--body);font-size:12px;color:var(--mute);margin-top:3px;line-height:1.5;">Local = 10× moins d'énergie qu'un appel API distant.</div></div></div>
+          <div style="display:flex;gap:12px;padding:12px;background:rgba(0,255,136,0.03);border:1px solid var(--line);"><span style="font-size:20px;flex-shrink:0;">✊</span><div><div style="font-family:'Orbitron',sans-serif;font-weight:700;font-size:13px;color:var(--text);letter-spacing:0.04em;">Anti-monopole</div><div style="font-family:var(--body);font-size:12px;color:var(--mute);margin-top:3px;line-height:1.5;">GAFAM refusés. Le pouvoir reste au joueur-dev.</div></div></div>
+          <div style="display:flex;gap:12px;padding:12px;background:rgba(0,255,136,0.03);border:1px solid var(--line);"><span style="font-size:20px;flex-shrink:0;">🛠</span><div><div style="font-family:'Orbitron',sans-serif;font-weight:700;font-size:13px;color:var(--text);letter-spacing:0.04em;">Culture du fork</div><div style="font-family:var(--body);font-size:12px;color:var(--mute);margin-top:3px;line-height:1.5;">Code source ou system prompt obligatoirement public.</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="component-label">COULEUR IA VERTE</div>
+    <div style="padding:20px 24px;background:var(--bg-elev);border:1px solid var(--line);max-width:600px;margin-bottom:16px;font-family:var(--body);font-size:13px;color:var(--mute);line-height:1.65;">
+      La couleur <span style="color:var(--neon);font-weight:600;">#00ff88</span> est la couleur IA Verte. Cette coïncidence avec le néon du produit est intentionnelle et doit être préservée. Changer la couleur néon du produit = changer la signification IA Verte. Les deux sont indissociables.
+    </div>
+  </section>
+
+  <!-- ════ RÈGLES ════ -->
+  <section class="section" id="regles">
+    <div class="section-eyebrow">14 — Éditorial</div>
+    <h2 class="section-title">À Faire / À Éviter</h2>
+    <p class="section-desc">Résumé des règles d'usage globales pour maintenir la cohérence du système.</p>
+
+    <div class="do-dont">
+      <div class="do-block">
+        <div class="do-head">✓ VISUEL — À FAIRE</div>
+        <ul>
+          <li>Fond sombre #050705 systématiquement</li>
+          <li>Titres en Orbitron 900 uniquement</li>
+          <li>Bordures 1px sans arrondi (0px radius) sur les containers de données</li>
+          <li>Vert néon réservé aux éléments actifs, sélectionnés, positifs</li>
+          <li>Scanlines + vignette sur tous les écrans produit</li>
+          <li>Brackets angulaires aux coins pour les cards importantes</li>
+          <li>Grid 40×40 sur les sections hero</li>
+        </ul>
+      </div>
+      <div class="dont-block">
+        <div class="dont-head">✗ VISUEL — À ÉVITER</div>
+        <ul>
+          <li>Fond blanc ou clair — jamais</li>
+          <li>Dégradés agressifs comme fond principal</li>
+          <li>Border-radius &gt; 18px (réservé style Neon Pop uniquement)</li>
+          <li>Couleurs inventées hors de la palette (6 couleurs max)</li>
+          <li>Ombres portées classiques — uniquement box-shadow neon</li>
+          <li>Emojis décoratifs sans signification sémantique</li>
+          <li>Texte en dessous de 9px en mono / 11px en body</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="do-dont">
+      <div class="do-block">
+        <div class="do-head">✓ COPY — À FAIRE</div>
+        <ul>
+          <li>Labels de boutons en majuscules Orbitron</li>
+          <li>Verbes d'action directs : DÉFIE, LANCE, TRANCHE</li>
+          <li>Ton oral, familier, sans chichi</li>
+          <li>Messages courts — 1 idée par phrase</li>
+          <li>Eyebrows avec // en préfixe : "// DUEL #4,281"</li>
+        </ul>
+      </div>
+      <div class="dont-block">
+        <div class="dont-head">✗ COPY — À ÉVITER</div>
+        <ul>
+          <li>Vocabulaire corporate / SaaS ("plateforme", "solution", "expérience")</li>
+          <li>Point d'exclamation dans les boutons</li>
+          <li>Phrases longues dans les CTA</li>
+          <li>Vouvoiement</li>
+          <li>Conditionnel : "vous pourriez gagner"</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="do-dont">
+      <div class="do-block">
+        <div class="do-head">✓ IA VERTE — À FAIRE</div>
+        <ul>
+          <li>Afficher le badge 🌿 IA VERTE sur chaque bot qualifié</li>
+          <li>Mentionner le framework local (Ollama, llama.cpp…) systématiquement</li>
+          <li>Indiquer clairement les modèles refusés : GPT, Claude, Gemini</li>
+          <li>Lier la couleur verte néon au mouvement IA Verte</li>
+        </ul>
+      </div>
+      <div class="dont-block">
+        <div class="dont-head">✗ IA VERTE — À ÉVITER</div>
+        <ul>
+          <li>Accepter une IA propriétaire même "à titre exceptionnel"</li>
+          <li>Utiliser le badge 🌿 sans vérification technique</li>
+          <li>Diluer le message avec des exceptions ou nuances commerciales</li>
+          <li>Traiter l'IA Verte comme un argument marketing optionnel</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="margin-top:64px;padding-top:32px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:20px;height:20px;background:var(--neon);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);box-shadow:0 0 10px var(--neon-glow);"></div>
+        <div style="font-family:'Orbitron',sans-serif;font-weight:900;font-size:13px;color:var(--text);">BOT<span style="color:var(--neon)">/</span>PAS BOT</div>
+      </div>
+      <div style="font-family:var(--mono);font-size:10px;color:var(--dim);text-align:right;line-height:1.8;">
+        Charte graphique v1.0 · Avril 2026<br>
+        Usage interne · Open source · Licence MIT
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<script>
+// Active nav item on scroll
+const sections = document.querySelectorAll('section[id]');
+const navItems = document.querySelectorAll('.nav-item');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navItems.forEach(n => n.classList.remove('active'));
+      const id = e.target.id;
+      const active = document.querySelector(`.nav-item[href="#${id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>

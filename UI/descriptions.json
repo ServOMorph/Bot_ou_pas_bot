@@ -734,5 +734,13 @@
     "UI/V3/Bot ou pas Bot - Standalone.html": {
         "title": "Interface Standalone Bot",
         "desc": "Cette page HTML contient une interface utilisateur autonome pour démonstration ou tests du bot, permettant d'interagir avec lui sans dépendance au reste de l'application."
+    },
+    "APPRENTISSAGES/core/launcher_redesign.md": {
+        "title": "Redéfinition du Lancement",
+        "desc": "Ce document décrit les modifications apportées au processus de lancement des nouvelles fonctionnalités, incluant les étapes, les responsabilités et les critères de succès."
+    },
+    "UI/V3/Charte Graphique v3.html": {
+        "title": "Charte Graphique Web",
+        "desc": "Ce fichier HTML présente la charte graphique version 3 du projet, définissant les couleurs, typographies et éléments visuels à utiliser pour l'interface utilisateur."
     }
 }
