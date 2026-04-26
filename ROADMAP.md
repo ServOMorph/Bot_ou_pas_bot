@@ -3,7 +3,7 @@
 ## 📊 État Actuel : Phase 3 En Cours
 - **Phase 1 : Docs & Concept** ✅
 - **Phase 2 : Cœur MVP (React/Supabase)** ✅
-- **Phase 3 : Intégration Ollama** 🔄 (En cours — bridge opérationnel)
+- **Phase 3 : Intégration Ollama** ✅ (Bridge & Sélecteur de Cible opérationnels)
 - **Phase 4 : Polissage & Scale** ⏳ (À venir)
 
 ## ✅ Tâches Accomplies
@@ -21,7 +21,7 @@
 - [x] **Préchargement Intelligent** : Mise en cache du modèle LLM dès le démarrage du launcher (2026-04-26).
 
 ## ⏳ Prochaines Étapes (Phase 3)
-- [/] **Sélecteur de Cible IA dans l'Optimiseur de Prompts** : Plan complet rédigé (`PLAN_EN_COURS.md`), implémentation en attente (2026-04-26).
+- [x] **Sélecteur de Cible IA dans l'Optimiseur de Prompts** : Implémentation du chargement dynamique via JSON (Claude Code, Gemini Flash) (2026-04-26).
 - [ ] Tester flow E2E "Défier le Bot" depuis le frontend (player2_id = BOT_USER_ID).
 - [x] Création du Dashboard Développeur pour les bots (intégré au Launcher Web) (2026-04-26).
 - [ ] Système ELO calculé après 10 duels.
@@ -61,4 +61,4 @@
 📚 **Roadmap détaillée:** voir [`ROADMAP_EQUIPE_IA.md`](../ROADMAP_EQUIPE_IA.md) à la racine pour le plan complet des 5 phases, tâches par agent, et processus de clôture.
 
 ---
-*Dernière mise à jour : 2026-04-26 (Plan Sélecteur Cible IA pour l'Optimiseur de Prompts)*
+*Dernière mise à jour : 2026-04-26 (Sélecteur Cible IA & API Structure opérationnels)*

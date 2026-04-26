@@ -66,6 +66,35 @@
             max-width: 700px;
             margin: 0 auto;
         }
+        .targets-section { margin-bottom: 24px; }
+        .targets-label {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+        .targets-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+        .target-card {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            background: rgba(255,255,255,0.04);
+            border: 1.5px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex: 1;
+            min-width: 160px;
+        }
+        .target-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.25); }
+        .target-card.selected { background: rgba(255,255,255,0.07); border-width: 2px; }
+        .target-icon { font-size: 1.4rem; line-height: 1; }
+        .target-info { display: flex; flex-direction: column; gap: 2px; }
+        .target-name { font-weight: 600; font-size: 0.9rem; color: var(--text-color); }
+        .target-desc { font-size: 0.75rem; color: var(--text-dim); }
+        .targets-loading { color: var(--text-dim); font-size: 0.85rem; font-style: italic; }
     </style>
 </head>
 <body>
@@ -82,15 +111,19 @@
 
         <div class="optimizer-content">
             <div class="card">
+                <div class="targets-section">
+                    <div class="targets-label">Pour qui optimiser ?</div>
+                    <div class="targets-grid" id="targets-grid">
+                        <span class="targets-loading">Chargement des cibles...</span>
+                    </div>
+                </div>
                 <div class="title">Votre demande</div>
-                <p class="description">Saisissez votre idée. Le modèle <b>Gemma 3:4b</b> s'occupe de la reformulation experte.</p>
+                <p class="description">Saisissez votre idée brute. Gemma 3:4b la reformule selon la cible choisie.</p>
                 <textarea id="user-prompt" class="input-field" placeholder="Ex: Crée une mécanique de combat au tour par tour..."></textarea>
-                
                 <div style="display: flex; gap: 10px; align-items: center;">
                     <button id="optimize-btn" class="btn-label" style="flex: 1; padding: 12px;">Optimiser mon Prompt 🚀</button>
                     <span id="loading-spinner" class="loading">Gemma 3 réfléchit...</span>
                 </div>
-
                 <div class="title" style="margin-top: 30px;">Résultat Optimisé</div>
                 <div class="result-box" id="result-box">
                     <button id="copy-btn" class="copy-btn">Copier</button>
@@ -103,28 +136,53 @@
     <footer>Bot ou pas Bot ? - Orchestrateur de Prompts v1.1</footer>
 
     <script>
+        let selectedTargetId = null;
+
+        async function loadTargets() {
+            const grid = document.getElementById('targets-grid');
+            try {
+                const data = await fetch('/api/prompt-targets').then(r => r.json());
+                grid.innerHTML = '';
+                (data.targets || []).forEach((target, i) => {
+                    const card = document.createElement('div');
+                    card.className = 'target-card';
+                    card.dataset.id = target.id;
+                    card.innerHTML = `<span class="target-icon">${target.icon}</span><div class="target-info"><span class="target-name">${target.name}</span><span class="target-desc">${target.description}</span></div>`;
+                    card.onclick = () => selectTarget(target.id, target.color);
+                    grid.appendChild(card);
+                    if (i === 0) selectTarget(target.id, target.color);
+                });
+            } catch {
+                grid.innerHTML = '<span class="targets-loading">Impossible de charger les cibles.</span>';
+            }
+        }
+
+        function selectTarget(targetId, color) {
+            selectedTargetId = targetId;
+            document.querySelectorAll('.target-card').forEach(card => {
+                const sel = card.dataset.id === targetId;
+                card.classList.toggle('selected', sel);
+                card.style.borderColor = sel ? color : '';
+            });
+        }
+
         async function optimize() {
             const prompt = document.getElementById('user-prompt').value;
             if (!prompt) return;
-
             const btn = document.getElementById('optimize-btn');
             const loading = document.getElementById('loading-spinner');
             const resultText = document.getElementById('result-text');
             const copyBtn = document.getElementById('copy-btn');
-
             btn.disabled = true;
             loading.style.display = 'inline';
             resultText.style.color = 'var(--text-dim)';
             resultText.textContent = "Génération en cours...";
-
             try {
-                const response = await fetch('/api/optimize', {
+                const data = await fetch('/api/optimize', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ prompt })
-                });
-                const data = await response.json();
-
+                    body: JSON.stringify({ prompt, target_id: selectedTargetId })
+                }).then(r => r.json());
                 if (data.optimized) {
                     resultText.textContent = data.optimized;
                     resultText.style.color = 'white';
@@ -132,7 +190,7 @@
                 } else {
                     resultText.textContent = "Erreur: " + (data.error || "IA indisponible");
                 }
-            } catch (err) {
+            } catch {
                 resultText.textContent = "Erreur de connexion au serveur.";
             } finally {
                 btn.disabled = false;
@@ -141,14 +199,14 @@
         }
 
         document.getElementById('optimize-btn').onclick = optimize;
-        
         document.getElementById('copy-btn').onclick = () => {
-            const text = document.getElementById('result-text').textContent;
-            navigator.clipboard.writeText(text);
+            navigator.clipboard.writeText(document.getElementById('result-text').textContent);
             const btn = document.getElementById('copy-btn');
             btn.textContent = "Copié !";
             setTimeout(() => btn.textContent = "Copier", 2000);
         };
+
+        loadTargets();
     </script>
 </body>
 </html>

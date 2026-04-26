@@ -1,4 +1,5 @@
 import ollama
+import json
 import re
 import os
 import sys
@@ -37,22 +38,29 @@ def preload_model(model_name=None):
     except Exception as e:
         print(f"⚠️ Échec du préchargement: {e}")
 
-def optimize_prompt(user_prompt, model_name=None):
-    """Optimise le prompt via Ollama en utilisant le modèle configuré"""
+def _get_system_prompt_for_target(target_id):
+    targets_file = os.path.join(os.path.dirname(__file__), 'prompt_targets.json')
+    generic_prompt = (
+        "Tu es un expert en Prompt Engineering. Transforme la demande en prompt structuré "
+        "avec rôle clair, contexte, étapes et contraintes de format.\n"
+        "Réponds UNIQUEMENT avec le prompt optimisé, sans introduction ni conclusion."
+    )
+    if not target_id:
+        return generic_prompt
+    try:
+        with open(targets_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        for target in data.get('targets', []):
+            if target['id'] == target_id:
+                return target['system_prompt']
+    except Exception:
+        pass
+    return generic_prompt
+
+def optimize_prompt(user_prompt, model_name=None, target_id=None):
     if not model_name:
         model_name = OLLAMA_MODEL
-        
-    system_prompt = (
-        "Tu es un expert en Prompt Engineering. Ta mission est de transformer une demande utilisateur simple "
-        "en un prompt structuré, détaillé et optimisé pour des agents IA (type Claude ou GPT-4). "
-        "Le prompt généré doit inclure :\n"
-        "- Un rôle clair (Persona)\n"
-        "- Le contexte et l'objectif\n"
-        "- Des instructions étape par étape\n"
-        "- Les contraintes de format ou de style (ex: premium, moderne)\n"
-        "Réponds UNIQUEMENT avec le prompt optimisé, sans aucune introduction ni conclusion."
-    )
-    
+    system_prompt = _get_system_prompt_for_target(target_id)
     try:
         response = ollama.chat(model=model_name, messages=[
             {'role': 'system', 'content': system_prompt},
@@ -61,7 +69,8 @@ def optimize_prompt(user_prompt, model_name=None):
         return {
             "optimized": response['message']['content'],
             "model": model_name,
-            "recommended": OLLAMA_MODEL
+            "recommended": OLLAMA_MODEL,
+            "target_id": target_id
         }
     except Exception as e:
         return {"error": str(e)}

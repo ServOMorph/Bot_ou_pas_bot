@@ -233,7 +233,7 @@
 | **P2** | 0% | 0/4 | 0 | 0 | Archi + Fullo + Dezy + Quali | 2026-05-29 |
 | **P3** | 0% | 0/4 | 0 | 0 | ChefIA + Quali + Grow | 2026-06-12 |
 | **P4** | 0% | 0/4 | 0 | 0 | Bizo + Grow | 2026-07-24 |
-| **TOTAL** | **30%** | **6/19** | 0 | 0 | **ChefIA** | **2026-07-24** |
+| **TOTAL** | **47%** | **9/19** | 2 | 0 | **ChefIA** | **2026-07-24** |
 
 ---
 
@@ -376,4 +376,4 @@ outputs/
 
 ---
 
-**Version:** 1.0 | **Dernier Update:** 2026-04-24 | **Prochaine Mise à Jour:** 2026-05-01
+**Version:** 1.0 | **Dernier Update:** 2026-04-26 | **Prochaine Mise à Jour:** 2026-05-01

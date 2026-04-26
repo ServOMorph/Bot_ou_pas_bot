@@ -82,6 +82,31 @@ class LauncherAPIHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(json.dumps(models).encode())
             return
 
+        # Route API : Prompt Targets
+        if parsed_url.path == '/api/prompt-targets':
+            targets_file = os.path.join(os.path.dirname(__file__), 'SCRIPTS', 'prompt_targets.json')
+            try:
+                with open(targets_file, 'r', encoding='utf-8') as f:
+                    targets_data = json.load(f)
+            except Exception:
+                targets_data = {"targets": []}
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(json.dumps(targets_data).encode())
+            return
+
+        # Route API : Structure
+        if parsed_url.path == '/api/structure':
+            structure = self.get_project_structure(os.path.dirname(__file__))
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(json.dumps(structure).encode())
+            return
+
         # Par défaut, servir les fichiers statiques
         if self.path == '/':
             self.path = LAUNCHER_PATH
@@ -100,9 +125,9 @@ class LauncherAPIHandler(http.server.SimpleHTTPRequestHandler):
                 
                 user_prompt = params.get('prompt', '')
                 model_name = params.get('model')
-                
-                print(f"🧠 Optimisation du prompt via {model_name or 'Auto-selection'}...")
-                result = ollama_utils.optimize_prompt(user_prompt, model_name)
+                target_id = params.get('target_id')
+                print(f"🧠 Optimisation pour [{target_id or 'générique'}] via {model_name or 'Auto-selection'}...")
+                result = ollama_utils.optimize_prompt(user_prompt, model_name, target_id)
                 
                 # Sauvegarde historique
                 self.save_prompt_history(user_prompt, result)
@@ -178,7 +203,8 @@ class LauncherAPIHandler(http.server.SimpleHTTPRequestHandler):
                 "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                 "original": original,
                 "optimized": result.get("optimized"),
-                "model": result.get("model")
+                "model": result.get("model"),
+                "target_id": result.get("target_id")
             })
             
             # Garder les 50 derniers
