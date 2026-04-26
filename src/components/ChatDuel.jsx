@@ -106,20 +106,37 @@ export default function ChatDuel({ match, userId, onTimeUp }) {
 
       {/* Chat Area */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {messages.map((msg) => (
-          <div key={msg.id} className={`flex ${msg.user_id === userId ? 'justify-end' : 'justify-start'}`}>
-            <div className={`max-w-[80%] p-3 rounded-2xl shadow-sm ${
-              msg.user_id === userId 
-                ? 'bg-indigo-600 text-white rounded-tr-none' 
-                : 'bg-slate-800 text-slate-200 rounded-tl-none border border-slate-700'
-            }`}>
-              <p className="text-sm leading-relaxed">{msg.text}</p>
-              <p className="text-[10px] opacity-50 mt-1 text-right">
-                {new Date(msg.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-              </p>
+        {messages.map((msg) => {
+          const isLog = msg.text.startsWith('⚙️ [LOG]');
+          
+          if (isLog) {
+            return (
+              <div key={msg.id} className="flex justify-center my-1">
+                <div className="flex items-center gap-2 px-3 py-1 bg-slate-800/40 rounded-md border border-slate-700/50">
+                  <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-pulse" />
+                  <span className="text-[10px] font-mono text-slate-400 tracking-tight">
+                    {msg.text.replace('⚙️ [LOG] ', '')}
+                  </span>
+                </div>
+              </div>
+            );
+          }
+
+          return (
+            <div key={msg.id} className={`flex ${msg.user_id === userId ? 'justify-end' : 'justify-start'}`}>
+              <div className={`max-w-[80%] p-3 rounded-2xl shadow-sm ${
+                msg.user_id === userId 
+                  ? 'bg-indigo-600 text-white rounded-tr-none' 
+                  : 'bg-slate-800 text-slate-200 rounded-tl-none border border-slate-700'
+              }`}>
+                <p className="text-sm leading-relaxed">{msg.text}</p>
+                <p className="text-[10px] opacity-50 mt-1 text-right">
+                  {new Date(msg.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
         <div ref={scrollRef} />
       </div>
 

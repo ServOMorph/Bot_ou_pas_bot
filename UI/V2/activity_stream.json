@@ -1,0 +1,74 @@
+[
+  {
+    "agent_id": "ChefIA",
+    "event": "HYBRID_LOG_TEST",
+    "details": "Test du flux hybride (Local + Cloud). Cette fois sans erreur Unicode.",
+    "created_at": "2026-04-25T12:58:18Z"
+  },
+  {
+    "agent_id": "Quali",
+    "event": "UI_VERIFY",
+    "details": "Vérification manuelle de l'affichage du flux. Tout semble OK.",
+    "created_at": "2026-04-25T12:58:21Z"
+  },
+  {
+    "agent_id": "ChefIA",
+    "event": "SECURITY_AUDIT",
+    "details": "Lancement d'un audit de sécurité préventif sur les politiques RLS de Supabase.",
+    "created_at": "2026-04-25T12:59:58Z"
+  },
+  {
+    "agent_id": "Archi",
+    "event": "DISPATCH",
+    "details": "Délégation de l'audit à Quali-Security. Analyse des politiques UPDATE sur la table matches.",
+    "created_at": "2026-04-25T13:00:02Z"
+  },
+  {
+    "agent_id": "Quali",
+    "event": "SECURITY_REPORT",
+    "details": "Audit terminé. Politiques RLS conformes au modèle Zero-Trust. Risque d'usurpation de slot de matchmaking : Faible.",
+    "created_at": "2026-04-25T13:00:06Z"
+  },
+  {
+    "agent_id": "Fullo",
+    "event": "SYSTEM_REINFORCE",
+    "details": "Renforcement des guards DB-level sur .maybeSingle() pour éviter les échecs silencieux.",
+    "created_at": "2026-04-25T13:00:10Z"
+  },
+  {
+    "agent_id": "ChefIA",
+    "event": "DASHBOARD_START",
+    "details": "Serveur HTTP demarre sur le port 8000. Ouverture de l'UI.",
+    "created_at": "2026-04-25T13:07:04Z"
+  },
+  {
+    "agent_id": "ChefIA",
+    "event": "SESSION_CLOSE",
+    "details": "Session clôturée avec succès. Tous les outils de monitoring sont opérationnels.",
+    "created_at": "2026-04-25T13:22:17Z"
+  },
+  {
+    "agent_id": "ChefIA",
+    "event": "DASHBOARD_START",
+    "details": "Serveur HTTP demarre sur le port 8000. Ouverture de l'UI.",
+    "created_at": "2026-04-26T09:31:12Z"
+  },
+  {
+    "agent_id": "ChefIA",
+    "event": "DASHBOARD_START",
+    "details": "Serveur HTTP demarre sur le port 8000. Ouverture de l'UI.",
+    "created_at": "2026-04-26T09:56:29Z"
+  },
+  {
+    "agent_id": "ChefIA",
+    "event": "ORCHESTRATOR_START",
+    "details": "Serveur Web Launcher demarre",
+    "created_at": "2026-04-26T10:07:53Z"
+  },
+  {
+    "agent_id": "ChefIA",
+    "event": "ORCHESTRATOR_START",
+    "details": "Serveur Web Launcher demarre (Threaded)",
+    "created_at": "2026-04-26T10:10:21Z"
+  }
+]

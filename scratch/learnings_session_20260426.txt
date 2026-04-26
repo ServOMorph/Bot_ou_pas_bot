@@ -1,0 +1,9 @@
+[Patterns]
+- Erreur: Le serveur HTTP standard bloque l'UI après le premier clic de lancement.
+- Solution: Utiliser ThreadingMixIn avec TCPServer pour gérer les requêtes en parallèle.
+- Erreur: Les processus enfants (Vite) ne s'arrêtent pas proprement à la fermeture du script sur Windows.
+- Solution: Utiliser taskkill /F /T /PID pour forcer l'arrêt de l'arbre de processus.
+
+[Technique]
+- Orchestration multi-agents via un Launcher Web unifié.
+- Communication JS (fetch) vers un backend Python (http.server).

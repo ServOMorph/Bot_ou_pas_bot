@@ -1,6 +1,6 @@
 // test_matchmaking.js — Integration test for matchmaking (2 anonymous users)
-// Usage (Node 20+): node --env-file=.env DEV_RAPH_SCRIPTS/test_matchmaking.js
-// Usage (Node 18) : npx dotenv -e .env -- node DEV_RAPH_SCRIPTS/test_matchmaking.js
+// Usage (Node 20+): node --env-file=.env SCRIPTS/test_matchmaking.js
+// Usage (Node 18) : npx dotenv -e .env -- node SCRIPTS/test_matchmaking.js
 
 import { createClient } from '@supabase/supabase-js';
 

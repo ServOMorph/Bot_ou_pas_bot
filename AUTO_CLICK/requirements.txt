@@ -1,7 +1,0 @@
-customtkinter
-pyautogui
-opencv-python
-numpy
-Pillow
-mss
-pynput

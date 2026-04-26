@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Launcher - Bot ou pas Bot ?</title>
+    <style>
+        :root {
+            --bg-color: #0a0a0c;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --accent-blue: #007cf0;
+            --accent-cyan: #00dfd8;
+            --accent-purple: #7928ca;
+            --text-color: #ffffff;
+            --text-dim: #a1a1a6;
+            --success: #00ff80;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .background-glow {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 124, 240, 0.15) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(80px);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        p.subtitle {
+            color: var(--text-dim);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .launcher-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            padding: 24px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .card.active {
+            border-color: var(--accent-blue);
+        }
+
+        .card.full-stack {
+            grid-column: span 2;
+            background: linear-gradient(135deg, rgba(0, 124, 240, 0.1), rgba(0, 223, 216, 0.1));
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            line-height: 1.4;
+        }
+
+        .status {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            display: flex;
+            align-items: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #555;
+            margin-right: 6px;
+        }
+
+        .status.online .status-dot {
+            background-color: var(--success);
+            box-shadow: 0 0 8px var(--success);
+        }
+
+        .status.online {
+            color: var(--success);
+        }
+
+        .btn-label {
+            margin-top: 20px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .card:hover .btn-label {
+            background: var(--accent-blue);
+        }
+
+        footer {
+            margin-top: 4rem;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-glow"></div>
+    
+    <h1>Bot ou pas Bot ?</h1>
+    <p class="subtitle">Centre de contrôle - Orchestrateur de services</p>
+
+    <div class="launcher-grid">
+        <!-- Jeu React -->
+        <div class="card" onclick="launch('game', this)">
+            <div class="status" id="status-game"><div class="status-dot"></div>Offline</div>
+            <div class="icon">🎮</div>
+            <div class="title">Le Jeu</div>
+            <div class="description">Interface principale des duels (React/Vite).</div>
+            <div class="btn-label">Lancer</div>
+        </div>
+
+        <!-- Dashboard IA -->
+        <div class="card" onclick="launch('dashboard', this)">
+            <div class="status" id="status-dashboard"><div class="status-dot"></div>Offline</div>
+            <div class="icon">🤖</div>
+            <div class="title">Dashboard IA</div>
+            <div class="description">Monitoring de la pyramide des 100 agents.</div>
+            <div class="btn-label">Lancer</div>
+        </div>
+
+        <!-- Bridge Ollama -->
+        <div class="card" onclick="launch('bridge', this)">
+            <div class="status" id="status-bridge"><div class="status-dot"></div>Offline</div>
+            <div class="icon">🌉</div>
+            <div class="title">Bridge Ollama</div>
+            <div class="description">Pont de communication pour l'IA en temps réel.</div>
+            <div class="btn-label">Lancer</div>
+        </div>
+
+        <!-- Full Stack -->
+        <div class="card full-stack" onclick="launch('all', this)">
+            <div class="icon">⚡</div>
+            <div class="title">Mode Full Stack</div>
+            <div class="description">Lancer le Jeu, le Dashboard et le Bridge en un seul clic.</div>
+            <div class="btn-label">Tout Lancer</div>
+        </div>
+    </div>
+
+    <footer>Appuyez sur CTRL+C dans le terminal pour tout arrêter</footer>
+
+    <script>
+        async function launch(service, element) {
+            try {
+                const response = await fetch(`/api/launch?service=${service}`);
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    if (service !== 'all') {
+                        updateStatus(service, true);
+                    } else {
+                        updateStatus('game', true);
+                        updateStatus('dashboard', true);
+                        updateStatus('bridge', true);
+                    }
+                    element.classList.add('active');
+                }
+            } catch (err) {
+                console.error("Erreur de lancement:", err);
+            }
+        }
+
+        function updateStatus(service, online) {
+            const statusEl = document.getElementById(`status-${service}`);
+            if (statusEl) {
+                if (online) {
+                    statusEl.classList.add('online');
+                    statusEl.innerHTML = '<div class="status-dot"></div>Online';
+                } else {
+                    statusEl.classList.remove('online');
+                    statusEl.innerHTML = '<div class="status-dot"></div>Offline';
+                }
+            }
+        }
+
+        // Check initial status (optionnel)
+        async function checkStatus() {
+            try {
+                const response = await fetch('/api/status');
+                const data = await response.json();
+                Object.keys(data).forEach(service => {
+                    updateStatus(service, data[service]);
+                });
+            } catch (err) {}
+        }
+
+        setInterval(checkStatus, 2000);
+    </script>
+</body>
+</html>

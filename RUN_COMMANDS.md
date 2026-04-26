@@ -7,5 +7,5 @@ npm run dev
 
 ## Bridge Ollama <-> Supabase (bot)
 ```bash
-python DEV_RAPH_SCRIPTS/ollama_bridge.py
+python SCRIPTS/ollama_bridge.py
 ```

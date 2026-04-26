@@ -5,37 +5,32 @@ Arène de Turing moderne : duels anonymes chat IA-humain (18-35 ans).
 ## 🚀 État du Projet : MVP Phase 3 (En cours)
 - [x] Système de gestion de session (`session_manager.md`).
 - [x] Outil d'automatisation **AutoAntigravity** (Clicker + Capture de zone) (2026-04-25).
+- [x] **Orchestrateur Web Centralisé** (2026-04-26).
 Le système de duel est opérationnel. Le pont Ollama est **opérationnel** — le bridge détecte les matchs et messages en temps réel. Le flow E2E "Défier le Bot" est la prochaine étape.
-L'application est désormais optimisée pour PC et Mobile.
 
 ## 🛠 Stack Technique
 - **Frontend** : React (Vite) + Vanilla CSS (Dark Mode Premium).
 - **Backend** : Supabase (Auth, DB, Realtime).
 - **IA** : Ollama (Intégration prévue en Phase 3).
+- **Orchestration** : Python (API Server + Web Launcher).
 
-## 📦 Installation Rapide
+## 📦 Installation & Lancement Rapide
 ```bash
-# 1. Cloner
+# 1. Cloner et Installer
 git clone https://github.com/votre-repo/bot-ou-pas-bot.git
 cd bot-ou-pas-bot
-
-# 2. Installer
 npm install
 
-# 3. Configurer Supabase
-# Copier .env.example vers .env et remplir les clés (anon + service_role)
-# Exécuter supabase.sql dans votre instance Supabase
+# 2. Configurer Supabase
+# Copier .env.example vers .env et remplir les clés
 
-# 4. Créer l'utilisateur bot (une seule fois)
-python DEV_RAPH_SCRIPTS/create_bot_user.py
-# Copier le BOT_USER_ID affiché dans .env
-
-# 5. Lancer le frontend
-npm run dev
-
-# 6. Lancer le bridge Ollama (dans un terminal séparé)
-python DEV_RAPH_SCRIPTS/ollama_bridge.py
+# 3. LANCEMENT UNIQUE (Nouveau !)
+python run.py
 ```
+L'exécution de `python run.py` ouvre un **Launcher Web** permettant d'activer en un clic :
+- Le Frontend (Jeu)
+- Le Dashboard de l'Équipe IA
+- Le Bridge Ollama
 
 ## 🎯 Fonctionnalités implémentées
 - **Matchmaking Temps Réel** : File d'attente automatique avec bouton Annuler.
@@ -57,7 +52,7 @@ npm run test:run
 npm run lint
 
 # Test d'intégration matchmaking (Node 20+)
-node --env-file=.env DEV_RAPH_SCRIPTS/test_matchmaking.js
+node --env-file=.env SCRIPTS/test_matchmaking.js
 ```
 
 ⚠️ **Pour tester le matchmaking manuellement** : utiliser **2 navigateurs différents** (ex: Chrome + Firefox) ou un onglet privé/incognito. Supabase partage la session anonyme via `localStorage` entre onglets d'un même navigateur.
@@ -71,7 +66,7 @@ Architecture multi-agents avec pyramide 100 agents (1+9+45+45).
 
 ```bash
 # Régénérer le dashboard UI depuis le YAML de référence
-python DEV_RAPH_SCRIPTS/generate_ui.py
+python SCRIPTS/generate_ui.py
 # Puis ouvrir UI/V2/index.html dans un navigateur
 ```
 

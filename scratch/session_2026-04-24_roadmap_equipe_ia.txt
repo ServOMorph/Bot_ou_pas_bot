@@ -28,7 +28,7 @@ Base: EQUIPE_IA/agents/ChefIA existe déjà, tools.yaml et agents-registry.yaml 
 
 ## Fichiers modifiés cette session
 - ROADMAP_EQUIPE_IA.md (créé)
-- docs/ROADMAP.md (mis à jour avec lien vers nouvelle roadmap)
+- ROADMAP.md (mis à jour avec lien vers nouvelle roadmap)
 - README.md (mis à jour avec référence à ROADMAP_EQUIPE_IA)
 
 ## Prochaine session

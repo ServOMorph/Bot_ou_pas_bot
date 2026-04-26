@@ -21,7 +21,7 @@ if not SUPABASE_URL or not SUPABASE_KEY:
 
 if not BOT_USER_ID:
     print("❌ Erreur: BOT_USER_ID manquant dans le .env")
-    print("   Lance d'abord: python DEV_RAPH_SCRIPTS/create_bot_user.py")
+    print("   Lance d'abord: python SCRIPTS/create_bot_user.py")
     exit(1)
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
@@ -48,6 +48,19 @@ def handle_new_match(payload):
         print(f"   👤 Joueur 1: {p1}")
         print(f"   🤖 Joueur 2: {p2}")
 
+def log_event(match_id, event_text):
+    """Insère un log technique dans le chat (visible par l'utilisateur pour le debug)"""
+    print(f"📡 [LOG] {event_text}")
+    try:
+        supabase.table("messages").insert({
+            "match_id": match_id,
+            "user_id": BOT_USER_ID,
+            "text": f"⚙️ [LOG] {event_text}",
+            "is_human": False
+        }).execute()
+    except:
+        pass
+
 def handle_new_message(payload):
     """Traitement d'un nouveau message inséré"""
     new_record = payload.get('record')
@@ -59,6 +72,10 @@ def handle_new_message(payload):
     text = new_record.get('text')
     is_human = new_record.get('is_human', True)
 
+    # Ignorer les messages de log pour éviter les boucles
+    if text.startswith("⚙️ [LOG]"):
+        return
+
     prefix = "👤 [HUMAIN]" if is_human else "🤖 [BOT]"
     print(f"{prefix} Match {match_id[:8]}: {text}")
 
@@ -69,12 +86,22 @@ def handle_new_message(payload):
         match = match_data.data
         
         if match and (match['player1_id'] == BOT_USER_ID or match['player2_id'] == BOT_USER_ID):
+            log_event(match_id, "Ollama détecte un message humain...")
+            
             # Récupérer l'historique
             history_data = supabase.table("messages").select("*").eq("match_id", match_id).order("created_at").execute()
-            history = history_data.data
+            history = [m for m in history_data.data if not m['text'].startswith("⚙️ [LOG]")]
+            
+            log_event(match_id, f"Récupération de l'historique ({len(history)} messages)")
             
             print("   💭 Le bot réfléchit...")
+            log_event(match_id, "Ollama réfléchit (llama3.1:8b)...")
+            
+            start_time = time.time()
             bot_reply = get_bot_response(history)
+            duration = round(time.time() - start_time, 2)
+            
+            log_event(match_id, f"Réponse générée en {duration}s")
             
             # Insérer la réponse du bot
             supabase.table("messages").insert({

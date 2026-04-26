@@ -29,7 +29,7 @@ En tant qu'orchestrateur (**ChefIA**), assurer la synchronisation de la pyramide
 
 ### 3. Mise à jour de la ROADMAP
 
-Modifier `docs/ROADMAP.md` (s'il existe) pour :
+Modifier `ROADMAP.md` (s'il existe) pour :
 - Cocher les tâches terminées (ajouter le marqueur approprié)
 - Mettre à jour les statuts des phases
 - Ajouter les nouvelles tâches identifiées

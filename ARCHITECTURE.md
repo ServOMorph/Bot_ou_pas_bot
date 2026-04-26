@@ -1,0 +1,560 @@
+# Architecture du projet
+
+Racine : `D:\ServOMorph\Bot ou pas Bot`
+
+## Arborescence
+- APPRENTISSAGES/
+  - bugs_resolved/
+    - matchmaking_fixes.md — Document Markdown.
+  - core/
+  - meta.json — Fichier de configuration.
+- AUTO_CLICK/
+  - Assets/
+    - capture_20260425_122832.png — Fichier du projet.
+    - target_20260425_145016.png — Fichier du projet.
+    - target_20260425_153629.png — Fichier du projet.
+  - .gitignore — Fichier du projet.
+  - capture.py — Script Python.
+  - click_stats.json — Fichier de configuration.
+  - clicker.py — Script Python.
+  - main.py — Script Python.
+  - overlay.py — Script Python.
+  - README.md — Documentation principale du projet.
+  - requirements.txt — Dépendances et configuration Python.
+  - stats.py — Script Python.
+- coverage/
+  - base.css — Fichier web/interface.
+  - block-navigation.js — Source JavaScript/TypeScript.
+  - coverage-final.json — Fichier de configuration.
+  - favicon.png — Fichier du projet.
+  - fixtures.js.html — Fichier web/interface.
+  - index.html — Fichier web/interface.
+  - prettify.css — Fichier web/interface.
+  - prettify.js — Source JavaScript/TypeScript.
+  - sort-arrow-sprite.png — Fichier du projet.
+  - sorter.js — Source JavaScript/TypeScript.
+- DOCS/
+  - docs à forunir.md — Document Markdown.
+  - spec_produit.md — Document Markdown.
+  - ssd_botoupasbot_v7.docx — Fichier du projet.
+  - SSD_v6.md — Document Markdown.
+  - test_de_turing.md — Document Markdown.
+  - user_stories.md — Document Markdown.
+- EQUIPE_IA/
+  - agents/
+    - Archi/
+      - Backend/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Db/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Frontend/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - memory/
+      - Ollama/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Security/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - config.yaml — Fichier de configuration.
+      - prompt.md — Document Markdown.
+      - tools.yaml — Fichier de configuration.
+    - Bizo/
+      - Freemium/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - memory/
+      - Metrics/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Premium/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Pricing/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Sales/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - config.yaml — Fichier de configuration.
+      - prompt.md — Document Markdown.
+      - tools.yaml — Fichier de configuration.
+    - ChefIA/
+      - memory/
+      - config.yaml — Fichier de configuration.
+      - prompt.md — Document Markdown.
+      - tools.yaml — Fichier de configuration.
+    - Dezy/
+      - Anim/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Duels/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Icons/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Landing/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - memory/
+      - Mobile/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - config.yaml — Fichier de configuration.
+      - prompt.md — Document Markdown.
+      - tools.yaml — Fichier de configuration.
+    - Fullo/
+      - Api/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Deploy/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - memory/
+      - Node/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - React/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Tests/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - config.yaml — Fichier de configuration.
+      - prompt.md — Document Markdown.
+      - tools.yaml — Fichier de configuration.
+    - Grow/
+      - Discord/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - memory/
+      - Partners/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Seo/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Tiktok/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Viral/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - config.yaml — Fichier de configuration.
+      - prompt.md — Document Markdown.
+      - tools.yaml — Fichier de configuration.
+    - Mobi/
+      - Android/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Ios/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - memory/
+      - Pwa/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Sync/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Ui/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - config.yaml — Fichier de configuration.
+      - prompt.md — Document Markdown.
+      - tools.yaml — Fichier de configuration.
+    - OpsIA/
+      - Admin/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Backup/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Maintenance/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - memory/
+      - Monitoring/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Support/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - config.yaml — Fichier de configuration.
+      - prompt.md — Document Markdown.
+    - Quali/
+      - E2e/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Load/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - memory/
+      - Perf/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Security/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Unit/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - config.yaml — Fichier de configuration.
+      - prompt.md — Document Markdown.
+      - tools.yaml — Fichier de configuration.
+    - Scribe/
+      - Docs/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Legal/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Marketing/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - memory/
+      - Stories/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - Tutos/
+        - Expert/
+          - memory/
+          - config.yaml — Fichier de configuration.
+          - prompt.md — Document Markdown.
+        - memory/
+        - config.yaml — Fichier de configuration.
+        - prompt.md — Document Markdown.
+      - config.yaml — Fichier de configuration.
+      - prompt.md — Document Markdown.
+      - tools.yaml — Fichier de configuration.
+  - docs/
+    - glossaire.md — Document Markdown.
+    - hierarchie_pyramide.md — Document Markdown.
+  - outputs/
+    - ChefIA/
+      - dernier_session.md — Document Markdown.
+      - session_20260425_1418.md — Document Markdown.
+      - session_20260425_1425.md — Document Markdown.
+      - session_20260425_1506.md — Document Markdown.
+    - Scribe/
+  - shared/
+    - context/
+      - glossaire.md — Document Markdown.
+      - projet.md — Document Markdown.
+    - templates/
+    - tools/
+  - templates/
+    - template_phase.md — Document Markdown.
+    - template_session.md — Document Markdown.
+    - template_tache.md — Document Markdown.
+  - workflows/
+    - phase1_docs.yaml — Fichier de configuration.
+    - phase2_dev.yaml — Fichier de configuration.
+    - phase3_gtm.yaml — Fichier de configuration.
+    - phase4_scale.yaml — Fichier de configuration.
+  - agents-registry copy.yaml — Fichier de configuration.
+  - agents-registry.yaml — Fichier de configuration.
+  - config.yaml — Fichier de configuration.
+  - noms.txt — Fichier du projet.
+  - README.md — Documentation principale du projet.
+  - session_manager.md — Document Markdown.
+  - tools.yaml — Fichier de configuration.
+- outputs/
+  - ChefIA/
+    - dernier_session.md — Document Markdown.
+    - phase1_gemini.md — Document Markdown.
+- scratch/
+  - closing_learnings.txt — Fichier du projet.
+  - conv_summary.md — Document Markdown.
+  - session_2026-04-24_roadmap_equipe_ia.txt — Fichier du projet.
+  - session_log.txt — Fichier du projet.
+  - session_summary.txt — Fichier du projet.
+- SCREEN_SHOTS/
+  - Capture d'écran 2026-04-24 004809.png — Fichier du projet.
+  - Capture d'écran 2026-04-24 004823.png — Fichier du projet.
+  - Capture d'écran 2026-04-24 004831.png — Fichier du projet.
+  - Capture d'écran 2026-04-24 004841.png — Fichier du projet.
+  - Capture d'écran 2026-04-24 004850.png — Fichier du projet.
+- SCRIPTS/
+  - agent_logger.py — Script Python.
+  - create_bot_user.py — Script Python.
+  - create_equipe_ia.py — Script Python.
+  - creation_fichier_architecture.py — Script Python.
+  - generate_pyramid_100.py — Script Python.
+  - generate_ui.py — Script Python.
+  - ollama_bridge.py — Script Python.
+  - setup_logs.py — Script Python.
+  - test_matchmaking.js — Source JavaScript/TypeScript.
+  - test_orchestration.py — Script Python.
+- src/
+  - components/
+    - ChatDuel.jsx — Source JavaScript/TypeScript.
+    - VoteScreen.jsx — Source JavaScript/TypeScript.
+    - WaitingRoom.jsx — Source JavaScript/TypeScript.
+  - lib/
+    - supabaseClient.js — Source JavaScript/TypeScript.
+  - tests/
+    - basic.test.js — Source JavaScript/TypeScript.
+    - fixtures.js — Source JavaScript/TypeScript.
+    - setup.js — Source JavaScript/TypeScript.
+  - App.jsx — Source JavaScript/TypeScript.
+  - index.css — Fichier web/interface.
+  - main.jsx — Source JavaScript/TypeScript.
+- UI/
+  - V1/
+    - screens/
+      - chat.jsx — Source JavaScript/TypeScript.
+      - homepage.jsx — Source JavaScript/TypeScript.
+      - leaderboard.jsx — Source JavaScript/TypeScript.
+      - result.jsx — Source JavaScript/TypeScript.
+      - shared.jsx — Source JavaScript/TypeScript.
+    - app.jsx — Source JavaScript/TypeScript.
+    - Bot ou pas Bot.html — Fichier web/interface.
+    - design-canvas.jsx — Source JavaScript/TypeScript.
+  - V2/
+    - activity_stream.json — Fichier de configuration.
+    - index.html — Fichier web/interface.
+    - registry.json — Fichier de configuration.
+- .env — Fichier du projet.
+- .env.example — Fichier du projet.
+- .gitignore — Fichier du projet.
+- eslint.config.js — Source JavaScript/TypeScript.
+- index.html — Fichier web/interface.
+- package-lock.json — Dépendances et scripts JavaScript/TypeScript.
+- package.json — Dépendances et scripts JavaScript/TypeScript.
+- README.md — Documentation principale du projet.
+- ROADMAP.md — Document Markdown.
+- ROADMAP_EQUIPE_IA.md — Document Markdown.
+- run.py — Script Python.
+- RUN_COMMANDS.md — Document Markdown.
+- supabase.sql — Fichier du projet.
+- vite.config.js — Source JavaScript/TypeScript.
+- vite.config.js.timestamp-1777042730173-19311d973da5f.mjs — Fichier du projet.
+
+## Notes
+- Les dossiers techniques courants sont ignorés pour garder le fichier lisible.
+- Ce fichier est généré automatiquement.

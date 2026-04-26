@@ -1,23 +1,26 @@
-# Rapport de Session - 2026-04-25 (14:25)
+# Rapport de Session - 2026-04-26 (12:12)
 
 ## 📊 Résumé
-- **Phase** : Phase 3 (Ollama Integration) & Phase 2 (Equipe IA MVP)
-- **Status** : Communication Agentique activée et intégrée aux commandes `/start` et `/close`.
-- **ChefIA** : Antigravity synchronisé avec la pyramide des 100 agents.
+- **Phase** : Phase 3 (Ollama Integration) / Phase 2 (Équipe IA MVP)
+- **Status** : Orchestrateur Web (Launcher) opérationnel. 
+- **ChefIA** : Consolidation de l'expérience développeur via une interface unifiée.
 
 ## ✅ Accompli
-1. **Intégration Workflow IA** :
-   - Mise à jour de `startV2.md` : Chargement automatique du registre des agents et du dernier état de session.
-   - Mise à jour de `closeV2.md` : Sauvegarde automatique de l'état de session, synchronisation du registre et régénération du dashboard UI.
-2. **Synchronisation** :
-   - Test réussi de régénération du dashboard (`registry.json`) après modification des workflows.
+1. **Infrastructure & Orchestration** :
+   - Refonte de `run.py` : Passage d'un lanceur terminal à un serveur API multi-threadé (`ThreadingMixIn`).
+   - Création du **Web Launcher** (`UI/launcher.html`) : Interface premium pour piloter les services (Jeu, Dashboard, Bridge).
+   - Gestion persistante des processus : Support du lancement individuel ou "Full Stack".
+2. **Débogage & Robustesse** :
+   - Correction du blocage du serveur HTTP lors du lancement de processus longs.
+   - Correction de l'état initial du Dashboard pour permettre son ouverture via l'UI.
+   - Amélioration de la fermeture des processus sur Windows via `taskkill`.
 3. **Documentation** :
-   - Clarification du rôle de **ChefIA** (orchestrateur) pour les sessions futures.
+   - Mise à jour de la Roadmap et du README pour refléter les nouveaux outils.
 
 ## ⏳ En suspens
-- Phase 2 (MVP Duel) : Design mobile et flow d'invitation.
-- Test E2E frontend "Défier le Bot".
+- **E2E Testing** : Validation du flow de matchmaking contre le bot Ollama depuis le frontend.
+- **Design** : Toujours en attente des maquettes finales de Claude Design pour le polissage UI.
 
 ## 🛠 Prochaines Actions
-- Lancer la conception du design system mobile pour le duel (Assigné à **Dezy/Mobi**).
-- Debugger le matchmaking Bot via les logs du bridge (Assigné à **Quali/Fullo**).
+- Tester le matchmaking E2E avec le nouveau Launcher actif.
+- Étendre le Launcher avec des statistiques en direct (CPU/Memory des bots).
