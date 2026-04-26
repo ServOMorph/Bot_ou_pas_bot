@@ -20,6 +20,10 @@
 - [x] **Standardisation Ollama** : Utilisation de `gemma3:4b` comme modèle unique via `config.py` (2026-04-26).
 - [x] **Préchargement Intelligent** : Mise en cache du modèle LLM dès le démarrage du launcher (2026-04-26).
 - [x] **Génération Auto de Descriptions** : `description_generator.py` — Ollama génère en background les fiches de tous les fichiers/dossiers du projet au démarrage (182 descriptions, auto-découverte par règles) (2026-04-26).
+- [x] **Refonte Design Launcher "Gamer-Dev"** : Esthétique HUD, Glassmorphism, Neon/RGB et animations avancées (2026-04-26).
+- [x] **Système de Bulles HUD** : Panneaux d'information Mission/Tech dynamiques au survol des services (2026-04-26).
+- [x] **Version Standalone V3** : Intégration de la version autonome (Single File App) dans le launcher (2026-04-26).
+- [x] **Contrôle de Version & Config** : Badge de version dynamique `v0.2.1` et activation des features via `config.py` (2026-04-26).
 
 ## ⏳ Prochaines Étapes (Phase 3)
 - [x] **Sélecteur de Cible IA dans l'Optimiseur de Prompts** : Implémentation du chargement dynamique via JSON (Claude Code, Gemini Flash) (2026-04-26).
@@ -56,10 +60,10 @@
 - [x] **Phase 1 Complétée** : Pyramide de 100 agents générée, configurée et testée (Archi, Fullo, Quali, Scribe) (2026-04-25).
 - [x] **Intégration Workflow** : Commandes `/start` et `/close` synchronisées avec la pyramide 100 IA (ChefIA) (2026-04-25).
 
-- [/] **Phase 2 (MVP Duel)** : Lancement du design UI mobile et flow d'invitation.
+- [x] **Phase 2 (MVP Duel)** : Lancement du design UI mobile et flow d'invitation (Design Gamer-Dev HUD opérationnel).
 - [x] `.claude/commands/activation_equipe_IA.md` — workflow intégré à startV3.md (2026-04-26).
 
 📚 **Roadmap détaillée:** voir [`ROADMAP_EQUIPE_IA.md`](../ROADMAP_EQUIPE_IA.md) à la racine pour le plan complet des 5 phases, tâches par agent, et processus de clôture.
 
 ---
-*Dernière mise à jour : 2026-04-26 (Génération auto descriptions via Ollama — 182 fiches)*
+*Dernière mise à jour : 2026-04-26 (Refonte Launcher Gamer-Dev v0.2.1)*

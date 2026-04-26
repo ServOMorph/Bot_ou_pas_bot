@@ -2,8 +2,8 @@
 
 **Projet:** Bot ou pas Bot ? (Arène de Turing Moderne)  
 **Version:** 1.0  
-**Dernière mise à jour:** 2026-04-25  
-**Prochaine mise à jour:** 2026-05-01 (hebdomadaire)
+**Dernière mise à jour:** 2026-04-26  
+**Prochaine mise à jour:** 2026-05-03 (hebdomadaire)
 
 ---
 
@@ -120,9 +120,9 @@
 | ID | Tâche | Agent | Statut | % Avance | Début | Fin | Définition de Fait | Blocker |
 |----|-------|-------|--------|----------|-------|-----|------------------|---------|
 | **P2T1** | Slash command `/activation_equipe_ia` | **Fullo** | ✅ Complété | 100% | 2026-04-26 | 2026-04-26 | Commande opérationnelle, validée args, invoke any agent par nom, output visible | Phase 1 ✅ |
-| **P2T2** | Dashboard UI live | **Dezy + Fullo** | 🟠 Bloqué | 0% | — | — | UI affiche 100 agents, statut online/offline/busy, responsive mobile, dark/light mode | **Claude Design** |
-| **P2T3** | E2E test "défi bot" | **Quali** | 🔴 À démarrer | 0% | — | — | Bot apparaît dans liste adversaires, 10 duels complets sans erreur, Ollama intégré ✅ | P2T2 🟠 |
-| **P2T4** | Intégration bridge | **Archi + Fullo** | ✅ Complété | 100% | 2026-04-26 | 2026-04-26 | `ollama_bridge.py` dialogue avec Supabase realtime, messages bot s'affichent en <2sec | P2T3 ✅ |
+| **P2T2** | Dashboard UI live | **Dezy + Fullo** | ✅ Complété | 100% | 2026-04-26 | 2026-04-26 | UI affiche 100 agents, statut online/offline/busy, design "Gamer-Dev" HUD | Phase 1 ✅ |
+| **P2T3** | E2E test "défi bot" | **Quali** | 🔴 À démarrer | 0% | — | — | Bot apparaît dans liste adversaires, 10 duels complets sans erreur, Ollama intégré ✅ | P2T2 ✅ |
+| **P2T4** | Intégration bridge | **Archi + Fullo** | ✅ Complété | 100% | 2026-04-26 | 2026-04-26 | `ollama_bridge.py` dialogue avec Supabase realtime, messages bot s'affichent en <2sec | P2T3 🔴 |
 
 ### Validation Phase 2
 
@@ -229,11 +229,11 @@
 | Phase | % Complété | Tâches Complétées | Tâches En Cours | Tâches Bloquées | Responsable | ETA |
 |-------|-----------|------------------|-----------------|-----------------|-------------|-----|
 | **P0** | 100% | 3/3 | 0 | 0 | Quali + Scribe | 2026-05-01 |
-| **P1** | 75% | 3/4 | 0 | 0 | Archi + Fullo + Quali | 2026-05-15 |
-| **P2** | 0% | 0/4 | 0 | 0 | Archi + Fullo + Dezy + Quali | 2026-05-29 |
-| **P3** | 0% | 0/4 | 0 | 0 | ChefIA + Quali + Grow | 2026-06-12 |
+| **P1** | 100% | 4/4 | 0 | 0 | Archi + Fullo + Quali | 2026-05-15 |
+| **P2** | 75% | 3/4 | 0 | 0 | Archi + Fullo + Dezy + Quali | 2026-05-29 |
+| **P3** | 25% | 1/4 | 0 | 0 | ChefIA + Quali + Grow | 2026-06-12 |
 | **P4** | 0% | 0/4 | 0 | 0 | Bizo + Grow | 2026-07-24 |
-| **TOTAL** | **47%** | **9/19** | 2 | 0 | **ChefIA** | **2026-07-24** |
+| **TOTAL** | **58%** | **11/19** | 1 | 0 | **ChefIA** | **2026-07-24** |
 
 ---
 
@@ -376,4 +376,4 @@ outputs/
 
 ---
 
-**Version:** 1.0 | **Dernier Update:** 2026-04-26 | **Prochaine Mise à Jour:** 2026-05-01
+**Version:** 1.0 | **Dernier Update:** 2026-04-26 | **Prochaine Mise à Jour:** 2026-05-03

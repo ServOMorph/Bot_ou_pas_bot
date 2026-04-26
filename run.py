@@ -22,7 +22,8 @@ services = {
     "game": {"name": "Vite (Jeu)", "cmd": "npm run dev", "proc": None, "url": "http://localhost:5173"},
     "dashboard": {"name": "Dashboard IA", "cmd": None, "proc": None, "url": f"http://localhost:{PORT}/{DASHBOARD_PATH}"},
     "stats": {"name": "Tableau de Bord", "cmd": None, "proc": None, "url": f"http://localhost:{PORT}/UI/dashboard.html"},
-    "bridge": {"name": "Bridge Ollama", "cmd": f"{sys.executable} SCRIPTS/ollama_bridge.py", "proc": None, "url": None}
+    "bridge": {"name": "Bridge Ollama", "cmd": f"{sys.executable} SCRIPTS/ollama_bridge.py", "proc": None, "url": None},
+    "standalone": {"name": "Design appli en cours", "cmd": None, "proc": "internal", "url": f"http://localhost:{PORT}/UI/V3/Bot%20ou%20pas%20Bot%20-%20Standalone.html"}
 }
 
 class ThreadedTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
@@ -106,6 +107,19 @@ class LauncherAPIHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header('Access-Control-Allow-Origin', '*')
             self.end_headers()
             self.wfile.write(json.dumps(structure).encode())
+            return
+
+        # Route API : Config
+        if parsed_url.path == '/api/config':
+            config_data = {
+                "enable_bubbles": config.ENABLE_LAUNCHER_BUBBLES,
+                "version": config.VERSION
+            }
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(json.dumps(config_data).encode())
             return
 
         # Par défaut, servir les fichiers statiques

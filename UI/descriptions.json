@@ -726,5 +726,13 @@
     "RUN_COMMANDS.md": {
         "title": "Commandes d'Exécution",
         "desc": "Ce fichier contient la liste des commandes à exécuter pour le processus de test et de déploiement du projet."
+    },
+    "UI/V3": {
+        "title": "Interface Utilisateur V3",
+        "desc": "Contient les fichiers de code source de la version 3 de l'interface utilisateur du projet, incluant les composants et styles définissant l'apparence et le comportement de l'application."
+    },
+    "UI/V3/Bot ou pas Bot - Standalone.html": {
+        "title": "Interface Standalone Bot",
+        "desc": "Cette page HTML contient une interface utilisateur autonome pour démonstration ou tests du bot, permettant d'interagir avec lui sans dépendance au reste de l'application."
     }
 }

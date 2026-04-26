@@ -20,11 +20,23 @@
             font-size: 1.1rem;
         }
 
+        .version-badge {
+            font-size: 0.7rem;
+            background: rgba(0, 124, 240, 0.1);
+            color: var(--accent-blue);
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 124, 240, 0.3);
+            margin-left: 10px;
+            vertical-align: middle;
+            font-weight: 600;
+        }
+
         .launcher-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            max-width: 800px;
+            gap: 15px;
+            max-width: 560px;
             width: 90%;
         }
 
@@ -99,44 +111,133 @@
         .card:hover .btn-label {
             background: var(--accent-blue);
         }
+
+        /* --- Info Bubbles Styles --- */
+        .info-bubble {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 280px;
+            padding: 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 10;
+        }
+
+        .info-bubble.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #info-left {
+            left: 40px;
+            transform: translateY(-50%) translateX(-20px);
+        }
+
+        #info-left.visible {
+            transform: translateY(-50%) translateX(0);
+        }
+
+        #info-right {
+            right: 40px;
+            transform: translateY(-50%) translateX(20px);
+        }
+
+        #info-right.visible {
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .bubble-header {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-cyan);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .bubble-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .bubble-content {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .bubble-content ul {
+            padding-left: 18px;
+            margin: 8px 0;
+        }
+
+        .bubble-content li {
+            margin-bottom: 4px;
+        }
+
+        @media (max-width: 1400px) {
+            .info-bubble {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="background-glow"></div>
+
+    <div id="info-left" class="info-bubble">
+        <div class="bubble-header">Mission</div>
+        <div class="bubble-title" id="left-title">Information</div>
+        <div class="bubble-content" id="left-content">...</div>
+    </div>
+
+    <div id="info-right" class="info-bubble">
+        <div class="bubble-header">Architecture</div>
+        <div class="bubble-title" id="right-title">Stack Technique</div>
+        <div class="bubble-content" id="right-content">...</div>
+    </div>
     
-    <h1>Bot ou pas Bot ?</h1>
-    <p class="subtitle">Centre de contrôle - Orchestrateur de services</p>
+    <h1>Bot ou pas Bot ? <span class="version-badge" id="project-version">v0.0.0</span></h1>
+    <p class="subtitle">Tableau de bord de développement</p>
 
     <div class="launcher-grid">
         <!-- Jeu React -->
-        <div class="card" onclick="launch('game', this)">
+        <div class="card" data-service="game" onclick="launch('game', this)">
             <div class="status" id="status-game"><div class="status-dot"></div>Offline</div>
             <div class="icon">🎮</div>
-            <div class="title">Le Jeu</div>
-            <div class="description">Interface principale des duels (React/Vite).</div>
+            <div class="title">L'APPLI</div>
+            <div class="description">APPLI Test Bot ou pas Bot ?</div>
             <div class="btn-label">Lancer</div>
         </div>
 
         <!-- Dashboard IA -->
-        <div class="card" onclick="launch('dashboard', this)">
+        <div class="card" data-service="dashboard" onclick="launch('dashboard', this)">
             <div class="status" id="status-dashboard"><div class="status-dot"></div>Offline</div>
             <div class="icon">🤖</div>
             <div class="title">Dashboard IA</div>
-            <div class="description">Monitoring de la pyramide des 100 agents.</div>
+            <div class="description">Monitoring 100 Agents IA pour aider au dev de l'APPLI</div>
             <div class="btn-label">Lancer</div>
         </div>
 
         <!-- Tableau de Bord -->
-        <div class="card" onclick="launch('stats', this)">
+        <div class="card" data-service="stats" onclick="launch('stats', this)">
             <div class="status" id="status-stats"><div class="status-dot"></div>Offline</div>
             <div class="icon">📊</div>
             <div class="title">Tableau de Bord</div>
-            <div class="description">Statistiques et analyse (Placeholder).</div>
+            <div class="description">Pour mieux comprendre l'architecture du projet</div>
             <div class="btn-label">Lancer</div>
         </div>
 
         <!-- Bridge Ollama -->
-        <div class="card" onclick="launch('bridge', this)">
+        <div class="card" data-service="bridge" onclick="launch('bridge', this)">
             <div class="status" id="status-bridge"><div class="status-dot"></div>Offline</div>
             <div class="icon">🌉</div>
             <div class="title">Bridge Ollama</div>
@@ -145,7 +246,7 @@
         </div>
 
         <!-- Optimiseur de Prompts -->
-        <div class="card" onclick="window.open('/UI/prompt_optimizer.html?v=' + Date.now(), '_blank')">
+        <div class="card" data-service="optimizer" onclick="window.open('/UI/prompt_optimizer.html?v=' + Date.now(), '_blank')">
             <div class="status" id="status-optimizer"><div class="status-dot"></div>Ollama Ready</div>
             <div class="icon">🚀</div>
             <div class="title">Optimiseur de Prompts</div>
@@ -153,8 +254,17 @@
             <div class="btn-label">Ouvrir</div>
         </div>
 
+        <!-- Standalone V3 -->
+        <div class="card" data-service="standalone" onclick="window.open('/UI/V3/Bot%20ou%20pas%20Bot%20-%20Standalone.html', '_blank')">
+            <div class="status" id="status-standalone"><div class="status-dot"></div>Local Ready</div>
+            <div class="icon">📦</div>
+            <div class="title">Design appli en cours</div>
+            <div class="description">Créée avec Claude Design</div>
+            <div class="btn-label">Lancer V3</div>
+        </div>
+
         <!-- Full Stack -->
-        <div class="card full-stack" onclick="launch('all', this)">
+        <div class="card full-stack" data-service="all" onclick="launch('all', this)">
             <div class="icon">⚡</div>
             <div class="title">Mode Full Stack</div>
             <div class="description">Lancer le Jeu, le Dashboard et le Bridge en un seul clic.</div>
@@ -216,6 +326,86 @@
         }
 
         setInterval(checkStatus, 2000);
+
+        // --- Info Bubbles Logic ---
+        const servicesInfo = {
+            game: {
+                left: { title: "Mode Joueur", content: "Affrontez l'IA dans un test de Turing inversé. Saurez-vous démasquer la machine parmi les autres joueurs ?" },
+                right: { title: "Stack Technique", content: "<ul><li>React + Vite</li><li>Tailwind CSS</li><li>Supabase Realtime</li></ul>" }
+            },
+            dashboard: {
+                left: { title: "Cerveau Central", content: "Surveillez la pyramide des 100 agents IA en temps réel. Visualisation des flux de pensée et des décisions collectives." },
+                right: { title: "Stack Technique", content: "<ul><li>React v18</li><li>D3.js (Visualisation)</li><li>Ollama Integration</li></ul>" }
+            },
+            stats: {
+                left: { title: "Analytique", content: "Statistiques globales sur les performances des joueurs et l'efficacité de la détection de bots." },
+                right: { title: "Statut", content: "<p>En cours de développement. Les données seront bientôt synchronisées avec Supabase.</p>" }
+            },
+            bridge: {
+                left: { title: "Système Nerveux", content: "Interface de communication haut débit entre le front-end et les modèles LLM locaux (Ollama)." },
+                right: { title: "Stack Technique", content: "<ul><li>FastAPI / Python</li><li>WebSocket Support</li><li>Llama 3 / Mistral</li></ul>" }
+            },
+            optimizer: {
+                left: { title: "Laboratoire", content: "Outil d'ingénierie pour affiner les directives et les traits de personnalité envoyés aux agents." },
+                right: { title: "Outils", content: "<ul><li>GPT-Prompt patterns</li><li>Auto-validation</li><li>Export JSON</li></ul>" }
+            },
+            standalone: {
+                left: { title: "Portabilité", content: "Version autonome (V3) regroupant tous les assets et la logique dans un seul fichier HTML haute performance." },
+                right: { title: "Technologie", content: "<ul><li>Single File App</li><li>Embedded Assets</li><li>No-Server required</li></ul>" }
+            },
+            all: {
+                left: { title: "Écosystème", content: "Lancement de l'infrastructure complète : Jeu, Dashboard et Bridge de communication." },
+                right: { title: "Orchestration", content: "<ul><li>Process Management</li><li>Auto-launching</li><li>Single Point of Entry</li></ul>" }
+            }
+        };
+
+        const cards = document.querySelectorAll('.card');
+        const bubbleLeft = document.getElementById('info-left');
+        const bubbleRight = document.getElementById('info-right');
+        const leftTitle = document.getElementById('left-title');
+        const leftContent = document.getElementById('left-content');
+        const rightTitle = document.getElementById('right-title');
+        const rightContent = document.getElementById('right-content');
+
+        let bubblesEnabled = false;
+
+        async function fetchConfig() {
+            try {
+                const response = await fetch('/api/config');
+                const data = await response.json();
+                bubblesEnabled = data.enable_bubbles;
+                if (data.version) {
+                    document.getElementById('project-version').innerText = 'v' + data.version;
+                }
+            } catch (err) {
+                console.error("Erreur de config:", err);
+            }
+        }
+
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                if (!bubblesEnabled) return;
+                
+                const service = card.getAttribute('data-service');
+                if (service && servicesInfo[service]) {
+                    leftTitle.innerText = servicesInfo[service].left.title;
+                    leftContent.innerHTML = servicesInfo[service].left.content;
+                    rightTitle.innerText = servicesInfo[service].right.title;
+                    rightContent.innerHTML = servicesInfo[service].right.content;
+                    
+                    bubbleLeft.classList.add('visible');
+                    bubbleRight.classList.add('visible');
+                }
+            });
+
+            card.addEventListener('mouseleave', () => {
+                if (!bubblesEnabled) return;
+                bubbleLeft.classList.remove('visible');
+                bubbleRight.classList.remove('visible');
+            });
+        });
+
+        fetchConfig();
     </script>
 </body>
 </html>
